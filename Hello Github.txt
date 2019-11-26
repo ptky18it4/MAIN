@@ -1,4 +1,5 @@
 Welcome to Github, my name Kenneth - HAHA
+// Create new branch
 APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=base64:RBrLZlzLaeTDSocGiuFyMkTcmm+GwGHYVPqMPNXEhLk=
