@@ -1,0 +1,22 @@
+{
+    "sqltools.connections": [
+        {
+            "askForPassword": true,
+            "database": "laptop",
+            "dialect": "MySQL",
+            "name": "DBconnect",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        },
+        {
+            "askForPassword": true,
+            "database": "laptop",
+            "dialect": "MySQL",
+            "name": "DBlaptop",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        }
+    ]
+}

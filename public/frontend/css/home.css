@@ -1,0 +1,59 @@
+.user-image {
+    border-radius: 100px;
+    height: auto;
+    display: block;
+    background-color: rgba(171, 172, 177, 0.432);
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform .2s;
+    /* Animation */
+    /*     
+    margin-left: auto;
+    margin-right: auto;
+    căn ảnh ra giữa 
+    */
+}
+
+.user-image:hover {
+    transform: scale(1.5);
+}
+
+#edit_image {
+    position: relative;
+    border-radius: 100px;
+    width: 50;
+    top: -30px;
+    left: 40px;
+    height: 50;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(110, 104, 104, 0.63);
+    background-image: url('public/backend/images/icons8-upload-48.png') ;
+    /* Animation */
+    /*     
+    margin-left: auto;
+    margin-right: auto;
+    căn ảnh ra giữa 
+    */
+}
+
+#edit_image:hover {
+    background-color: #D10024;
+}
+
+input.file {
+    position: relative;
+    top: 30px;
+    display: inline-block;
+    width: 35px;
+    padding: 35px 0 0 0;
+    height: 35px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-image: url('http://thinkpad.com.vn/public/backend/images/icons8-upload-48.png') center center no-repeat #7373746c !important;
+    border-radius: 20px;
+}
+/* back top */
