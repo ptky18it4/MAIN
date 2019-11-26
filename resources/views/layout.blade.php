@@ -431,6 +431,7 @@
     </nav>
     <!-- /NAVIGATION -->
     @yield('content')
+Haha
     <!-- NEWSLETTER -->
     <div id="newsletter" class="section">
         <!-- container -->
