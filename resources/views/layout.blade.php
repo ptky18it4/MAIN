@@ -10,7 +10,7 @@
 
     <title>Electro - Lenovo authorized unit in Vietnam</title>
     <!-- Logo title -->
-    <link rel="shortcut icon" type="image/png" href="/public/backend/images/thinkpad-logo.png"/>
+    <link rel="shortcut icon" type="image/png" href="https://js1cdn.clubstatic.lenovo.com.cn/thinkpc/images/favicon.ico?version=8eebb34009b45c51691c30f8f94fd5f7"/>
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
@@ -31,6 +31,7 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{asset('public/frontend/css/style.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('public/frontend/css/home.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('public/frontend/css/backtop.css')}}" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]> 
@@ -49,7 +50,6 @@
 </head>
 
 <body>
-
     <!-- HEADER -->
     <header>
         <!-- TOP HEADER -->
@@ -313,7 +313,6 @@
         </div>
         <!-- //modal -->
 
-        <!-- End test -->
         <!-- MAIN HEADER -->
         <div id="header">
             <!-- container -->
@@ -323,7 +322,7 @@
                     <!-- LOGO -->
                     <div class="col-md-3">
                         <div class="header-logo">
-                            <a href="{{URL::to('home')}}" class="logo">
+                            <a href="{{URL::to('/')}}" class="logo">
                                 <!-- <img src="{{asset('public/frontend/img/logo.png')}}" alt=""> -->
                                 <img src="https://www.lenovo.com/medias/thinkpad-logo-white.png?context=bWFzdGVyfHJvb3R8MzA3MHxpbWFnZS9wbmd8aDFiL2g4NC85NjM4ODE5ODIzNjQ2LnBuZ3xmNTM0Y2U2NjgzYWI4YjU2ZGNkNzg1ODRmOWUwZDhhMzhmYzU2MWRlYjVjODAyZjljN2YzMDk0MWViNzQ1N2Mz" style="max-width: 200px; max-height: 70px;" alt="">
                             </a>
@@ -431,7 +430,6 @@
     </nav>
     <!-- /NAVIGATION -->
     @yield('content')
-Haha
     <!-- NEWSLETTER -->
     <div id="newsletter" class="section">
         <!-- container -->
@@ -480,9 +478,9 @@ Haha
                             <h3 class="footer-title">About Us</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
                             <ul class="footer-links">
-                                <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                                <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                                <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-map-marker"></i>09 Ngu Hanh Son - Danang - VN</a></li>
+                                <li><a href="tel: 0326895190"><i class="fa fa-phone"></i>+84 090 909 9900</a></li>
+                                <li><a href="mailto:phamtrungky19032000@gmail.com"><i class="fa fa-envelope-o"></i>thinkpad@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -534,6 +532,9 @@ Haha
         </div>
         <!-- /top footer -->
 
+        <!-- test -->
+        <a id="button" title="Back - Top"></a>
+        <!-- /test -->
 
         <!-- bottom footer -->
         <div id="bottom-footer" class="section">
@@ -571,8 +572,9 @@ Haha
     <script src="{{asset('public/frontend/js/main.js')}}"></script>
     <script src="{{asset('public/frontend/js/home.js')}}"></script>
     <script src="{{asset('public/frontend/js/cart.js')}}"></script>
+    <script src="{{asset('public/frontend/js/countdown.js')}}"></script>
+    <script src="{{asset('public/frontend/js/backtop.js')}}"></script>
     <script src="{{asset('public/frontend/js/custom-file-input.js')}}"></script>
-
 </body>
 
 </html>

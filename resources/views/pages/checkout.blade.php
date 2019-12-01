@@ -35,30 +35,32 @@
 							<div class="section-title">
 								<h3 class="title">Billing address</h3>
 							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="First Name">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="last-name" placeholder="Last Name">
-							</div>
-							<div class="form-group">
-								<input class="input" type="email" name="email" placeholder="Email">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="address" placeholder="Address">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="city" placeholder="City">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="country" placeholder="Country">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-							</div>
-							<div class="form-group">
-								<input class="input" type="tel" name="tel" placeholder="Telephone">
-							</div>
+							@foreach($infor_user as $key => $infor)
+								<div class="form-group">
+								<input class="input" type="text" name="first-name" placeholder="First Name" value="{{$infor->username}}">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="last-name" placeholder="Last Name">
+								</div>
+								<div class="form-group">
+								<input class="input" type="email" name="email" placeholder="Email" value="{{$infor->email}}">
+								</div>
+								<div class="form-group">
+								<input class="input" type="text" name="address" placeholder="Address" value="{{$infor->address}}">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="city" placeholder="City">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="country" placeholder="Country">
+								</div>
+								<div class="form-group">
+									<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+								</div>
+								<div class="form-group">
+								<input class="input" type="tel" name="tel" placeholder="Telephone" value="{{$infor->phone}}">
+								</div>
+							@endforeach
 							<div class="form-group">
 								<div class="input-checkbox">
 									<input type="checkbox" id="create-account">
@@ -133,15 +135,16 @@
 								<div><strong>PRODUCT</strong></div>
 								<div><strong>TOTAL</strong></div>
 							</div>
-							<div class="order-products">
-								<div class="order-col">
+							<div class="order-products show-cart ">
+								{{-- <div class="order-col">
 									<div>1x Product Name Goes Here</div>
 									<div>$980.00</div>
 								</div>
 								<div class="order-col">
 									<div>2x Product Name Goes Here</div>
 									<div>$980.00</div>
-								</div>
+								</div> --}}
+
 							</div>
 							<div class="order-col">
 								<div>Shiping</div>
@@ -149,7 +152,7 @@
 							</div>
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total">$2940.00</strong></div>
+								<div><strong class="order-total total-cart"></strong></div>
 							</div>
 						</div>
 						<div class="payment-method">

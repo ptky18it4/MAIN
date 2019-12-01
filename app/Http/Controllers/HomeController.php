@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use DB;
+use DB,Mail;
 
 use App\Http\Requests;
 use Session;
@@ -104,12 +104,11 @@ class HomeController extends Controller
         // echo '<pre>';
         // print_r($data);
         // echo '</pre>';
-
         //Insert
         DB::table('tbl_user')->insert($data);
         return Redirect::to('/');
-    }
-
+    } 
+    
     public function log_out()
     {
         $this->AuthenticLogin();
@@ -422,8 +421,33 @@ class HomeController extends Controller
                 ->with('top_selling', $top_selling);
         }
     }
-    public function add_cart(Request $request){
-        echo 'Goij add_to card';
+
+    public function get_contact() {
+        return view('mails.contact');
+    }
+
+    public function post_contact(Request $request) {
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['phone'] = $request->phone;
+        $data['content'] = $request->content;
+        Mail::send('mails.blanks', $data, function ($message) {
+            $message->from('phamtrungky19032000@gmail.com','Trung Kỳ');
+            $message->sender('phamtrungky19032000@gmail.com','Trung Kỳ');
+            $message->to('phamtrungky012345@gmail.com', 'Kenneth');
+            $message->cc('phamtrungky19032000@gmail.com','Kenneth');
+            $message->bcc('phamtrungky19032000@gmail.com','Kenneth');
+            $message->replyTo('phamtrungky012345@gmail.com', 'replyTo');
+            $message->subject('Feedback'.'');
+            $message->priority(3);
+            // $message->attach('pathToFile');
+        });
+        // echo '<script>';
+        // echo ('Thank you for your feedback, we will respond to you as soon as possible !');
+        // echo '</script>';
+        return Redirect::to('/home');
+
     }
 
 }

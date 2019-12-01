@@ -483,10 +483,12 @@
                                 <!-- Review Form -->
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form class="review-form">
-                                            <input class="input" type="text" placeholder="Your Name">
-                                            <input class="input" type="email" placeholder="Your Email">
-                                            <textarea class="input" placeholder="Your Review"></textarea>
+                                        <form class="review-form" action="{{URL::to('contact')}}" method="POST" >
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input class="input" name="name" type="text" placeholder="Your Name" required>
+                                            <input class="input" name="email" type="email" placeholder="Your Email" required>
+                                            <input class="input" name="phone" type="text" placeholder="Your Phone" required>
+                                            <textarea name="content" class="input" placeholder="Your Review"></textarea>
                                             <div class="input-rating">
                                                 <span>Your Rating: </span>
                                                 <div class="stars">
