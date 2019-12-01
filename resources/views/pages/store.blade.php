@@ -253,7 +253,7 @@
 									<div class="product-body">
 										<p class="product-category">{{$pro->category_name}}</p>
 										<h3 class="product-name"><a href="{{asset("/product-$pro->id")}}">{{$pro->name}}</a></h3>
-									<h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)))}} <del class="product-old-price">${{number_format($pro->price)}}</del></h4>
+									<h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price,2, ',', '.')}}</del></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
@@ -267,7 +267,7 @@
 											<button class="quick-view"><a href="{{asset("/product-$pro->id")}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
 										</div>
 									</div>
-									<div class="add-to-cart" data-name="{{$pro->name}}" data-price="{{$pro->price}}">
+									<div class="add-to-cart" data-name="{{$pro->name}}" data-price="{{$pro->price,2, ',', '.'}}">
 										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 									</div>
 								</div>

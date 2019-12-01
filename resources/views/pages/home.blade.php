@@ -96,7 +96,7 @@
                                             <div class="product-body">
                                                 <p class="product-category">{{$pro->category_name}}</p>
                                                 <h3 class="product-name" ><a href="{{URL::to('product-'.$pro->id)}}">{{$pro->name}}</a></h3>
-                                                <h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)))}} <del class="product-old-price">${{number_format($pro->price)}}</del></h4>
+                                                <h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price)}}</del></h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -110,7 +110,7 @@
                                                     <button class="quick-view"><a href="{{asset('/product-'.$pro->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
                                                 </div>
                                             </div>
-                                                <div data-name="{{$pro->name}}"  data-price="{{$pro->price}}" class="add-to-cart">
+                                                <div data-name="{{$pro->name}}"  data-price="{{$pro->price,2, ',', '.'}}" class="add-to-cart">
                                                     <button type="#" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
                                                 </div>
                                             </div>
@@ -177,7 +177,6 @@
                     </div>
                 </div>
                 <!-- /section title -->
-
                 <!-- Products tab & slick -->
                 <div class="col-md-12">
                     <div class="row">
@@ -197,8 +196,8 @@
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">{{$selling->category_name}}</p>
-                                            <h3 class="product-name"><a href="#">{{$selling->name}}</a></h3>
-                                            <h4 class="product-price">${{number_format($selling->price,2, ',', '.')}} <del class="product-old-price">$990.00</del></h4>
+                                            <h3 class="product-name"><a href="#">{{$selling->name}}</a></h3>> 
+                                            <h4 class="product-price">${{money_format($selling->price,2, '.', ',')}} <del class="product-old-price">$990.00</del></h4>
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
