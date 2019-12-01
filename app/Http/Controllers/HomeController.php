@@ -391,34 +391,10 @@ class HomeController extends Controller
                 ->with('all_product', $all_product)
                 ->with('top_selling', $top_selling);
         } else {
-
-            $all_menu = DB::table('tbl_menu')
-                ->where('show_on_home', '1')
-                ->get();
-
-            $all_category = DB::table('tbl_category')
-                ->where('category_status', '1')
-                ->get();
-
-            $all_product = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('status', '1')
-                ->orderby('id', 'desc')
-                ->limit(4)
-                ->get();
-
-            $top_selling = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('top_selling', '>', '15')
-                ->orderby('id', 'desc')
-                // ->limit(5)
-                ->get();
-
-            return view('pages.checkout')
-                ->with('all_menu', $all_menu)
-                ->with('all_category', $all_category)
-                ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling);
+            echo "<script> alert('Please LOGIN and CHOOSE PRODUCTS before checkout !');
+            window.location = '".url('/')."'        
+            </script>";
+            
         }
     }
 
@@ -443,11 +419,8 @@ class HomeController extends Controller
             $message->priority(3);
             // $message->attach('pathToFile');
         });
-        // echo '<script>';
-        // echo ('Thank you for your feedback, we will respond to you as soon as possible !');
-        // echo '</script>';
-        return Redirect::to('/home');
-
+        echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');
+                window.location = '".url('/')."'        
+        </script>";
     }
-
 }

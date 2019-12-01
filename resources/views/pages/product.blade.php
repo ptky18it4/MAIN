@@ -68,7 +68,7 @@
                         <a class="review-link" href="#">10 Review(s) | Add your review</a>
                     </div>
                     <div>
-                        <h3 class="product-price">${{number_format($pro->price-($pro->price*($pro->vat/100)))}} <del class="product-old-price">${{number_format($pro->price)}}</del></h3>
+                        <h3 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price,2, ',', '.')}}</del></h3>
                         <span class="product-available">
                             @if($pro->status == 1)
                             IN STOCK
@@ -483,8 +483,9 @@
                                 <!-- Review Form -->
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form class="review-form" action="{{URL::to('contact')}}" method="POST" >
+                                        <form class="review-form" action="{{URL::to('contact')}}" method="POST">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="id" type="text" value="{{$id}}">
                                             <input class="input" name="name" type="text" placeholder="Your Name" required>
                                             <input class="input" name="email" type="email" placeholder="Your Email" required>
                                             <input class="input" name="phone" type="text" placeholder="Your Phone" required>
@@ -500,7 +501,7 @@
                                                 </div>
                                             </div>
                                             <button class="primary-btn">Submit</button>
-                                        </form>
+                                        </form>                                              
                                     </div>
                                 </div>
                                 <!-- /Review Form -->
@@ -649,7 +650,6 @@
                 </div>
             </div>
             <!-- /product -->
-
         </div>
         <!-- /row -->
     </div>
