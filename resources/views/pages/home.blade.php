@@ -83,37 +83,41 @@
                                 <div class="products-slick" data-nav="#slick-nav-1">
                                     <!-- product -->
                                     @foreach($all_product as $key => $pro)
-                                    <div class="product">
-                                        <a href="{{URL::to('product-'.$pro->id)}}">
-                                                <div class="product-img">
-                                                    <img src="{{asset('public/uploads/product/more_image/'.$pro->image)}}" alt="">
-                                                    <div class="product-label">
-                                                        <span class="sale">-{{$pro->vat}}%</span>
-                                                        <span class="new">NEW</span>
+                                    
+                                        <div class="product">
+                                                <a href="{{URL::to('product-'.$pro->id)}}">
+                                                        <div class="product-img">
+                                                            <img src="{{asset('public/uploads/product/more_image/'.$pro->image)}}" alt="">
+                                                            <div class="product-label">
+                                                                <span class="sale">-{{$pro->vat}}%</span>
+                                                                <span class="new">NEW</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <div class="product-body">
+                                                        <p class="product-category">{{$pro->category_name}}</p>
+                                                        <h3 class="product-name" ><a href="{{URL::to('product-'.$pro->id)}}">{{$pro->name}}</a></h3>
+                                                        <h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price)}}</del></h4>
+                                                        <div class="product-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="product-btns">
+                                                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                            <button class="quick-view"><a href="{{asset('/product-'.$pro->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
-                                            <div class="product-body">
-                                                <p class="product-category">{{$pro->category_name}}</p>
-                                                <h3 class="product-name" ><a href="{{URL::to('product-'.$pro->id)}}">{{$pro->name}}</a></h3>
-                                                <h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price)}}</del></h4>
-                                                <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <div class="product-btns">
-                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                    <button class="quick-view"><a href="{{asset('/product-'.$pro->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
-                                                </div>
-                                            </div>
-                                                <div data-name="{{$pro->name}}"  data-price="{{$pro->price,2, ',', '.'}}" class="add-to-cart">
-                                                    <button type="#" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
-                                                </div>
-                                            </div>
+                                                    <form action="{{URL::to('add-to-cart-'.$pro->id)}}" method="post">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <div class="add-to-cart" data-id="{{$pro->id}}"  data-name="{{$pro->name}}" data-price="{{$pro->price}}">
+                                                            <button type="submit" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
+                                                        </div>
+                                                    </form>
+                                                    </div>
                                     <!-- /product -->
                                     @endforeach
                                     
@@ -194,26 +198,28 @@
                                                 <span class="new">NEW</span>
                                             </div>
                                         </div>
-                                        <div class="product-body">
-                                            <p class="product-category">{{$selling->category_name}}</p>
-                                            <h3 class="product-name"><a href="#">{{$selling->name}}</a></h3>> 
-                                            <h4 class="product-price">${{money_format($selling->price,2, '.', ',')}} <del class="product-old-price">$990.00</del></h4>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                            </div>
-                                        </div>
-                                        <div class="add-to-cart">
-                                            <button class="add-to-cart-btn "><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                        </div>
+                                            <form action="{{URL::to('add-to-card-'.$selling->id)}}" method="post">
+                                                <div class="product-body">
+                                                        <p class="product-category">{{$selling->category_name}}</p>
+                                                        <h3 class="product-name"><a href="#">{{$selling->name}}</a></h3>> 
+                                                        <h4 class="product-price">${{money_format($selling->price,2, '.', ',')}} <del class="product-old-price">$990.00</del></h4>
+                                                        <div class="product-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="product-btns">
+                                                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add-to-cart">
+                                                        <button type="submit" class="add-to-cart-btn "><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                    </div>
+                                            </form>
                                     </div>
                                     <!-- /product -->
                                     @endforeach
@@ -231,7 +237,7 @@
         <!-- /container -->
     </div>
     <!-- /SECTION -->
-
+    
     <!-- SECTION -->
     <div class="section">
         <!-- container -->

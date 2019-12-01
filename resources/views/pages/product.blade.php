@@ -256,7 +256,7 @@
                                 <option value="0">White</option>
                             </select>
                         </label> 
-                        <label class="add-to-cart  " data-name="{{$pro->name}}" data-price="{{$pro->price}}">
+                        <label class="add-to-cart" data-id="{{$pro->id}}"  data-name="{{$pro->name}}" data-price="{{$pro->price}}">
                         Qty:
                             <div class="input-number" style="width: 100px;">
                                 <input type="number" value="1" min="1" max="100">
@@ -266,10 +266,9 @@
                         </label> 
                     </div>
 
-                    <div class="add-to-cart" data-name="{{$pro->name}}" data-price="{{$pro->price}}">
+                <div class="add-to-cart" data-id="{{$pro->id}}"  data-name="{{$pro->name}}" data-price="{{$pro->price}}">
                             <button type="#" style=" position: relative; left: 27%;" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
                     </div>
-
                     <ul class="product-btns">
                         <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
                         <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
@@ -485,7 +484,7 @@
                                     <div id="review-form">
                                         <form class="review-form" action="{{URL::to('contact')}}" method="POST">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="id" type="text" value="{{$id}}">
+                                        <input type="hidden" name="id" type="text" >
                                             <input class="input" name="name" type="text" placeholder="Your Name" required>
                                             <input class="input" name="email" type="email" placeholder="Your Email" required>
                                             <input class="input" name="phone" type="text" placeholder="Your Phone" required>

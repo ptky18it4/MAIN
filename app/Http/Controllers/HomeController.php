@@ -391,10 +391,10 @@ class HomeController extends Controller
                 ->with('all_product', $all_product)
                 ->with('top_selling', $top_selling);
         } else {
-            echo "<script> alert('Please LOGIN and CHOOSE PRODUCTS before checkout !');
-            window.location = '".url('/')."'        
-            </script>";
-            
+
+            echo "<script> alert('Please LOGIN before CHECKOUT !');
+                window.location = '".url('/')."'        
+        </script>";
         }
     }
 
@@ -422,5 +422,35 @@ class HomeController extends Controller
         echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');
                 window.location = '".url('/')."'        
         </script>";
+    }
+    public function order(Request $request) {
+        $data = array();
+        $data['first-name'] = $request->first_name;
+        $data['last-name'] = $request->last_name;
+        $data['email'] = $request->email;
+        $data['phone'] = $request->tel;
+        $data['address'] = $request->address;
+        $data['city'] = $request->city;
+        $data['country'] = $request->country;
+        $data['zip-code'] = $request->zip_code;
+        
+        $check_box = $data['check-box'] = $request->check_box;
+        if($check_box){
+
+            $data['first-name-new'] = $request->first_name_new;
+            $data['last-name-new'] = $request->last_name_new;
+            $data['email-new'] = $request->email_new;
+            $data['phone-new'] = $request->tel_new;
+            $data['address-new'] = $request->address_new;
+            $data['city-new'] = $request->city_new;
+            $data['country-new'] = $request->country_new;
+            $data['zip-code-new'] = $request->zip_code_new;
+    
+        }
+
+        $data['id_js'] = $request->name_product;
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
     }
 }

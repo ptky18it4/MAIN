@@ -29,24 +29,26 @@
 				<!-- row -->
 				<div class="row">
 
+				@foreach($infor_user as $key => $infor)
+				<form action="{{URL::to('order')}}" method="post">
 					<div class="col-md-7">
 						<!-- Billing Details -->
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Billing address</h3>
 							</div>
-							@foreach($infor_user as $key => $infor)
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="First Name" value="{{$infor->username}}">
+									<input class="input" type="text" name="first_name" placeholder="First Name" value="{{$infor->username}}">
 								</div>
 								<div class="form-group">
-									<input class="input" type="text" name="last-name" placeholder="Last Name">
+									<input class="input" type="text" name="last_name" placeholder="Last Name">
 								</div>
 								<div class="form-group">
-								<input class="input" type="email" name="email" placeholder="Email" value="{{$infor->email}}">
+									<input class="input" type="email" name="email" placeholder="Email" value="{{$infor->email}}">
 								</div>
 								<div class="form-group">
-								<input class="input" type="text" name="address" placeholder="Address" value="{{$infor->address}}">
+									<input class="input" type="text" name="address" placeholder="Address" value="{{$infor->address}}">
 								</div>
 								<div class="form-group">
 									<input class="input" type="text" name="city" placeholder="City">
@@ -55,12 +57,12 @@
 									<input class="input" type="text" name="country" placeholder="Country">
 								</div>
 								<div class="form-group">
-									<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+									<input class="input" type="text" name="zip_code" placeholder="ZIP Code">
 								</div>
 								<div class="form-group">
-								<input class="input" type="tel" name="tel" placeholder="Telephone" value="{{$infor->phone}}">
+									<input class="input" type="tel" name="tel" placeholder="Telephone" value="{{$infor->phone}}">
 								</div>
-							@endforeach
+							
 							<div class="form-group">
 								<div class="input-checkbox">
 									<input type="checkbox" id="create-account">
@@ -76,42 +78,41 @@
 							</div>
 						</div>
 						<!-- /Billing Details -->
-
 						<!-- Shiping Details -->
 						<div class="shiping-details">
 							<div class="section-title">
 								<h3 class="title">Shiping address</h3>
 							</div>
 							<div class="input-checkbox">
-								<input type="checkbox" id="shiping-address">
+								<input type="checkbox" name="check_box" id="shiping-address">
 								<label for="shiping-address">
 									<span></span>
 									Ship to a diffrent address?
 								</label>
 								<div class="caption">
 									<div class="form-group">
-										<input class="input" type="text" name="first-name" placeholder="First Name">
+										<input class="input" type="text" name="first_name_new" placeholder="First Name">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="last-name" placeholder="Last Name">
+										<input class="input" type="text" name="last_name_new" placeholder="Last Name">
 									</div>
 									<div class="form-group">
-										<input class="input" type="email" name="email" placeholder="Email">
+										<input class="input" type="email" name="email_new" placeholder="Email">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="address" placeholder="Address">
+										<input class="input" type="text" name="address_new" placeholder="Address">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="city" placeholder="City">
+										<input class="input" type="text" name="city_new" placeholder="City">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="country" placeholder="Country">
+										<input class="input" type="text" name="country_new" placeholder="Country">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+										<input class="input" type="text" name="zip_code_new" placeholder="ZIP Code">
 									</div>
 									<div class="form-group">
-										<input class="input" type="tel" name="tel" placeholder="Telephone">
+										<input class="input" type="tel" name="tel_new" placeholder="Telephone">
 									</div>
 								</div>
 							</div>
@@ -135,24 +136,18 @@
 								<div><strong>PRODUCT</strong></div>
 								<div><strong>TOTAL</strong></div>
 							</div>
-							<div class="order-products show-cart ">
-								{{-- <div class="order-col">
-									<div>1x Product Name Goes Here</div>
-									<div>$980.00</div>
-								</div>
-								<div class="order-col">
-									<div>2x Product Name Goes Here</div>
-									<div>$980.00</div>
-								</div> --}}
-
-							</div>
+							{{-- <form action="" method="post"> --}}
+									<div class="order-products show-cart ">
+												{{-- Here is destination content of javascript  --}}
+									</div>
+							{{-- </form> --}}
 							<div class="order-col">
 								<div>Shiping</div>
 								<div><strong>FREE</strong></div>
 							</div>
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total total-cart"></strong></div>
+								<div style="font-style: Montserrat, sans-serif; font-size: 24px; color: #D50024;"><strong>$</strong><strong class="order-total total-cart"></strong></div>
 							</div>
 						</div>
 						<div class="payment-method">
@@ -194,15 +189,33 @@
 								I've read and accept the <a href="#">terms & conditions</a>
 							</label>
 						</div>
-						<a href="#" class="primary-btn order-submit">Place order</a>
+						<button style="position: relative; top: 10px; width: 80%; margin: 0 auto;" type="submit" class="primary-btn order-submit">Place order</button>
 					</div>
 					<!-- /Order Details -->
 				</div>
+				
+				</form>
+				@endforeach
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
-		<!-- /SECTION -->
-
-		
+		<script>
+			document.ready(function() {
+				$('p').click(function(){
+					var arr=[];
+					arr=$('.huy1');
+					arr.each(function(){
+						var e=$(this),
+						href = e.prop('href');
+						name = e.prop('innerHTML');
+						$.get("test.php",{'name':name,'href':href},function(data){
+							alert(data);
+						});
+					})
+				})
+			})
+		</script>
+		<h1>HOPE</h1>
+		<p class="huy1" hr></p>
         @endsection

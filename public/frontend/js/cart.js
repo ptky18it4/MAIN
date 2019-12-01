@@ -9,7 +9,8 @@
       cart = [];
 
       // Constructor
-      function Item(name, price, count) {
+      function Item(id,name, price, count) {
+          this.id = id;
           this.name = name;
           this.price = price;
           this.count = count;
@@ -28,12 +29,12 @@
           loadCart();
       }
       // =============================
-      // Public methods and propeties
+      // Public methods and properties
       // =============================
       var obj = {};
-
+      
       // Add to cart
-      obj.addItemToCart = function (name, price, count) {
+      obj.addItemToCart = function (id,name, price, count) {
           for (var item in cart) {
               if (cart[item].name === name) {
                   cart[item].count++;
@@ -41,7 +42,7 @@
                   return;
               }
           }
-          var item = new Item(name, price, count);
+          var item = new Item(id,name, price, count);
           cart.push(item);
           saveCart();
       }
@@ -55,7 +56,7 @@
           }
       };
       // Remove item from cart
-      obj.removeItemFromCart = function (name) {
+      obj.removeItemFromCart = function (id,name) {
           for (var item in cart) {
               if (cart[item].name === name) {
                   cart[item].count--;
@@ -142,9 +143,11 @@
   // Add item
   $('.add-to-cart').click(function (event) {
       event.preventDefault();
+      var id = $(this).data('id');
       var name = $(this).data('name');
       var price = Number($(this).data('price'));
-      shoppingCart.addItemToCart(name, price, 1);
+      shoppingCart.addItemToCart(id,name, price, 1);
+
       displayCart();
   });
 
@@ -162,15 +165,20 @@
       for (var i in cartArray) {
           // format price
           cartArray[i].price = isNaN(cartArray[i].price) ? "" : cartArray[i].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-          output += "<div class='product-widget'>" +
+          output += 
+             "<div class='product-widget'>" +
               "<div class='product-img'>" +
               "<img src='public/frontend/img/product02.png' alt=''>" +
               "</div>" +
               "<div class='product-body'>" +
+              "<h3 class='product-name' name='id_jd'><a href='#'>" + cartArray[i].id + "</a></h3>" +
               "<h3 class='product-name'><a href='#'>" + cartArray[i].name + "</a></h3>" +
               "<h4 class='product-price'><span class='qty'>" + cartArray[i].count + " x " + "</span>$" + cartArray[i].price + "</h4>" +
-              "<div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name='" + cartArray[i].name + "'>-</button>" +
-              "<button class='plus-item btn btn-primary input-group-addon' data-name='" + cartArray[i].name + "'>+</button></div></<div>" +
+              "<div class='input-group'>" +
+              "<button class='minus-item input-group-addon btn btn-primary' data-name='" + cartArray[i].name + "'>-</button>" +
+              "<button class='plus-item btn btn-primary input-group-addon' data-name='" + cartArray[i].name + "'>+</button>"+
+              "</div>"+
+              "</<div>" +
               "</div>" +
               "<button class='delete' data-name='" + cartArray[i].name + "'><i class='fa fa-close' ></i></button>" +
               "</div> " +
@@ -178,40 +186,46 @@
               "</div>" +
               "<div class='cart-btns'>" +
               "</div>";
+              
       }
       $('.show-cart').html(output);
       $('.total-cart').html(shoppingCart.totalCart());
       $('.total-count').html(shoppingCart.totalCount());
+      $('.id_js').html(cartArray[i].id);
   }
-
-  // Delete item button
+  // Delete item button (fa fa-close)
 
   $('.show-cart').on("click", ".delete", function (event) {
       var name = $(this).data('name')
-      shoppingCart.removeItemFromCartAll(name);
+      shoppingCart.removeItemFromCartAll( name);
       displayCart();
   })
 
 
   // -1
   $('.show-cart').on("click", ".minus-item", function (event) {
+      var id = $(this).data('id')
       var name = $(this).data('name')
-      shoppingCart.removeItemFromCart(name);
+      shoppingCart.removeItemFromCart(id,name);
       displayCart();
   })
   // +1
   $('.show-cart').on("click", ".plus-item", function (event) {
+      var id = $(this).data('id')
       var name = $(this).data('name')
-      shoppingCart.addItemToCart(name);
+      shoppingCart.addItemToCart(id,name);
       displayCart();
   })
 
   // Item count input
   $('.show-cart').on("change", ".item-count", function (event) {
+      var id = $(this).data('id');
       var name = $(this).data('name');
       var count = Number($(this).val());
-      shoppingCart.setCountForItem(name, count);
+      shoppingCart.setCountForItem(id,name, count);
       displayCart();
-  });
+    //   displayCart();
+     
 
+  });
   displayCart();

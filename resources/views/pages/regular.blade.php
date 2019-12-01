@@ -31,67 +31,6 @@
 					<!-- ASIDE -->
 					<div id="aside" class="col-md-3">
 						<!-- aside Widget -->
-						{{-- <div class="aside">
-							<h3 class="aside-title">Categories</h3>
-							<div class="checkbox-filter">
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-1">
-									<label for="category-1">
-										<span></span>
-										Laptops
-										<small>(120)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-2">
-									<label for="category-2">
-										<span></span>
-										Smartphones
-										<small>(740)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-3">
-									<label for="category-3">
-										<span></span>
-										Cameras
-										<small>(1450)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-4">
-									<label for="category-4">
-										<span></span>
-										Accessories
-										<small>(578)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-5">
-									<label for="category-5">
-										<span></span>
-										Laptops
-										<small>(120)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-6">
-									<label for="category-6">
-										<span></span>
-										Smartphones
-										<small>(740)</small>
-									</label>
-								</div>
-							</div>
-						</div> --}}
-						<!-- /aside Widget -->
-
 						<!-- aside Widget -->
 						<div class="aside">
 							<h3 class="aside-title">Price</h3>
@@ -112,7 +51,10 @@
 						</div>
 						<!-- /aside Widget -->
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 						<!-- aside Widget -->
 						<div class="aside">
 							<h3 class="aside-title">Top selling</h3>
@@ -197,7 +139,7 @@
 											<button class="quick-view"><a href="{{asset("/product-$item->id")}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
 										</div>
 									</div>
-									<div class="add-to-cart" data-name="{{$item->name}}" data-price="{{number_format($item->price - ($item->price*($item->vat/100)),2, ',', '.'))}}">
+									<div class="add-to-cart" data-name="{{$item->name}}" data-price="{{number_format($item->price - ($item->price*($item->vat/100)),2, ',', '.')}}">
 										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 									</div>
 								</div>
