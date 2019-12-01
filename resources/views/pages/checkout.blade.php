@@ -36,6 +36,7 @@
 								<h3 class="title">Billing address</h3>
 							</div>
 							@foreach($infor_user as $key => $infor)
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="form-group">
 								<input class="input" type="text" name="first-name" placeholder="First Name" value="{{$infor->username}}">
 								</div>
@@ -135,17 +136,18 @@
 								<div><strong>PRODUCT</strong></div>
 								<div><strong>TOTAL</strong></div>
 							</div>
-							<div class="order-products show-cart ">
-								{{-- <div class="order-col">
-									<div>1x Product Name Goes Here</div>
-									<div>$980.00</div>
-								</div>
-								<div class="order-col">
-									<div>2x Product Name Goes Here</div>
-									<div>$980.00</div>
-								</div> --}}
-
-							</div>
+							<form action="" method="post">
+									<div class="order-products show-cart ">
+											{{-- <div class="order-col">
+												<div>1x Product Name Goes Here</div>
+												<div>$980.00</div>
+											</div>
+											<div class="order-col">
+												<div>2x Product Name Goes Here</div>
+												<div>$980.00</div>
+											</div> --}}
+										</div>
+							</form>
 							<div class="order-col">
 								<div>Shiping</div>
 								<div><strong>FREE</strong></div>
