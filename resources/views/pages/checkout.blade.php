@@ -2,6 +2,7 @@
 @extends('layout')
 <!-- Phần section này sẽ được gọi ở phía layout.blade.php  -->
 @section('content')
+<form action="" method="POST">
 	<!-- BREADCRUMB -->
     <div id="breadcrumb" class="section">
 			<!-- container -->
@@ -19,7 +20,7 @@
 				<!-- /row -->
 			</div>
 			<!-- /container -->
-		</div>
+	</div>
 		<!-- /BREADCRUMB -->
 
 		<!-- SECTION -->
@@ -38,10 +39,10 @@
 							@foreach($infor_user as $key => $infor)
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="First Name" value="{{$infor->username}}">
+								<input class="input" type="text" name="first_name" placeholder="First Name" value="{{$infor->username}}">
 								</div>
 								<div class="form-group">
-									<input class="input" type="text" name="last-name" placeholder="Last Name">
+									<input class="input" type="text" name="last_name" placeholder="Last Name">
 								</div>
 								<div class="form-group">
 								<input class="input" type="email" name="email" placeholder="Email" value="{{$infor->email}}">
@@ -56,7 +57,7 @@
 									<input class="input" type="text" name="country" placeholder="Country">
 								</div>
 								<div class="form-group">
-									<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+									<input class="input" type="text" name="zip_code" placeholder="ZIP Code">
 								</div>
 								<div class="form-group">
 								<input class="input" type="tel" name="tel" placeholder="Telephone" value="{{$infor->phone}}">
@@ -91,28 +92,28 @@
 								</label>
 								<div class="caption">
 									<div class="form-group">
-										<input class="input" type="text" name="first-name" placeholder="First Name">
+										<input class="input" type="text" name="first_name_diff" placeholder="First Name">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="last-name" placeholder="Last Name">
+										<input class="input" type="text" name="last_name_diff" placeholder="Last Name">
 									</div>
 									<div class="form-group">
-										<input class="input" type="email" name="email" placeholder="Email">
+										<input class="input" type="email" name="email_diff" placeholder="Email">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="address" placeholder="Address">
+										<input class="input" type="text" name="address-_diff" placeholder="Address">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="city" placeholder="City">
+										<input class="input" type="text" name="city_diff" placeholder="City">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="country" placeholder="Country">
+										<input class="input" type="text" name="country_diff" placeholder="Country">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+										<input class="input" type="text" name="zip_code_diff" placeholder="ZIP Code">
 									</div>
 									<div class="form-group">
-										<input class="input" type="tel" name="tel" placeholder="Telephone">
+										<input class="input" type="tel" name="tel_diff" placeholder="Telephone">
 									</div>
 								</div>
 							</div>
@@ -127,84 +128,78 @@
 					</div>
 
 					<!-- Order Details -->
-					<div class="col-md-5 order-details">
-						<div class="section-title text-center">
-							<h3 class="title">Your Order</h3>
-						</div>
-						<div class="order-summary">
-							<div class="order-col">
-								<div><strong>PRODUCT</strong></div>
-								<div><strong>TOTAL</strong></div>
+					{{-- <form action="{{URL::to('checkout/ajax')}}" method="post"> --}}
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<div class="col-md-5 order-details">
+							<div class="section-title text-center">
+								<h3 class="title">Your Order</h3>
 							</div>
-							<form action="" method="post">
+								<div class="order-summary">
+									<div class="order-col">
+										<div><strong>PRODUCT</strong></div>
+										<div><strong>TOTAL</strong></div>
+									</div>
 									<div class="order-products show-cart ">
-											{{-- <div class="order-col">
-												<div>1x Product Name Goes Here</div>
-												<div>$980.00</div>
-											</div>
-											<div class="order-col">
-												<div>2x Product Name Goes Here</div>
-												<div>$980.00</div>
-											</div> --}}
+											{{-- Here is place to show content of file javascript --}}
+									</div>
+									<div class="order-col">
+										<div>Shiping</div>
+										<div><strong>FREE</strong></div>
+									</div>
+									<div class="order-col">
+										<div><strong>TOTAL</strong></div>
+										<div><strong style="color:#D10024; font-size: 24px !important;">$&nbsp;</strong><strong class="order-total total-cart"></strong></div>
+									</div>
+								</div>
+								<div class="payment-method">
+									<div class="input-radio">
+										<input type="radio" name="payment" id="payment-1">
+										<label for="payment-1">
+											<span></span>
+											Direct Bank Transfer
+										</label>
+										<div class="caption">
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 										</div>
-							</form>
-							<div class="order-col">
-								<div>Shiping</div>
-								<div><strong>FREE</strong></div>
-							</div>
-							<div class="order-col">
-								<div><strong>TOTAL</strong></div>
-								<div><strong class="order-total total-cart"></strong></div>
-							</div>
-						</div>
-						<div class="payment-method">
-							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-1">
-								<label for="payment-1">
-									<span></span>
-									Direct Bank Transfer
-								</label>
-								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									</div>
+									<div class="input-radio">
+										<input type="radio" name="payment" id="payment-2">
+										<label for="payment-2">
+											<span></span>
+											Cheque Payment
+										</label>
+										<div class="caption">
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+										</div>
+									</div>
+									<div class="input-radio">
+										<input type="radio" name="payment" id="payment-3">
+										<label for="payment-3">
+											<span></span>
+											Paypal System
+										</label>
+										<div class="caption">
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-2">
-								<label for="payment-2">
+								<div class="input-checkbox">
+									<input type="checkbox" id="terms">
+									<label for="terms">
 									<span></span>
-									Cheque Payment
-								</label>
-								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									I've read and accept the <a href="#">terms & conditions</a>
+									</label>
 								</div>
-							</div>
-							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-3">
-								<label for="payment-3">
-									<span></span>
-									Paypal System
-								</label>
-								<div class="caption">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-								</div>
-							</div>
+								<a href="#" type="submit" class="primary-btn order-submit">Place order</a>
+								{{-- <button type="submit" id="btnOrder" class="primary-btn order-submit">Place order</button> --}}
 						</div>
-						<div class="input-checkbox">
-							<input type="checkbox" id="terms">
-							<label for="terms">
-								<span></span>
-								I've read and accept the <a href="#">terms & conditions</a>
-							</label>
-						</div>
-						<a href="#" class="primary-btn order-submit">Place order</a>
-					</div>
+					{{-- </form> --}}
 					<!-- /Order Details -->
 				</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
+	</form>
 		<!-- /SECTION -->
-
-		
         @endsection

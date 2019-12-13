@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use DB,Mail;
+Use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 use Session;
@@ -446,5 +447,6 @@ class HomeController extends Controller
         echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');
                 window.location = '".url('/')."'        
         </script>";
-    }
+    }  
+    
 }

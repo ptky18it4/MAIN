@@ -26,6 +26,7 @@
 
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js" integrity="sha256-36hEPcG8mKookfvUVvEqRkpdYV1unP6wvxIqbgdeVhk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('public/frontend/css/font-awesome.min.css')}}">
 
     <!-- Custom stlylesheet -->
@@ -369,8 +370,9 @@
                                     </a>
                                     <div class="cart-dropdown " >
                                        <div class="cart-list show-cart">
-                                                 {{-- Here is the content of cart after click "ADD TO CART" --}}
+                                                {{-- Here is place to show content of function javascript --}}
                                         </div>
+                                       
                                         <span class="py-5 total-count"></span>
                                         <small>Item(s) selected</small>
                                         <div class="cart-summary">
@@ -572,6 +574,8 @@
     <script src="{{asset('public/frontend/js/main.js')}}"></script>
     <script src="{{asset('public/frontend/js/home.js')}}"></script>
     <script src="{{asset('public/frontend/js/cart.js')}}"></script>
+    {{-- <script src="{{asset('public/frontend/js/order.js')}}"></script> --}}
+    {{-- <script src="{{asset('public/frontend/js/infoCart.js')}}"></script> --}}
     <script src="{{asset('public/frontend/js/countdown.js')}}"></script>
     <script src="{{asset('public/frontend/js/backtop.js')}}"></script>
     <script src="{{asset('public/frontend/js/custom-file-input.js')}}"></script>
