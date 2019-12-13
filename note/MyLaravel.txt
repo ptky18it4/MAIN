@@ -1,0 +1,41 @@
+Chú ý 1 :
+Không tạo database bằng mysql mà tạo bằng code:
+bao gồm các trường sau đây:
+"Sửa trong file: /database/...user"
+admin_id
+admin_name
+admin_email
+admin_password
+------------------
+tạo mới file create_tbl_admin_table.php
+với câu lệnh trong Git Bash Here : php artisan make:migration create_tbl_admin_table
+
+Chú ý 2 :
+Trước khi muốn sử dụng session trong file AdminController thì cần phải use các thư viện sau đây:
+
+use App\Http\Requests;
+use Session;
+use Illuminate\Support\Facades\Redirect;
+session_start;
+
+Chú ý 3:
+Tạo tập tin thực thi với cơ sở dữ liệu : https://youtu.be/jsz5nzbnbyo?list=PLWTu87GngvNxpWN6FVuEcS-YvFNq6RnqG
+Cú pháp khởi tạo :
+    php artisan make:migration create_tbl_category_product --create=tbl_category_product
+---------
+category_id
+category_name
+category_desc
+category_status
+---------------------
+php artisan migrate
+
+
+---------------------------
+Chú ý 4 : resize: none & rows = 8
+ <textarea style="resize:none" rows="8" class="form-control" name="category_product_desc" id="exampleInputPassword1" placeholder="Mô tả danh mục">
+ có nghĩa là : bình thường nếu không dùng resize:none" thì cái box textarea nó sẽ có 1 dấu tam giác ở góc phía dưới và người dùng có thể kéo ra 
+ với kích thước tùy ý.
+ Nhưng để cố định ( giúp trang web ok hơn thì mình dùng resize:none để set cứng, không thể kéo được).
+ Nếu muốn mở rộng thì có thể dùng rows="1,2,3.... tùy ý", tương tự với cols nhá.
+  

@@ -256,7 +256,7 @@
                                 <option value="0">White</option>
                             </select>
                         </label> 
-                        <label class="add-to-cart  " data-name="{{$pro->name}}" data-price="{{$pro->price}}">
+                        <label class="add-to-cart"  data-name="{{$pro->name}}" data-price="{{$pro->price}}">
                         Qty:
                             <div class="input-number" style="width: 100px;">
                                 <input type="number" value="1" min="1" max="100">
@@ -266,7 +266,7 @@
                         </label> 
                     </div>
 
-                    <div class="add-to-cart" data-name="{{$pro->name}}" data-price="{{$pro->price}}">
+                     <div class="add-to-cart" data-name="{{$pro->name}}" data-price="{{$pro->price}}">
                             <button type="#" style=" position: relative; left: 27%;" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
                     </div>
 

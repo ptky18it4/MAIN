@@ -74,9 +74,12 @@
                     </div>
                 </div>
                 <!-- /section title -->
-                <!-- Products tab & slick -->   
+                <!-- Products tab & slick --> 
+            <form action="{{URL::to('save-cart')}}" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="col-md-12">
                     <div class="row">
+                        
                         <div class="products-tabs">
                             <!-- tab -->
                             <div id="tab1" class="tab-pane active">
@@ -84,18 +87,19 @@
                                     <!-- product -->
                                     @foreach($all_product as $key => $pro)
                                     <div class="product">
+                                    <input class="form-control" type="hidden" name="product_id" value="{{$pro->id}}">
                                         <a href="{{URL::to('product-'.$pro->id)}}">
                                                 <div class="product-img">
-                                                    <img src="{{asset('public/uploads/product/more_image/'.$pro->image)}}" alt="">
+                                                    <img name='image' src="{{asset('public/uploads/product/more_image/'.$pro->image)}}" alt="">
                                                     <div class="product-label">
-                                                        <span class="sale">-{{$pro->vat}}%</span>
+                                                        <span class="sale" name='sale'>-{{$pro->vat}}%</span>
                                                         <span class="new">NEW</span>
                                                     </div>
                                                 </div>
                                             </a>
                                             <div class="product-body">
-                                                <p class="product-category">{{$pro->category_name}}</p>
-                                                <h3 class="product-name" ><a href="{{URL::to('product-'.$pro->id)}}">{{$pro->name}}</a></h3>
+                                                <p class="product-category" name='category'>{{$pro->category_name}}</p>
+                                                <h3 class="product-name" name='name' ><a href="{{URL::to('product-'.$pro->id)}}">{{$pro->name}}</a></h3>
                                                 <h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price)}}</del></h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
@@ -111,7 +115,7 @@
                                                 </div>
                                             </div>
                                                 <div data-name="{{$pro->name}}"  data-price="{{$pro->price,2, ',', '.'}}" class="add-to-cart">
-                                                    <button type="#" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
+                                                    <button type="submit" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
                                                 </div>
                                             </div>
                                     <!-- /product -->
@@ -126,6 +130,7 @@
                 </div>
                 <!-- Products tab & slick -->
             </div>
+        </form>  
             <!-- /row -->
         </div>
         <!-- /container -->

@@ -89,6 +89,7 @@ Route::group(['prefix' => $prefix_products], function () {
     Route::post('save-product', 'ProductController@save_product');
 });
 
-Route::post('add-cart-{id}', 'HomeController@add_cart');
 Route::get('contact', 'HomeController@get_contact');
 Route::post('contact', 'HomeController@post_contact');
+// Route::post('checkout/ajax', 'HomeController@ajax');
+// Route::post('save-cart', 'CartController@save_cart');
