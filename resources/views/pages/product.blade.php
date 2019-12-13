@@ -485,7 +485,7 @@
                                     <div id="review-form">
                                         <form class="review-form" action="{{URL::to('contact')}}" method="POST">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="id" type="text" value="{{$id}}">
+                                        <input type="hidden" name="id" type="text" >
                                             <input class="input" name="name" type="text" placeholder="Your Name" required>
                                             <input class="input" name="email" type="email" placeholder="Your Email" required>
                                             <input class="input" name="phone" type="text" placeholder="Your Phone" required>
