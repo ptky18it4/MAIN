@@ -451,4 +451,4 @@ function displayCart() {
     displayCart();
 	</script>
 		<!-- /SECTION -->
-		@endsection
+		@endsectigon
