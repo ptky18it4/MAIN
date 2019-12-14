@@ -8,7 +8,7 @@
       cart = [];
 
       // Constructor
-      function Item( name, price, count) {
+      function Item(name, price, count) {
           this.name = name;
           this.price = price;
           this.count = count;
@@ -167,7 +167,7 @@ function displayCart() {
             "<img src='public/frontend/img/product02.png' alt=''>" +
             "</div>" +
             "<div class='product-body'>" +
-            "<h3 class='product-name'><a href='#'>" + cartArray[i].name + "</a></h3>" +
+            "<h3 class='product-name' name='name'><a href='#'>" + cartArray[i].name + "</a></h3>" +
             "<h4 class='product-price'><span class='qty'>" + cartArray[i].count + " x " + "</span>$" + cartArray[i].price + "</h4>" +
             "<div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name='" + cartArray[i].name + "'>-</button>" +
             "<button class='plus-item btn btn-primary input-group-addon' data-name='" + cartArray[i].name + "'>+</button></div></<div>" +
@@ -215,4 +215,5 @@ function displayCart() {
         shoppingCart.setCountForItem(name, count);
         displayCart();
     });
-    displayCart();    
+    displayCart();
+    $('#cart-content').val(cartArray[0].name);
