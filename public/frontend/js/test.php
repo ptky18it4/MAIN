@@ -1,4 +1,8 @@
-<?php
-$values = json_decode($_POST['values']);
-    print_r($_POST['values']);
-?>  
+<?php 
+
+if(isset($_POST['x'])){
+    $src1 = $_POST['x'];
+    echo $src1; 
+}  
+
+?>

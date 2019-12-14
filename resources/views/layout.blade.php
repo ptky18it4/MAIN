@@ -48,6 +48,7 @@
         })(document, window, 0);
     </script>
 
+
 </head>
 
 <body>
@@ -574,8 +575,6 @@
     <script src="{{asset('public/frontend/js/main.js')}}"></script>
     <script src="{{asset('public/frontend/js/home.js')}}"></script>
     <script src="{{asset('public/frontend/js/cart.js')}}"></script>
-    {{-- <script src="{{asset('public/frontend/js/order.js')}}"></script> --}}
-    {{-- <script src="{{asset('public/frontend/js/infoCart.js')}}"></script> --}}
     <script src="{{asset('public/frontend/js/countdown.js')}}"></script>
     <script src="{{asset('public/frontend/js/backtop.js')}}"></script>
     <script src="{{asset('public/frontend/js/custom-file-input.js')}}"></script>
