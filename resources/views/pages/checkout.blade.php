@@ -2,7 +2,7 @@
 @extends('layout')
 <!-- Phần section này sẽ được gọi ở phía layout.blade.php  -->
 @section('content')
-<form action="" method="POST">
+<form action="{{URL::to('checkout')}}" method="POST">
 	<!-- BREADCRUMB -->
     <div id="breadcrumb" class="section">
 			<!-- container -->
@@ -146,8 +146,8 @@
 										<div>Shiping</div>
 										<div><strong>FREE</strong></div>
 									</div>
-									<div class="order-col">
-										<div><strong>TOTAL</strong></div>
+									<div class="order-col ">
+										<div ><strong>TOTAL</strong></div>
 										<div><strong style="color:#D10024; font-size: 24px !important;">$&nbsp;</strong><strong class="order-total total-cart"></strong></div>
 									</div>
 								</div>
@@ -190,8 +190,8 @@
 									I've read and accept the <a href="#">terms & conditions</a>
 									</label>
 								</div>
-								<a href="#" type="submit" class="primary-btn order-submit">Place order</a>
-								{{-- <button type="submit" id="btnOrder" class="primary-btn order-submit">Place order</button> --}}
+								{{-- <a href="{{}}" type="submit" class="primary-btn order-submit">Place order</a> --}}
+								<button type="submit" id="btnOrder" class="primary-btn order-submit">Place order</button>
 						</div>
 					{{-- </form> --}}
 					<!-- /Order Details -->

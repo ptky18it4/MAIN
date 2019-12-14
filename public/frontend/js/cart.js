@@ -17,8 +17,17 @@
       // Save cart
       function saveCart() {
           sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+        //    console.log(value);
+        //    $.ajax({
+        //        url: "test.php",
+        //        method: "post",
+        //        data: {values : JSON.stringify(cart)},
+        //        success: function(res) {
+        //            alert('SUCCESS !');
+        //        }
+        //    })
       }
-      // Load cart
+      // Load cart  
       function loadCart() {
           cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
       }
