@@ -17,15 +17,6 @@
       // Save cart
       function saveCart() {
           sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
-        //    console.log(value);
-        //    $.ajax({
-        //        url: "test.php",
-        //        method: "post",
-        //        data: {values : JSON.stringify(cart)},
-        //        success: function(res) {
-        //            alert('SUCCESS !');
-        //        }
-        //    })
       }
       // Load cart  
       function loadCart() {
@@ -190,9 +181,6 @@ function displayCart() {
         }
         
         $('.show-cart').html(output);
-        $('.show-name').html(cartArray[i].name);
-        $('.show-price').html(cartArray[i].price);
-        $('.show-count').html(cartArray[i].count);
         $('.total-cart').html(shoppingCart.totalCart());
         $('.total-count').html(shoppingCart.totalCount());
         }

@@ -139,8 +139,8 @@
 										<div><strong>PRODUCT</strong></div>
 										<div><strong>TOTAL</strong></div>
 									</div>
-									<div class="order-products ">
-												<div class='product-widget'>
+									<div class="order-products show-cart">
+												{{-- <div class='product-widget'>
 												<div class="product-img">
 													<img src='public/frontend/img/product02.png' alt=''>
 												</div>
@@ -149,7 +149,7 @@
 													<div >Price : <strong class="show-price"></strong></div>
 													<div >Quantity : <strong class="show-count"></strong></div>
 												</div>	
-												</div>
+												</div> --}}
 									</div>
 									<div class="order-col">
 										<div>Shiping</div>
@@ -200,7 +200,7 @@
 									</label>
 								</div>
 								{{-- <a href="{{}}" type="submit" class="primary-btn order-submit">Place order</a> --}}
-								<button type="submit" id="btnOrder" class="primary-btn order-submit">Place order</button>
+								<button type="button" id="btnOrder" class="primary-btn order-submit">Place order</button>
 						</div>
 					{{-- </form> --}}
 					<!-- /Order Details -->
