@@ -139,8 +139,17 @@
 										<div><strong>PRODUCT</strong></div>
 										<div><strong>TOTAL</strong></div>
 									</div>
-									<div class="order-products show-cart ">
-											{{-- Here is place to show content of file javascript --}}
+									<div class="order-products ">
+												<div class='product-widget'>
+												<div class="product-img">
+													<img src='public/frontend/img/product02.png' alt=''>
+												</div>
+												<div class="product-body">
+													<div class="show-name"></div>
+													<div >Price : <strong class="show-price"></strong></div>
+													<div >Quantity : <strong class="show-count"></strong></div>
+												</div>	
+												</div>
 									</div>
 									<div class="order-col">
 										<div>Shiping</div>
