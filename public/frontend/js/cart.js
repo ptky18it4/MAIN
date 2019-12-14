@@ -27,7 +27,7 @@
         //        }
         //    })
       }
-      // Load cart  
+      // Load cart 
       function loadCart() {
           cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
       }
