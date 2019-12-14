@@ -193,10 +193,8 @@
 									I've read and accept the <a href="#">terms & conditions</a>
 									</label>
 								</div>
-								<button type="button" onclick="submitFormCheckout();"  class="primary-btn order-submit">Place order</button>
-								
-									
-							
+								<button type="button" class="primary-btn order-submit" onclick="submitFormCheckout();">Place order</button>
+
 							</div>
 							<!-- /Order Details -->
 						</div>
@@ -212,7 +210,19 @@
   // Shopping Cart API
   // ************************************************
   var cartArray = [];
-
+  // -1
+  function removeItemFromCartArray(name)
+  {
+	  console.log("remove item from cart array ");
+	  for(var item in cartArray)
+	  {
+		  if (cartArray[item].name === name)
+		  {
+			cartArray[item].count = cartArray[item].count - 1;	  
+		  }
+	  }
+  }
+  // +1
   function addToCartArray(name)
   {
 	  console.log("add to cart");
@@ -421,7 +431,7 @@ function displayCart() {
     // -1
     $('.show-cart').on("click", ".minus-item", function (event) {
 		var name = $(this).data('name')
-		
+		removeItemFromCartArray(name);
         shoppingCart.removeItemFromCart(name);
         displayCart();
     })
@@ -443,7 +453,6 @@ function displayCart() {
 	});
 	function submitFormCheckout()
 		{
-
 			console.log(cartArray);
 			$('#cart-content').val(cartArray[0].name.toString());
 			$("#form-content-cart").submit();
@@ -451,4 +460,4 @@ function displayCart() {
     displayCart();
 	</script>
 		<!-- /SECTION -->
-		@endsectigon
+@endsection
