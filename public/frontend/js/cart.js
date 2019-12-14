@@ -171,7 +171,7 @@ function displayCart() {
         cartArray[i].price = isNaN(cartArray[i].price) ? "" : cartArray[i].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         
         output +=
-           "<div class='product-widget'>" +
+            "<div class='product-widget'>" +
             "<div class='product-img'>" +
             "<img src='public/frontend/img/product02.png' alt=''>" +
             "</div>" +
@@ -190,6 +190,9 @@ function displayCart() {
         }
         
         $('.show-cart').html(output);
+        $('.show-name').html(cartArray[i].name);
+        $('.show-price').html(cartArray[i].price);
+        $('.show-count').html(cartArray[i].count);
         $('.total-cart').html(shoppingCart.totalCart());
         $('.total-count').html(shoppingCart.totalCount());
         }
