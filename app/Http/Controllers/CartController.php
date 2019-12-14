@@ -25,6 +25,6 @@ class CartController extends Controller
         //                 ->with('infor_user', $infor_user)
         //                 ->with('all_category', $all_category)
         //                 ->with('all_product', $all_product);
-        
+        return view('pages.test');
         }
 }
