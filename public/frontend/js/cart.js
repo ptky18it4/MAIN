@@ -216,4 +216,3 @@ function displayCart() {
         displayCart();
     });
     displayCart();
-    $('#cart-content').val(cartArray[0].name);

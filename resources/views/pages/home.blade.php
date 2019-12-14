@@ -530,5 +530,4 @@
         <!-- /container -->
     </div>
     <!-- /SECTION -->
-    
 @endsection

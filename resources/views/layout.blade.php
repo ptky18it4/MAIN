@@ -567,14 +567,14 @@
     </footer>
     <!-- /FOOTER -->
     <!-- jQuery Plugins -->
-    <script src="{{asset('public/frontend/js/jquery.zoom.min.js')}}"></script>
-    <script src="{{asset('public/frontend/js/main.js')}}"></script>
-    <script src="{{asset('public/frontend/js/home.js')}}"></script>
-    <script src="{{asset('public/frontend/js/cart.js')}}"></script>
     <script src="{{asset('public/frontend/js/jquery.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/slick.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/nouislider.min.js')}}"></script>
+    <script src="{{asset('public/frontend/js/jquery.zoom.min.js')}}"></script>
+    <script src="{{asset('public/frontend/js/main.js')}}"></script>
+    <script src="{{asset('public/frontend/js/home.js')}}"></script>
+    <script src="{{asset('public/frontend/js/cart.js')}}"></script>
     <script src="{{asset('public/frontend/js/countdown.js')}}"></script>
     <script src="{{asset('public/frontend/js/backtop.js')}}"></script>
     <script src="{{asset('public/frontend/js/custom-file-input.js')}}"></script>
