@@ -128,10 +128,10 @@
 					</div>
 
 					<!-- Order Details -->
-					<form action="{{URL::to('checkout')}}" id="form-content-cart" method="get">
+					<form action="{{URL::to('checkout')}}" id="form-content-cart" name="form-content-cart" method="post">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="hidden" name="content" id="cart-content">
-					{{-- </form> --}}
+						<input type="hidden" name="cart-content" id="cart-content">
+					
 						<div class="col-md-5 order-details">
 							<div class="section-title text-center">
 								<h3 class="title">Your Order</h3>
@@ -193,7 +193,7 @@
 									I've read and accept the <a href="#">terms & conditions</a>
 									</label>
 								</div>
-								<button type="button" class="primary-btn order-submit" onclick="submitFormCheckout();">Place order</button>
+								<button type="submit" class="primary-btn order-submit" onclick="submitFormCheckout();" >Place order</button>
 
 							</div>
 							<!-- /Order Details -->
@@ -205,7 +205,7 @@
 			<!-- /container -->
 		</div>
 	{{-- </form> --}}
-	<script>
+{{-- <script>
 		  // ************************************************
   // Shopping Cart API
   // ************************************************
@@ -386,7 +386,7 @@
       displayCart();
   });
 
-function displayCart() {
+ function displayCart() {
    cartArray = shoppingCart.listCart();
     // cartArray.price = isNaN(cartArray.price)?"":cartArray.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     var output = "";
@@ -458,6 +458,6 @@ function displayCart() {
 			$("#form-content-cart").submit();
 		}
     displayCart();
-	</script>
+</script> --}}
 		<!-- /SECTION -->
 @endsection

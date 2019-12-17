@@ -256,7 +256,7 @@
                                 <option value="0">White</option>
                             </select>
                         </label> 
-                        <label class="add-to-cart"  data-name="{{$pro->name}}" data-price="{{$pro->price}}">
+                        <label data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
                         Qty:
                             <div class="input-number" style="width: 100px;">
                                 <input type="number" value="1" min="1" max="100">
@@ -266,7 +266,7 @@
                         </label> 
                     </div>
 
-                     <div class="add-to-cart" data-name="{{$pro->name}}" data-price="{{$pro->price}}">
+                     <div data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
                             <button type="#" style=" position: relative; left: 27%;" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
                     </div>
 
@@ -283,8 +283,8 @@
 
                     <ul class="product-links">
                         <li>Share:</li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/groups/ibmthinkpad/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/hashtag/thinkpad?lang=vi"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="mailto:phamtrungly19032000@gmail.xom"><i class="fa fa-envelope"></i></a></li>
                     </ul>
