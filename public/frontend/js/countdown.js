@@ -18,15 +18,15 @@ function run() {
     // Số phút còn lại
     var sec = Math.floor((timeRest % (1000 * 60)) / 1000);
 
-    p.innerHTML = 
-         "<li><div><h3 >" + day +
-         "</h3><span>Days</span></div></li><li><div><h3 >" + hours +
-         "</h3><span>Hours</span></div></li><li><div><h3 >" + minute +
-         "</h3><span>Mins</span></div></li><li><div><h3 >" + sec +
-         "</h3><span>Secs</span></div></li>";
+    p.innerHTML =
+        "<li><div><h3>" + day +
+        "</h3><span>Days</span></div></li><li><div><h3 >" + hours +
+        "</h3><span>Hours</span></div></li><li><div><h3 >" + minute +
+        "</h3><span>Mins</span></div></li><li><div><h3 >" + sec +
+        "</h3><span>Secs</span></div></li>";
 
-        if (timeRest <= 0) {
-            clearInterval(counDown);
-            p.innerHTML = "NGÀY MAI THI TỐT NHÉ CHÀNG TRAI";
-        }
+    if (timeRest <= 0) {
+        clearInterval(counDown);
+        p.innerHTML = "NGÀY MAI THI TỐT NHÉ CHÀNG TRAI";
+    }
 }

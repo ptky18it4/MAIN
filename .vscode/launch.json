@@ -4,33 +4,19 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Launch index.html",
-            "type": "firefox",
+            "name": "Listen for XDebug",
+            "type": "php",
             "request": "launch",
-            "reAttach": true,
-            "file": "${workspaceFolder}/index.html"
+            "port": 9000
         },
         {
-            "name": "Launch localhost",
-            "type": "firefox",
+            "name": "Launch currently open script",
+            "type": "php",
             "request": "launch",
-            "reAttach": true,
-            "url": "http://localhost/index.html",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "name": "Attach",
-            "type": "firefox",
-            "request": "attach"
-        },
-        {
-            "name": "Launch WebExtension",
-            "type": "firefox",
-            "request": "launch",
-            "reAttach": true,
-            "addonPath": "${workspaceFolder}"
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "port": 9000
         }
     ]
 }
