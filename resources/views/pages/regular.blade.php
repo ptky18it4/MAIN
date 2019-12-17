@@ -105,13 +105,13 @@
 
 						<!-- store products -->
 						<div class="row">
-							@foreach($result_search as $key => $item)
+							@foreach($result_search as $key => $pro)
 							<!-- product -->
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
-								<a href="{{URL::to('product-'.$item->id)}}">
+								<a href="{{URL::to('product-'.$pro->id)}}">
 									<div class="product-img">
-									<img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
+									<img src="{{asset('public/uploads/product/more_image/'.$pro->image)}}" alt="">
 										<div class="product-label">
 											<span class="sale">-{{$item->vat}}%</span>
 											<span class="new">NEW</span>
@@ -120,7 +120,7 @@
 									</a>
 									<div class="product-body">
 										<p class="product-category">{{$item->category_name}}</p>
-										<h3 class="product-name"><a href="{{asset("/product-$item->id")}}">{{$item->name}}</a></h3>
+										<h3 class="product-name"><a href="{{asset("/product-$pro->id")}}">{{$item->name}}</a></h3>
 										<h4 class="product-price">${{number_format($item->price - ($item->price*($item->vat/100)),2, ',', '.')}} <del class="product-old-price">$990.00</del></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
@@ -132,10 +132,10 @@
 										<div class="product-btns">
 											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
 											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><a href="{{asset("/product-$item->id")}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
+											<button class="quick-view"><a href="{{asset("/product-$pro->id")}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
 										</div>
 									</div>
-									<div class="add-to-cart" data-name="{{$item->name}}" data-price="{{number_format($item->price - ($item->price*($item->vat/100)),2, ',', '.')}}">
+									<div data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
 										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 									</div>
 								</div>

@@ -20,7 +20,7 @@
 
 #edit_image {
     position: relative;
-    border-radius: 100px;
+    border-radius: 80px;
     width: 50;
     top: -30px;
     left: 40px;
@@ -28,8 +28,11 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    color: rgba(110, 104, 104, 0.63);
-    background-image: url('public/backend/images/icons8-upload-48.png') ;
+    background-image: url('../../uploads/users/icons8-upload-48.png');
+    background-color: rgba(161, 153, 153, 0.842);
+    background-position-x: 5px;
+    background-position-y: 5px;
+    background-repeat: no-repeat;
     /* Animation */
     /*     
     margin-left: auto;

@@ -114,7 +114,11 @@
                                                     <button class="quick-view"><a href="{{asset('/product-'.$pro->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
                                                 </div>
                                             </div>
+<<<<<<< HEAD
                                                 <div data-name="{{$pro->name}}"  data-price="{{$pro->price,2, ',', '.'}}" class="add-to-cart">
+=======
+                                        <div   data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
+>>>>>>> new-function
                                                     <button type="submit" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
                                                 </div>
                                             </div>

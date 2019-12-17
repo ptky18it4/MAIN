@@ -91,5 +91,9 @@ Route::group(['prefix' => $prefix_products], function () {
 
 Route::get('contact', 'HomeController@get_contact');
 Route::post('contact', 'HomeController@post_contact');
+<<<<<<< HEAD
 Route::post('checkout', 'CartController@checkout');
 // Route::post('save-cart', 'CartController@save_cart');
+=======
+Route::post('checkout', 'CartController@submitFormCheckout');
+>>>>>>> new-function

@@ -158,8 +158,9 @@
                         <form action="{{URL::to('update-infor-user/'.$infor->id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group" >
-                            <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>
-                             <input type="file" id="edit_image" class="file"  name="product_image" onchange="readURL(this);" />
+                            <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="image" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>
+                            <div>
+                                <input type="file" id="edit_image" class="file"  name="product_image"  title="change image" onchange="readURL(this);" /></div>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Email</label>
@@ -384,7 +385,7 @@
                                         <div class="cart-btns">
                                             <a href="#">View Cart</a>
                                             <a href="#" class="clear-cart">Clear Cart</a>
-                                            <a href="{{URL::to('checkout')}}">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a type="button"href="{{URL::to('checkout')}}">Checkout <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                         {{-- <button class=" my-5 clear-cart btn btn-danger">Clear Cart</button> --}}
 
@@ -520,7 +521,7 @@
                         <div class="footer">
                             <h3 class="footer-title">Service</h3>
                             <ul class="footer-links">
-                                <li><a href="#">My Account</a></li>
+                                <li><a href="" data-toggle="modal" data-target="#myAccountModal">My Account</a></li>
                                 <li><a href="#">View Cart</a></li>
                                 <li><a href="#">Wishlist</a></li>
                                 <li><a href="#">Track My Order</a></li>
