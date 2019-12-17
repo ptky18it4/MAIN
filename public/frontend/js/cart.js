@@ -243,24 +243,34 @@
 
   function submitFormCheckout() {
       console.log(cartArray);
-
-      var contentString = "";
+      var object = [];
       for(var item in cartArray) {
-          contentString += 'id'+item+'="';
+          var contentString = "";
+          contentString += "{";
+          contentString += '"id":';
           contentString += cartArray[item].id.toString();
-          contentString += '"';
-          contentString += "|"; 
-          contentString += 'count'+item+'="';
+          contentString += ",";
+          contentString += '"name":"';
+          contentString += cartArray[item].name.toString();  
+          contentString += '"';  
+          contentString += ',';  
+          contentString += '"count":';
           contentString += cartArray[item].count.toString();
-          contentString += '"';
-          contentString += "|"; 
-          contentString += 'price'+item+'="';
+          contentString += ","; 
+          contentString += '"price":';
           contentString += cartArray[item].price.toString();
-          contentString += '"';
-          contentString += '-';
+          contentString += "}";
+          object.push(contentString);
         }
+        var ngoacZuong = "";
+        ngoacZuong += '[';
+        ngoacZuong += object;
+        ngoacZuong += ']';
         
-      $('#cart-content').val(contentString);
+        alert(ngoacZuong);
+      $('#cart-content').val(ngoacZuong);
       $("#form-content-cart").submit();
-  }
+      shoppingCart.clearCart();
+    }
+      var cartArray = [];
   displayCart();
