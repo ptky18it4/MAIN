@@ -256,7 +256,7 @@
                                 <option value="0">White</option>
                             </select>
                         </label> 
-                        <label data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
+                        <label data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}">
                         Qty:
                             <div class="input-number" style="width: 100px;">
                                 <input type="number" value="1" min="1" max="100">
@@ -489,7 +489,7 @@
                                             <input class="input" name="name" type="text" placeholder="Your Name" required>
                                             <input class="input" name="email" type="email" placeholder="Your Email" required>
                                             <input class="input" name="phone" type="text" placeholder="Your Phone" required>
-                                            <textarea name="content" class="input" placeholder="Your Review"></textarea>
+                                            <textarea style="resize:none" name="content" class="input" placeholder="Your Review"></textarea>
                                             <div class="input-rating">
                                                 <span>Your Rating: </span>
                                                 <div class="stars">
