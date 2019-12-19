@@ -441,13 +441,13 @@
                                                     <tr>
                                                         <td class="text-left">
                                                             <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail">
-                                                                <img id="blah" style="width:111px; height:111px;" src="http://www.thinkpad.com.vn/public/uploads/product/more_image/thinkpad-logo-white.jpg" title="http://www.thinkpad.com.vn/public/uploads/product/more_image/thinkpad-logo-white.jpg" data-placeholder="http://localhost/LARAVEL/MAIN/public/uploads/product/more_image/thinkpad-logo-white.jpg" /></a>
+                                                                <img id="blah" style="width:111px; height:111px;" src="http://www.thinkpad.com.vn/public/uploads/backend/images/thinkpad-logo.jpg" title="http://www.thinkpad.com.vn/public/uploads/backend/images/thinkpad-logo.jpg" data-placeholder="http://www.thinkpad.com.vn/public/uploads/backend/images/thinkpad-logo.jpg" /></a>
                                                             <input type="file" class="file" name="product_image" onchange="readURL(this);" />
                                                         </td>
                                                     </tr>
 
                                                     <tr>
-                                                        <td class="text-left"><a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img width="50" height="50" src="http://www.thinkpad.com.vn/public/uploads/product/more_image/thinkpad-logo-white.jpg" id="input-image" /></td>
+                                                        <td class="text-left"><a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img width="50" height="50" src="http://www.thinkpad.com.vn/public/uploads/backend/images/thinkpad-logo.jpg" id="input-image" /></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

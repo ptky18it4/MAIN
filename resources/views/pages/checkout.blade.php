@@ -2,7 +2,7 @@
 @extends('layout')
 <!-- Phần section này sẽ được gọi ở phía layout.blade.php  -->
 @section('content')
-{{-- <form action="{{URL::to('checkout')}}" method="POST"> --}}
+<form action="{{URL::to('checkout')}}" id="form-content-cart" name="form-content-cart" method="post">
 	<!-- BREADCRUMB -->
     <div id="breadcrumb" class="section">
 			<!-- container -->
@@ -129,12 +129,16 @@
 
 					<!-- Order Details -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<form action="{{URL::to('checkout')}}" id="form-content-cart" method="get">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="content" id="cart-content">
 					{{-- </form> --}}
 =======
 					<form action="{{URL::to('checkout')}}" id="form-content-cart" name="form-content-cart" method="post">
+=======
+					{{-- <form action="{{URL::to('checkout')}}" id="form-content-cart" name="form-content-cart" method="post"> --}}
+>>>>>>> new-function
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="cart-content" id="cart-content">
 					
@@ -209,12 +213,13 @@
 							</div>
 							<!-- /Order Details -->
 						</div>
-					</form>
+					{{-- </form> --}}
 
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
+<<<<<<< HEAD
 	{{-- </form> --}}
 <<<<<<< HEAD
 	<script>
@@ -481,6 +486,9 @@ function displayCart() {
 	</script>
 =======
 </script> --}}
+>>>>>>> new-function
+=======
+	</form>
 >>>>>>> new-function
 		<!-- /SECTION -->
 @endsection

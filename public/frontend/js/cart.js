@@ -342,7 +342,7 @@ function displayCart() {
         alert(ngoacZuong);
       $('#cart-content').val(ngoacZuong);
       $("#form-content-cart").submit();
-      shoppingCart.clearCart();
+    //   shoppingCart.clearCart();
     }
       var cartArray = [];
   displayCart();

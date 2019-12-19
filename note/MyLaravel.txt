@@ -38,4 +38,12 @@ Chú ý 4 : resize: none & rows = 8
  với kích thước tùy ý.
  Nhưng để cố định ( giúp trang web ok hơn thì mình dùng resize:none để set cứng, không thể kéo được).
  Nếu muốn mở rộng thì có thể dùng rows="1,2,3.... tùy ý", tương tự với cols nhá.
+
+
+ [XDebug]
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1
+zend_extension = D:\xampp\php\ext\php_xdebug-2.9.0-7.3-vc15-x86_64.dll
+
+pass vào php.ini để debung php
   

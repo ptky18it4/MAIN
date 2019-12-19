@@ -80,7 +80,7 @@
                             }
                             ?>
                         </a></li>
-                    <!-- <li><a href="{{URL::to('logout')}}"><i class="fa fa-sign-out"></i> Log out</a></li> -->
+                    {{-- <li><a href="{{URL::to('logout')}}"><i class="fa fa-sign-out"></i> Log out</a></li> --}}
                     @else
 
                     <script>
@@ -448,18 +448,20 @@
                             <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
                         </form>
                         <ul class="newsletter-follow">
+                            @foreach($contact as $key => $contact)
                             <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="{{$contact->facebook}}"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="{{$contact->twitter}}"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="{{$contact->instagram}}"><i class="fa fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -480,7 +482,7 @@
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
                             <h3 class="footer-title">About Us</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                            <img src="https://www.lenovo.com/medias/thinkpad-logo-white.png?context=bWFzdGVyfHJvb3R8MzA3MHxpbWFnZS9wbmd8aDFiL2g4NC85NjM4ODE5ODIzNjQ2LnBuZ3xmNTM0Y2U2NjgzYWI4YjU2ZGNkNzg1ODRmOWUwZDhhMzhmYzU2MWRlYjVjODAyZjljN2YzMDk0MWViNzQ1N2Mz" style="max-width: 200px; max-height: 70px;" alt="">
                             <ul class="footer-links">
                                 <li><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-map-marker"></i>09 Ngu Hanh Son - Danang - VN</a></li>
                                 <li><a href="tel: 0326895190"><i class="fa fa-phone"></i>+84 090 909 9900</a></li>
