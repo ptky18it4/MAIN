@@ -155,7 +155,7 @@
                     <div class="modal-body">
                         @if(Session::get('user_id'))
                         @foreach($infor_user as $key => $infor)
-                        <form action="{{URL::to(app()->getLocale(),'update-infor-user/'.$infor->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{URL::to('update-infor-user/'.$infor->id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group" >
                             <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="image" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>

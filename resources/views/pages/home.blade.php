@@ -14,7 +14,7 @@
                         </div>
                         <div class="shop-body">
                             <h3>Laptop<br>Collection</h3>
-                            <a href="{{URL::to('store')}}" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{URL::to(app()->getLocale(),'store')}}" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="shop-body">
                             <h3>Cameras<br>Collection</h3>
-                            <a href="{{URL::to('store')}}" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{URL::to(app()->getLocale(),'store')}}" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                                                 <div class="product-btns">
                                                     <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
                                                     <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                    <button class="quick-view"><a href="{{asset('/product-'.$pro->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
+                                                    <button class="quick-view"><a href="{{URL::to(app()->getLocale(),'product-'.$pro->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
                                                 </div>
                                             </div>
                                         <div   data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
