@@ -10,10 +10,10 @@
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">History</h3>
+						<h3 class="breadcrumb-header">{{trans('history.history')}}</h3>
 						<ul class="breadcrumb-tree">
-							<li><a href="www.thinkpad.com.vn">Home</a></li>
-							<li class="active">Checkout</li>
+							<li><a href="www.thinkpad.com.vn">{{trans('history.home')}}</a></li>
+							<li class="active">{{trans('history.checkout')}}</li>
 						</ul>
 					</div>
 				</div>
@@ -47,10 +47,10 @@
 						<thead>
 						  <tr>
 							<th scope="col">#</th>
-							<th scope="col">Name</th>
-							<th scope="col">Count</th>
-							<th scope="col">Price</th>
-							<th scope="col">Ordertime</th>
+							<th scope="col">{{trans('history.name')}}</th>
+							<th scope="col">{{trans('history.count')}}</th>
+							<th scope="col">{{trans('history.price')}}</th>
+							<th scope="col">{{trans('history.Order time')}}</th>
 						  </tr>
 						</thead>
 						@foreach($order_product as $key => $pro)

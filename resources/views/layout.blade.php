@@ -60,43 +60,44 @@
                 <ul class="header-links pull-left">
                     <li><a href="tel: 0326895190"><i class="fa fa-phone"></i> +84 090 909 9900</a></li>
                     <li><a href="mailto:phamtrungky19032000@gmail.com"><i class="fa fa-envelope-o"></i> thinkpad@gmail.com</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-map-marker"></i> 09 Ngu Hanh Son - Danang - VN</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-map-marker"></i>{{trans('layout.09 - Ngu Hanh Son - Danang - Vietnam')}}</a></li>
                 </ul>
                 <ul class="header-links pull-right">
+                    <li><a href="/en"><img src="{{asset('public/frontend/img/usa-flag-language-icon.png')}}"  id="language" alt="">USA</a></li>
+                    <li><a href="/vi"><img src="{{asset('public/frontend/img/vn-flag-language-icon.png')}}" id="language" alt="">VN</a></li>
+                    
                     <li><a href="#"><i class="fa fa-dollar"></i>USD</a></li>
-
                     <!-- Xử lý một số tác vụ khi truy cập website -->           
-                    <!-- Mở hộp thoại đăng nhập khi mới vào website  -->
-                    @if($user_id = Session::get('user_id'))
+                        <!-- Mở hộp thoại đăng nhập khi mới vào website  -->
+                        @if($user_id = Session::get('user_id'))
 
-                    <li><a href="{{URL::to('infor')}}" data-toggle="modal" data-target="#myAccountModal"><i class="fa fa-user-o"></i>
-                            <?php
-                            $name = Session::get('user_name');
-                            /**
-                             * 1. Nếu name tồn tại thì in ra bên dưới, còn không thì thôi
-                             */
-                            if ($name) {
-                                echo $name;
-                            }
-                            ?>
-                        </a></li>
-                    {{-- <li><a href="{{URL::to('logout')}}"><i class="fa fa-sign-out"></i> Log out</a></li> --}}
-                    @else
+                        <li><a href="{{URL::to(app()->getLocale(),'infor')}}" data-toggle="modal" data-target="#myAccountModal"><i class="fa fa-user-o"></i>
+                                <?php
+                                $name = Session::get('user_name');
+                                /**
+                                * 1. Nếu name tồn tại thì in ra bên dưới, còn không thì thôi
+                                */
+                                if ($name) {
+                                    echo $name;
+                                }
+                                ?>
+                            </a></li>
+                        {{-- <li><a href="{{URL::to('logout')}}"><i class="fa fa-sign-out"></i> Log out</a></li> --}}
+                        @else
 
-                    <script>
-                        $(window).load(function() {
-                            $('#loginModal').modal('show');
-                        });
-                    </script>
+                        <script>
+                            $(window).load(function() {
+                                $('#loginModal').modal('show');
+                            });
+                        </script>
                     <li class="text-center border-right text-white">
                         <a href="#" data-toggle="modal" data-target="#loginModal" class="text-white">
-                            <i class="fas fa-sign-in-alt mr-2 text-red"></i> Log in </a>
+                        <i class="fas fa-sign-in-alt mr-2 text-red"></i>{{trans('layout.Log in')}}</a>
                     </li>
                     <li class="text-center text-white">
                         <a href="#" data-toggle="modal" data-target="#registerModal" class="text-white">
-                            <i class="fas fa-sign-out-alt mr-2 text-red"></i> Register </a>
+                        <i class="fas fa-sign-out-alt mr-2 text-red"></i>{{trans('layout.Log out')}}</a>
                     </li>
-
                     @endif
 
                 </ul>
@@ -111,13 +112,12 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-center">Location</h5>
+                        <h5 class="modal-title text-center">{{trans('layout.Location')}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- <a href="https://goo.gl/maps/PeBCxZMmt6K5jPQu5" target="_blank">Click để xem địa điểm !</a> -->
                         <!--Google map-->
                         <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: auto">
                         </div>
@@ -135,7 +135,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title text-center">
-                            Hello,
+                            {{trans('layout.Hello')}},
                             <strong style="color: red; text-transform: uppercase;">
                                 <?php
                                 $name = Session::get('user_name');
@@ -155,7 +155,7 @@
                     <div class="modal-body">
                         @if(Session::get('user_id'))
                         @foreach($infor_user as $key => $infor)
-                        <form action="{{URL::to('update-infor-user/'.$infor->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{URL::to(app()->getLocale(),'update-infor-user/'.$infor->id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group" >
                             <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="image" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>
@@ -163,26 +163,26 @@
                                 <input type="file" id="edit_image" class="file"  name="product_image"  title="change image" onchange="readURL(this);" /></div>
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Email</label>
+                                <label class="col-form-label">{{trans('layout.Email')}}</label>
                                 <input type="email" class="form-control" id="name" value="{{$infor->email}}" name="user_email" required="">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Password</label>
+                                <label class="col-form-label">{{trans('layout.Password')}}</label>
                                 <input type="password" class="form-control" value="{{$infor->passdefault}} " id="password" name="user_password" required="">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Address</label>
+                                <label class="col-form-label">{{trans('layout.Address')}}</label>
                                 <input type="text" class="form-control" value="{{$infor->address}} " name="user_address" required="">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Phone</label>
+                                <label class="col-form-label">{{trans('layout.Phone number')}}</label>
                                 <input type="text" class="form-control" value="{{$infor->phone}} " name="user_phone" required="">
                             </div>
                             <div class="right-w3l">
                                 <input type="submit" class="form-control btn btn-danger" value="Update">
                             </div>
                             <hr>
-                            <a href="{{URL::to('logout')}}" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i> Log out</a>
+                        <a href="{{URL::to('logout')}}" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
                         </form>
                         @endforeach
                         @endif
@@ -215,7 +215,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title text-center">Log In</h5>
+                        <h5 class="modal-title text-center">{{trans('layout.Log in')}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -245,25 +245,25 @@
                         <form action="{{URL::to('login')}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label class="col-form-label">Email</label>
+                                <label class="col-form-label">{{trans('layout.Email')}}</label>
                                 <input type="email" class="form-control" placeholder="email" name="user_email" required="">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Password</label>
+                                <label class="col-form-label">{{trans('layout.Password')}}</label>
                                 <input type="password" class="form-control" placeholder="pasword " name="user_password" required="">
                             </div>
                             <div class="right-w3l">
-                                <input type="submit" class="form-control" value="Log in">
+                                <input type="submit" class="form-control" value="{{trans('layout.Log in')}}">
                             </div>
                             <div class="sub-w3l">
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                    <label class="custom-control-label" for="customControlAutosizing">Remember me?</label>
+                                    <label class="custom-control-label" for="customControlAutosizing">{{trans('layout.Remember me?')}}</label>
                                 </div>
                             </div>
-                            <p class="text-center dont-do mt-3">Don't have an account?
+                            <p class="text-center dont-do mt-3">{{trans("layout.Don't have an account?")}}
                                 <a href="#" data-toggle="modal" data-target="#registerModal" aria-label="Close">
-                                    Register Now</a>
+                                    {{trans('layout.Register Now')}}</a>
                             </p>
                         </form>
                     </div>
@@ -275,7 +275,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Register</h5>
+                        <h5 class="modal-title">{{trans('layout.Register')}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -284,29 +284,29 @@
                         <form action="{{('register')}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label class="col-form-label">Your Name</label>
+                                <label class="col-form-label">{{trans('layout.Your Name')}}</label>
                                 <input type="text" class="form-control" placeholder="your name" name="user_name" required="">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Email</label>
+                                <label class="col-form-label">{{trans('layout.Email')}}</label>
                                 <input type="email" class="form-control" placeholder="email " name="user_email" required="">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Password</label>
+                                <label class="col-form-label">{{trans('layout.Password')}}</label>
                                 <input type="password" class="form-control" placeholder="password " name="user_password" id="password1" required="" onkeyup='check();'>
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Confirm Password</label>
+                                <label class="col-form-label">{{trans('layout.Confirm password')}}</label>
                                 <input type="password" class="form-control" placeholder="confirm password " name="confirm_password" id="password2" required="" onkeyup='check();'>
                                 <span id="message"></span>
                             </div>
                             <div class="right-w3l">
-                                <input type="submit" class="form-control" value="Register">
+                            <input type="submit" class="form-control" value="{{trans('layout.Register')}}">
                             </div>
                             <div class="sub-w3l">
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
-                                    <label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions</label>
+                                    <label class="custom-control-label" for="customControlAutosizing2">{{trans('layout.I Accept to the Terms & Conditions')}}</label>
                                 </div>
                             </div>
                         </form>
@@ -325,9 +325,9 @@
                     <!-- LOGO -->
                     <div class="col-md-3">
                         <div class="header-logo">
-                            <a href="{{URL::to('/')}}" class="logo">
-                                <!-- <img src="{{asset('public/frontend/img/logo.png')}}" alt=""> -->
-                                <img src="https://www.lenovo.com/medias/thinkpad-logo-white.png?context=bWFzdGVyfHJvb3R8MzA3MHxpbWFnZS9wbmd8aDFiL2g4NC85NjM4ODE5ODIzNjQ2LnBuZ3xmNTM0Y2U2NjgzYWI4YjU2ZGNkNzg1ODRmOWUwZDhhMzhmYzU2MWRlYjVjODAyZjljN2YzMDk0MWViNzQ1N2Mz" style="max-width: 200px; max-height: 70px;" alt="">
+                            <a href="{{URL::to(app()->getLocale(),'')}}" class="logo">
+                                <img src="{{asset('public/frontend/img/logo.png')}}" style="max-width: 200px; max-height: 70px;" alt="">
+                                {{-- <img src="https://www.lenovo.com/medias/thinkpad-logo-white.png?context=bWFzdGVyfHJvb3R8MzA3MHxpbWFnZS9wbmd8aDFiL2g4NC85NjM4ODE5ODIzNjQ2LnBuZ3xmNTM0Y2U2NjgzYWI4YjU2ZGNkNzg1ODRmOWUwZDhhMzhmYzU2MWRlYjVjODAyZjljN2YzMDk0MWViNzQ1N2Mz" style="max-width: 200px; max-height: 70px;" alt=""> --}}
                             </a>
                         </div>
                     </div>
@@ -338,13 +338,13 @@
                             <form action="search" method="GET">
                             {{-- <input type="hidden" name="_token" value="{{csrf_token()}}";> --}}
                                 <select class="input-select">
-                                    <option value="0">All Category</option>
+                                <option value="0">{{trans('layout.All Category')}}</option>
                                     @foreach($all_category as $key => $cate)
                                     <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                                     @endforeach
                                 </select>
-                                <input class="input" placeholder="Search here" name="keywords" type="text">
-                                <button type="submit" class="search-btn">Search</button>
+                                <input class="input" placeholder="{{trans('Search')}}" name="keywords" type="text">
+                            <button type="submit" class="search-btn">{{trans('layout.Search')}}</button>
                             </form>
                         </div>
                     </div>
@@ -357,7 +357,7 @@
                             <div>
                                 <a href="#">
                                     <i class="fa fa-heart-o"></i>
-                                    <span>Your Wishlist</span>
+                                    <span>{{trans('layout.Your Wishlist')}}</span>
                                     <div class="qty">2</div>
                                 </a>
                             </div>
@@ -367,7 +367,7 @@
                             <div class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span>Your Cart</span>
+                                        <span>{{trans('layout.Your Cart')}}</span>
                                         <div class="qty total-count"></div>
                                     </a>
                                     <div class="cart-dropdown " >
@@ -376,19 +376,17 @@
                                         </div>
                                        
                                         <span class="py-5 total-count"></span>
-                                        <small>Item(s) selected</small>
+                                        <small>{{trans('layout.Item(s) selected')}}</small>
                                         <div class="cart-summary">
-                                            <strong>TOTAL PRICE :$</strong>
+                                            <strong>{{trans('layout.TOTAL PRICE : $')}}</strong>
                                             <i style='color: red;' class="total-cart" ></i>
                                         </div>
                                         
                                         <div class="cart-btns">
-                                            <a href="#">View Cart</a>
-                                            <a href="#" class="clear-cart">Clear Cart</a>
-                                            <a type="button"href="{{URL::to('checkout')}}">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a href="#">{{trans('layout.View Cart')}}</a>
+                                            <a href="#" class="clear-cart">{{trans('layout.Clear Cart')}}</a>
+                                            <a type="button"href="{{URL::to('checkout')}}">{{trans('layout.Checkout')}} <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
-                                        {{-- <button class=" my-5 clear-cart btn btn-danger">Clear Cart</button> --}}
-
                                     </div>
                             </div>
                             <!-- /Cart -->
@@ -397,7 +395,7 @@
                             <div class="menu-toggle">
                                 <a href="#">
                                     <i class="fa fa-bars"></i>
-                                    <span>Menu</span>
+                                    <span>{{trans('layout.Menu')}}</span>
                                 </a>
                             </div>
                             <!-- /Menu Toogle -->
@@ -421,10 +419,12 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active" id="home"><a href="{{URL::to('home')}}">Home</a></li>
-                    @foreach($all_menu as $key => $menu)
-                    <li><a href="{{$menu->link}}">{{$menu->name}}</a></li>
-                    @endforeach
+                <li class="active" id="home"><a href="{{URL::to(app()->getLocale(),'home')}}">{{trans('layout.Home')}}</a></li>
+                    {{-- @foreach($all_menu as $key => $menu) --}}
+                    <li><a href="{{URL::to(app()->getLocale(),'hot+deals')}}">{{trans('layout.Hot Deals')}}</a></li>
+                    <li><a href="{{URL::to(app()->getLocale(),'history')}}">{{trans('layout.History')}}</a></li>
+                    <li><a href="{{URL::to(app()->getLocale(),'store')}}">{{trans('layout.Store')}}</a></li>
+                    {{-- @endforeach --}}
                 </ul>
                 <!-- /NAV -->
             </div>
@@ -442,10 +442,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="newsletter">
-                        <p>Sign Up for the <strong>NEWSLETTER</strong></p>
+                        <p>{{trans('layout.Sign Up for the')}} <strong>{{trans('layout.NEWSLETTER')}}</strong></p>
                         <form>
                             <input class="input" type="email" placeholder="Enter Your Email">
-                            <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+                            <button class="newsletter-btn"><i class="fa fa-envelope"></i>{{trans('layout.Subscribe')}} </button>
                         </form>
                         <ul class="newsletter-follow">
                             @foreach($contact as $key => $contact)
@@ -481,10 +481,10 @@
                 <div class="row">
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">About Us</h3>
+                            <h3 class="footer-title">{{trans('layout.About Us')}}</h3>
                             <img src="https://www.lenovo.com/medias/thinkpad-logo-white.png?context=bWFzdGVyfHJvb3R8MzA3MHxpbWFnZS9wbmd8aDFiL2g4NC85NjM4ODE5ODIzNjQ2LnBuZ3xmNTM0Y2U2NjgzYWI4YjU2ZGNkNzg1ODRmOWUwZDhhMzhmYzU2MWRlYjVjODAyZjljN2YzMDk0MWViNzQ1N2Mz" style="max-width: 200px; max-height: 70px;" alt="">
                             <ul class="footer-links">
-                                <li><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-map-marker"></i>09 Ngu Hanh Son - Danang - VN</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-map-marker"></i>{{trans('layout.09 - Ngu Hanh Son - Danang - Vietnam')}}</a></li>
                                 <li><a href="tel: 0326895190"><i class="fa fa-phone"></i>+84 090 909 9900</a></li>
                                 <li><a href="mailto:phamtrungky19032000@gmail.com"><i class="fa fa-envelope-o"></i>thinkpad@gmail.com</a></li>
                             </ul>
@@ -493,13 +493,13 @@
 
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">Categories</h3>
+                            <h3 class="footer-title">{{trans('layout.Categories')}}</h3>
                             <ul class="footer-links">
-                                <li><a href="#">Hot deals</a></li>
-                                <li><a href="#">Laptops</a></li>
-                                <li><a href="#">Smartphones</a></li>
-                                <li><a href="#">Cameras</a></li>
-                                <li><a href="#">Accessories</a></li>
+                                <li><a href="#">{{trans('layout.Hot Deals')}}</a></li>
+                                <li><a href="#">{{trans('layout.Laptops')}}</a></li>
+                                <li><a href="#">{{trans('layout.Smartphones')}}</a></li>
+                                <li><a href="#">{{trans('layout.Cameras')}}</a></li>
+                                <li><a href="#">{{trans('layout.Accessories')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -508,26 +508,26 @@
 
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">Information</h3>
+                            <h3 class="footer-title">{{trans('layout.Information')}}</h3>
                             <ul class="footer-links">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Orders and Returns</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">{{trans('layout.About Us')}}</a></li>
+                                <li><a href="#">{{trans('layout.Contact Us')}}</a></li>
+                                <li><a href="#">{{trans('layout.Privacy Policy')}}</a></li>
+                                <li><a href="#">{{trans('layout.Orders and Returns')}}</a></li>
+                                <li><a href="#">{{trans('layout.Terms & Conditions')}}</a></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">Service</h3>
+                            <h3 class="footer-title">{{trans('layout.Service')}}</h3>
                             <ul class="footer-links">
-                                <li><a href="" data-toggle="modal" data-target="#myAccountModal">My Account</a></li>
-                                <li><a href="#">View Cart</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Track My Order</a></li>
-                                <li><a href="#">Help</a></li>
+                                <li><a href="" data-toggle="modal" data-target="#myAccountModal">{{trans('layout.My Account')}}</a></li>
+                                <li><a href="#">{{trans('layout.View Cart')}}</a></li>
+                                <li><a href="#">{{trans('layout.Wishlist')}}</a></li>
+                                <li><a href="#">{{trans('layout.Track My Order')}}</a></li>
+                                <li><a href="#">{{trans('layout.Help')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -555,9 +555,9 @@
                         </ul>
                         <span class="copyright">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>
+                            {{trans('layout.Copyright')}} &copy;<script>
                                 document.write(new Date().getFullYear());
-                            </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/trungky1402/?hl=vi" target="_blank" style="color: #D10024">Kenneth</a>
+                            </script>{{trans('layout.All rights reserved | This template is made with')}} <i class="fa fa-heart-o" aria-hidden="true"></i>{{trans('layout.by')}} <a href="https://www.instagram.com/trungky1402/?hl=vi" target="_blank" style="color: #D10024">{{trans('layout.Trung Ky')}}</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </span>
                     </div>

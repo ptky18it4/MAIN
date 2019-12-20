@@ -505,5 +505,7 @@ class HomeController extends Controller
                 window.location = '".url('/')."'        
         </script>";
     }  
-    
+    /**
+     * function change language using Session and Middleware
+     */
 }
