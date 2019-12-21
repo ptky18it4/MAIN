@@ -65,7 +65,9 @@
                 <ul class="header-links pull-right">
                     <li><a href="/en"><img src="{{asset('public/frontend/img/usa-flag-language-icon.png')}}"  id="language" alt="">USA</a></li>
                     <li><a href="/vi"><img src="{{asset('public/frontend/img/vn-flag-language-icon.png')}}" id="language" alt="">VN</a></li>
-                    
+                    <!-- Selected language -->
+
+                    <!-- End Selected language  -->
                     <li><a href="#"><i class="fa fa-dollar"></i>USD</a></li>
                     <!-- Xử lý một số tác vụ khi truy cập website -->           
                         <!-- Mở hộp thoại đăng nhập khi mới vào website  -->
@@ -155,8 +157,9 @@
                     <div class="modal-body">
                         @if(Session::get('user_id'))
                         @foreach($infor_user as $key => $infor)
-                        <form action="{{URL::to('update-infor-user/'.$infor->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{URL::to(app()->getLocale(),'update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            <input type="hidden" name="user_id" value="$infor->id">
                             <div class="form-group" >
                             <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="image" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>
                             <div>
@@ -182,7 +185,7 @@
                                 <input type="submit" class="form-control btn btn-danger" value="Update">
                             </div>
                             <hr>
-                        <a href="{{URL::to('logout')}}" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
+                        <a href="{{URL::to(app()->getLocale(),'logout')}}" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
                         </form>
                         @endforeach
                         @endif
@@ -242,7 +245,7 @@
                         }
                         ?>
 
-                        <form action="{{URL::to('login')}}" method="post">
+                        <form action="{{URL::to(app()->getLocale(),'login')}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="col-form-label">{{trans('layout.Email')}}</label>
@@ -281,7 +284,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{('register')}}" method="post">
+                        <form action="{{URL::to(app()->getLocale(),'register')}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="col-form-label">{{trans('layout.Your Name')}}</label>
@@ -335,7 +338,7 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form action="search" method="GET">
+                            <form action="{{URL::to(app()->getLocale(),'search')}}" method="GET">
                             {{-- <input type="hidden" name="_token" value="{{csrf_token()}}";> --}}
                                 <select class="input-select">
                                 <option value="0">{{trans('layout.All Category')}}</option>
@@ -378,7 +381,7 @@
                                         <span class="py-5 total-count"></span>
                                         <small>{{trans('layout.Item(s) selected')}}</small>
                                         <div class="cart-summary">
-                                            <strong>{{trans('layout.TOTAL PRICE : $')}}</strong>
+                                            <strong>{{trans('layout.TOTAL PRICE')}} : $</strong>
                                             <i style='color: red;' class="total-cart" ></i>
                                         </div>
                                         

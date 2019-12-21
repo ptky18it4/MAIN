@@ -133,9 +133,10 @@ class HomeController extends Controller
     /**
      * Function update information of user 
      */
-    public function update_infor_user(Request $request, $user_id)
+    public function update_infor_user(Request $request)
     {
         $this->AuthenticLogin();
+        $user_id = $request->user_id;
         $data = array();
         $data['email'] = $request->user_email;
         $data['password'] = md5($request->user_password);
@@ -298,12 +299,11 @@ class HomeController extends Controller
     /**
      * Function product
      */
-    public function product($id)
+    public function product(Request $request)
     {
+        $id = $request->id;
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
         if ($user_id = Session::get('user_id')) {
-
-
             $infor_user = DB::table('tbl_user')
                 ->where('id', $user_id)
                 ->get();

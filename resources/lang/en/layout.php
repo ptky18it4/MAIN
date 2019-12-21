@@ -27,7 +27,7 @@
             "Your Wishlist"                       => "Your Wishlist",
             "Your Cart"                           => "Your Cart",
             "Item(s) selected"                    => "Item(s) selected",
-            "TOTAL PRICE :$"                      => "TOTAL PRICE :$",
+            "TOTAL PRICE : $"                     => "TOTAL PRICE : $",
             "View Cart"                           => "View Cart",
             "Clear Cart"                          => "Clear Cart",
             "Checkout"                            => "Checkout",

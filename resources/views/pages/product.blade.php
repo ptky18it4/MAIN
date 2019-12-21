@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">All Categories</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Headphones</a></li>
-                    <li class="active">Product name goes here</li>
+                <li><a href="#">{{trans('product.Home')}}</a></li>
+                    <li><a href="#">{{trans('product.All Categories')}}</a></li>
+                    <li><a href="#">{{trans('product.Accessories')}}</a></li>
+                    <li><a href="#">{{trans('product.Headphones')}}</a></li>
+                    <li class="active">{{trans('product.Product name goes here')}}</li>
                 </ul>
             </div>
         </div>
@@ -65,15 +65,15 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-o"></i>
                         </div>
-                        <a class="review-link" href="#">10 Review(s) | Add your review</a>
+                        <a class="review-link" href="#">{{trans('product.10 Review(s) | Add your review')}}</a>
                     </div>
                     <div>
                         <h3 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price,2, ',', '.')}}</del></h3>
                         <span class="product-available">
                             @if($pro->status == 1)
-                            IN STOCK
+                            {{trans('product.IN STOCK')}}
                             @else
-                            NO IN STOCK
+                            {{trans('product.NO IN STOCK')}}
                             @endif
                         </span>
                     </div>
@@ -85,13 +85,13 @@
                         }
                     ?>
                     <p>{{mysubstr($pro->description)}}</p>
-                    <button style=" position: relative; left: 25%;" type="button" data-toggle="modal" data-target="#configModal" class="btn">Configuration information</button>
+                    <button style=" position: relative; left: 25%;" type="button" data-toggle="modal" data-target="#configModal" class="btn">{{trans('product.Configuration information')}}</button>
                     <!-- Configuration -->
                     <div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title text-center">Configuration information</h5>
+                                    <h5 class="modal-title text-center">{{trans('product.Configuration information')}}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -99,134 +99,134 @@
                                 <div class="modal-body">
                                     @foreach($infor_config_product as $key => $infor_config)
                                     <ul class="parameter list-unstyled">
-                                        <div class="lable-ts">Bộ xử lý</div>
+                                        <div class="lable-ts">{{trans('product.Processor')}}</div>
                                         <ul class="list-unstyled">
                                             <li>
-                                                <span class="lable-ts">Công nghệ CPU</span>
+                                                <span class="lable-ts">{{trans('product.CPU technology')}}</span>
                                                 <div class="giatri-ts">{{$infor_config->CPU_technology}}</div>
                                             </li>
                                             <li>
-                                                <span class="lable-ts">Loại CPU</span>
+                                                <span class="lable-ts">{{trans('product.CPUs')}}</span>
                                                 <div class="giatri-ts">{{$infor_config->CPU_types}}</div>
                                             </li>
                                             <li>
-                                                <span class="lable-ts">Tốc độ CPU</span>
+                                                <span class="lable-ts">{{trans('product.CPU speed')}}</span>
                                                 <div class="giatri-ts">{{$infor_config->CPU_speed}}</div>
                                             </li>
                                             <li>
-                                                <span class="lable-ts">Bộ nhớ đệm CPU</span>
+                                                <span class="lable-ts">{{trans('product.CPU caching')}}</span>
                                                 <div class="giatri-ts">{{$infor_config->CPU_caching}}</div>
                                             </li>
                                             <li>
-                                                <span class="lable-ts">Tốc độ tối đa Turbo</span>
+                                                <span class="lable-ts">{{trans('product.Maximum speed Turbo')}}</span>
                                                 <div class="giatri-ts">{{$infor_config->Maximum_speed_Turbo}}</div>
                                             </li>
                                         </ul>
                                         </li>
-                                            <div class="lable-ts">RAM, Ổ cứng</div>
+                                            <div class="lable-ts">{{trans('product.RAM, Hard Drive')}}</div>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <span class="lable-ts">Bộ nhớ RAM</span>
+                                                    <span class="lable-ts">{{trans('product.RAM ( memory )')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->RAM_memory}} </div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Loại RAM</span>
+                                                    <span class="lable-ts">{{trans('product.RAMs')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->RAM_types}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Tốc độ Bus</span>
+                                                    <span class="lable-ts">{{trans('product.Speed ​​Bus')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Speed​_Bus}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Ổ cứng</span>
+                                                    <span class="lable-ts">{{trans('product.Hard drive')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Hard_Drive}}</div>
                                                 </li>
                                             </ul>
                                         </li>
-                                            <div class="lable-ts">Màn hình</div>
+                                            <div class="lable-ts">{{trans('product.Screen')}}</div>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <span class="lable-ts">Kích thước màn hình</span>
+                                                    <span class="lable-ts">{{trans('product.Screen Size')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Size_Screen}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Độ phân giải (W x H)</span>
+                                                    <span class="lable-ts">{{trans('product.Resolution (W x H)')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Resolution_W_x_H}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Công nghệ MH</span>
+                                                    <span class="lable-ts">{{trans('product.Technology MH')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Technology_MH}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Màn hình cảm ứng</span>
+                                                    <span class="lable-ts">{{trans('product.Touch screen')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Touch_screen}}</div>
                                                 </li>
                                             </ul>
                                         </li>
-                                            <div class="lable-ts">Đồ họa và Âm thanh</div>
+                                            <div class="lable-ts">{{trans('product.Graphics and Sound')}}</div>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <span class="lable-ts">Card đồ họa</span>
+                                                    <span class="lable-ts">{{trans('product.Graphics card')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Graphics_card}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Bộ nhớ đồ họa</span>
+                                                    <span class="lable-ts">{{trans('product.Graphics memory')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Card_memory}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Thiết kế card</span>
+                                                    <span class="lable-ts">{{trans('product.Card design')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Card_design}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Công nghệ Audio</span>
+                                                    <span class="lable-ts">{{trans('product.Technology Audio')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Technology_Audio}}</div>
                                                 </li>
                                             </ul>
                                         </li>
-                                            <div class="lable-ts">PIN/Battery</div>
+                                            <div class="lable-ts">{{trans('product.PIN / Battery')}}</div>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <span class="lable-ts">Thông tin Pin</span>
+                                                    <span class="lable-ts">{{trans('product.Information Pin')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Pin_battery}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Thời gian sử dụng thường</span>
+                                                    <span class="lable-ts">{{trans('product.Time used often')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Time_used_often}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Bộ sạc</span>
+                                                    <span class="lable-ts">{{trans('product.Charger')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Charger}}</div>
                                                 </li>
                                             </ul>
                                         </li>
-                                            <div class="lable-ts">Hệ điều hành</div>
+                                            <div class="lable-ts">{{trans('product.Operating system')}}</div>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <span class="lable-ts">Hệ điều hành</span>
+                                                    <span class="lable-ts">{{trans('product.Operating system')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Operating_system}}</div>
                                                 </li>
                                             </ul>
                                         </li>
-                                            <div class="lable-ts">Kích thước &amp; trọng lượng</div>
+                                            <div class="lable-ts">{{trans('product.Size')}} &amp; {{trans('product.Weight')}}</div>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <span class="lable-ts">Kích thước</span>
+                                                    <span class="lable-ts">{{trans('product.Size Screen')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Size_Screen}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Trọng lượng (kg)</span>
+                                                    <span class="lable-ts">{{trans('product.Weight')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Weight}}(kg)</div>
                                                 </li>
                                             </ul>
                                         </li>
-                                            <div class="lable-ts">Khác</div>
+                                            <div class="lable-ts">{{trans('product.Other')}}</div>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <span class="lable-ts">Cổng giao tiếp</span>
+                                                    <span class="lable-ts">{{trans('product.Gateway')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Gateway}}</div>
                                                 </li>
                                                 <li>
-                                                    <span class="lable-ts">Độ phân giải WC</span>
+                                                    <span class="lable-ts">{{trans('product.Resolution WC')}}</span>
                                                     <div class="giatri-ts">{{$infor_config->Resolution_webcam}}</div>
                                                 </li>
                                             </ul>
@@ -241,23 +241,23 @@
                     </div>
                     <div class=" product-options">
                         <label>
-                            Size :
+                            {{trans('product.Size')}} :
                             <select class="form-control input-select ">
-                                <option value="0">14 inch</option>
-                                <option value="0">15.6 inch</option>
-                                <option value="0">17 inch</option>
+                                <option value="14 inch">14 inch</option>
+                                <option value="15.6 inch">15.6 inch</option>
+                                <option value="17 inch">17 inch</option>
                             </select>
                             
                         </label>
                         <label>
-                            Color :
+                            {{trans('product.Color')}} :
                             <select class="form-control input-select">
-                                <option value="0">Black</option>
-                                <option value="0">White</option>
+                                <option value="black">{{trans('product.Black')}}</option>
+                                <option value="white">{{trans('product.White')}}</option>
                             </select>
                         </label> 
                         <label data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}">
-                        Qty:
+                            {{trans('product.Qty')}}:
                             <div class="input-number" style="width: 100px;">
                                 <input type="number" value="1" min="1" max="100">
                                 <span class="qty-up">+</span>
@@ -267,22 +267,22 @@
                     </div>
 
                      <div data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
-                            <button type="#" style=" position: relative; left: 27%;" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>add to cart</button>
+                            <button type="#" style=" position: relative; left: 27%;" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>{{trans('product.add to cart')}}</button>
                     </div>
 
                     <ul class="product-btns">
-                        <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
+                        <li><a href="#"><i class="fa fa-heart-o"></i>{{trans('product.add to wishlist')}} </a></li>
+                        <li><a href="#"><i class="fa fa-exchange"></i>{{trans('product.add to compare')}} </a></li>
                     </ul>
 
                     <ul class="product-links">
-                        <li>Category:</li>
-                        <li><a href="#">Headphones</a></li>
-                        <li><a href="#">Accessories</a></li>
+                        <li>{{trans('product.Category')}}:</li>
+                        <li><a href="#">{{trans('product.Headphones')}}</a></li>
+                        <li><a href="#">{{trans('product.Accessories')}}</a></li>
                     </ul>
 
                     <ul class="product-links">
-                        <li>Share:</li>
+                        <li>{{trans('product.Share')}}:</li>
                         <li><a href="https://www.facebook.com/groups/ibmthinkpad/"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://twitter.com/hashtag/thinkpad?lang=vi"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -299,9 +299,9 @@
                 <div id="product-tab">
                     <!-- product tab nav -->
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Details</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab1">{{trans('product.Description')}}</a></li>
+                        <li><a data-toggle="tab" href="#tab2">{{trans('product.Details')}}</a></li>
+                        <li><a data-toggle="tab" href="#tab3">{{trans('product.Reviews')}} (3)</a></li>
                     </ul>
                     <!-- /product tab nav -->
 
@@ -491,7 +491,7 @@
                                             <input class="input" name="phone" type="text" placeholder="Your Phone" required>
                                             <textarea style="resize:none" name="content" class="input" placeholder="Your Review"></textarea>
                                             <div class="input-rating">
-                                                <span>Your Rating: </span>
+                                                <span>{{trans('product.Your Rating')}}: </span>
                                                 <div class="stars">
                                                     <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
                                                     <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
@@ -500,7 +500,7 @@
                                                     <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
                                                 </div>
                                             </div>
-                                            <button class="primary-btn">Submit</button>
+                                            <button class="primary-btn">{{trans('product.Submit')}}</button>
                                         </form>                                              
                                     </div>
                                 </div>
@@ -529,7 +529,7 @@
 
             <div class="col-md-12">
                 <div class="section-title text-center">
-                    <h3 class="title">Related Products</h3>
+                    <h3 class="title">{{trans('product.Related Products')}}</h3>
                 </div>
             </div>
 
@@ -543,19 +543,19 @@
                         </div>
                     </div>
                     <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                        <p class="product-category">{{trans('product.Category')}}</p>
+                        <h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
                         <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
                         <div class="product-rating">
                         </div>
                         <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
+                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
+                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></button>
                         </div>
                     </div>
                     <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>{{trans('product.add to cart')}} </button>
                     </div>
                 </div>
             </div>
@@ -567,12 +567,12 @@
                     <div class="product-img">
                         <img src="{{asset('public/frontend/img/product02.png')}}" alt="">
                         <div class="product-label">
-                            <span class="new">NEW</span>
+                            <span class="new">{{trans('product.NEW')}}</span>
                         </div>
                     </div>
                     <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                        <p class="product-category">{{trans('product.Category')}}</p>
+                        <h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
                         <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
                         <div class="product-rating">
                             <i class="fa fa-star"></i>
@@ -582,13 +582,13 @@
                             <i class="fa fa-star"></i>
                         </div>
                         <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
+                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
+                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></button>
                         </div>
                     </div>
                     <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> {{trans('product.add to cart')}}</button>
                     </div>
                 </div>
             </div>
@@ -603,8 +603,8 @@
                         <img src="{{asset('public/frontend/img/product03.png')}}" alt="">
                     </div>
                     <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                        <p class="product-category">{{trans('product.Category')}}</p>
+                        <h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
                         <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
                         <div class="product-rating">
                             <i class="fa fa-star"></i>
@@ -614,13 +614,13 @@
                             <i class="fa fa-star-o"></i>
                         </div>
                         <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
+                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
+                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></button>
                         </div>
                     </div>
                     <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>{{trans('product.add to cart')}} </button>
                     </div>
                 </div>
             </div>
@@ -633,19 +633,19 @@
                         <img src="{{asset('public/frontend/img/product04.png')}}" alt="">
                     </div>
                     <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                        <p class="product-category">{{trans('product.Category')}}</p>
+                        <h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
                         <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
                         <div class="product-rating">
                         </div>
                         <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
+                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
+                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></button>
                         </div>
                     </div>
                     <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>{{trans('product.add to cart')}} </button>
                     </div>
                 </div>
             </div>

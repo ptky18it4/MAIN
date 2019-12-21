@@ -96,7 +96,7 @@ Route::post('checkout', 'CartController@submitFormCheckout');
 
 
 //==============================================CHANGE LANGUAGE===================================================
-Route::redirect('/', '/en/');
+Route::redirect('/', '/en');
 Route::group(['prefix' => '{language}'], function () {
         Route::get('/', function () {
         return view('/');
@@ -106,14 +106,13 @@ Route::group(['prefix' => '{language}'], function () {
 
         Route::get('/','HomeController@index');
         //Front - end
-        Route::get('/', 'HomeController@index');
         Route::get('/home','HomeController@index');
         Route::get('checkout','HomeController@checkout');
         Route::get('store','HomeController@store');
         Route::get('product-{id}','HomeController@product');
         Route::get('regular','HomeController@regular');
         Route::get('category','HomeController@category');
-        Route::post('update-infor-user/{user_id}','HomeController@update_infor_user');
+        Route::post('update-infor-user-{user_id}','HomeController@update_infor_user');
     
         Route::post('login','HomeController@login');
         Route::post('register','HomeController@register');

@@ -8,10 +8,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">All Categories</a></li>
-							<li><a href="#">Accessories</a></li>
-							<li class="active">Headphones (227,490 Results)</li>
+							<li><a href="#">{{trans('product.Home')}}</a></li>
+							<li><a href="#">{{trans('product.All Categories')}}</a></li>
+							<li><a href="#">{{trans('product.Accessories')}}</a></li>
+							<li class="active">{{trans('product.Headphones ')}}(227,490 Results)</li>
 						</ul>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 					<!-- ASIDE -->
 					<div id="aside" class="col-md-3">
 						<!-- aside Widget -->
-						<h3 class="aside-title">Categories</h3>
+						<h3 class="aside-title">{{trans('product.Categories')}}</h3>
 						<div class="aside">
 							<div class="checkbox-filter">
 								@foreach($all_category as $key => $cate)
@@ -50,7 +50,7 @@
 
 						<!-- aside Widget -->
 						<div class="aside">
-							<h3 class="aside-title">Price</h3>
+							<h3 class="aside-title">{{trans('product.Price')}}</h3>
 							<div class="price-filter">
 								<div id="price-slider"></div>
 								<div class="input-number price-min">
@@ -70,7 +70,7 @@
 
 						<!-- aside Widget -->
 						<div class="aside">
-							<h3 class="aside-title">Brand</h3>
+							<h3 class="aside-title">{{trans('product.Brand')}}</h3>
 							<div class="checkbox-filter">
 								<div class="input-checkbox">
 									<input type="checkbox" id="brand-1">
@@ -126,14 +126,14 @@
 
 						<!-- aside Widget -->
 						<div class="aside">
-							<h3 class="aside-title">Top selling</h3>
+							<h3 class="aside-title">{{trans('product.Top selling')}}</h3>
 							<div class="product-widget">
 								<div class="product-img">
 									<img src="{{asset('public/frontend/img/product01.png')}}" alt="">
 								</div>
 								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<p class="product-category">{{trans('product.Category')}}</p>
+									<h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
 									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 								</div>
 							</div>
@@ -143,8 +143,8 @@
 									<img src="{{asset('public/frontend/img/product02.png')}}" alt="">
 								</div>
 								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<p class="product-category">{{trans('product.Category')}}</p>
+									<h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
 									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 								</div>
 							</div>
@@ -154,8 +154,8 @@
 									<img src="{{asset('public/frontend/img/product03.png')}}" alt="">
 								</div>
 								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<p class="product-category">{{trans('product.Category')}}</p>
+									<h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
 									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 								</div>
 							</div>
@@ -170,15 +170,15 @@
 						<div class="store-filter clearfix">
 							<div class="store-sort">
 								<label>
-									Sort By:
+									{{trans('product.Sort By')}}:
 									<select class="input-select">
-										<option value="0">Popular</option>
-										<option value="1">Position</option>
+										<option value="0">{{trans('product.Popular')}}</option>
+										<option value="1">{{trans('product.Position')}}</option>
 									</select>
 								</label>
 
 								<label>
-									Show:
+									{{trans('product.Show')}}:
 									<select class="input-select">
 										<option value="0">20</option>
 										<option value="1">50</option>
@@ -198,12 +198,12 @@
 							<!-- product -->
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
-								<a href="{{URL::to('product-'.$pro->id)}}">
+								<a href="{{URL::to(app()->getLocale(),'product-'.$pro->id)}}">
 									<div class="product-img">
 									<img src="{{asset('public/uploads/product/more_image/'.$pro->image)}}" alt="">
 										<div class="product-label">
 											<span class="sale">-{{$pro->vat}}%</span>
-											<span class="new">NEW</span>
+											<span class="new">{{trans('product.NEW')}}</span>
 										</div>
 									</div>
 									</a>
@@ -219,13 +219,13 @@
 											<i class="fa fa-star"></i>
 										</div>
 										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-											<button class="quick-view"><a href="{{asset("/product-$pro->id")}}"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></a></button>
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
+											<button class="quick-view"><a href="{{asset("/product-$pro->id")}}"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></a></button>
 										</div>
 									</div>
 									<div data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> {{trans('product.add to cart')}}</button>
 									</div>
 								</div>
 							</div>
@@ -236,7 +236,7 @@
 
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
-							<span class="store-qty">Showing 20-100 products</span>
+							<span class="store-qty">{{trans('product.Showing 20-100 products')}}</span>
 							<ul class="store-pagination">
 								<li class="active">1</li>
 								<li><a href="#">2</a></li>

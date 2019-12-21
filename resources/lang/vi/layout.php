@@ -27,7 +27,7 @@
             "Your Wishlist"                       => "Danh sách mong muốn của bạn",
             "Your Cart"                           => "Giỏ hàng của bạn",
             "Item(s) selected"                    => " Sản phẩm ",
-            "TOTAL PRICE :$"                      => "TỔNG GIÁ : VND",
+            "TOTAL PRICE : $"                     => "TỔNG GIÁ : VND",
             "View Cart"                           => "Xem giỏ hàng",
             "Clear Cart"                          => "Xóa giỏ hàng",
             "Checkout"                            => "Thanh toán",
