@@ -93,7 +93,6 @@ class CartController extends Controller
          */
         public function history()
         {
-            $this->AuthenticLogin();
             Session::put('message', 'Order success !');
             $all_menu = DB::table('tbl_menu')->get();
             $infor_user = DB::table('tbl_user')->get();

@@ -388,7 +388,7 @@
                                         <div class="cart-btns">
                                             <a href="#">{{trans('layout.View Cart')}}</a>
                                             <a href="#" class="clear-cart">{{trans('layout.Clear Cart')}}</a>
-                                            <a type="button"href="{{URL::to('checkout')}}">{{trans('layout.Checkout')}} <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a type="button"href="{{URL::to(app()->getLocale(),'checkout')}}">{{trans('layout.Checkout')}} <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                             </div>

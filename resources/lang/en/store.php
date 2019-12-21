@@ -1,7 +1,7 @@
 <?php
     
         return [
-            //=========================================== ADDRESS - INFORMATION USER =========================================
+            //=========================================== PATH =========================================
             "Home"                                => "Home",
             "All Categories"                      => "All Categories",
             "Accessories"                         => "Accessories",
