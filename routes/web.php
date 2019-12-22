@@ -11,27 +11,27 @@
 |
 */
 // Prefix User manager
-// $prefix_user  = config('thinkpad.url.prefix.user');
-// $prefix_homeCtrl = 'HomeController@';
+$prefix_user  = config('thinkpad.url.prefix.user');
+$prefix_homeCtrl = 'HomeController@';
 
-// Route::group(['prefix' => $prefix_user], function () use($prefix_homeCtrl) {
-//     //Front - end
-//     Route::get('/', $prefix_homeCtrl.'index');
-//     Route::get('home', $prefix_homeCtrl.'index');
-//     Route::get('checkout', $prefix_homeCtrl.'checkout');
-//     Route::get('store', $prefix_homeCtrl.'store');
-//     Route::get('product-{id}', $prefix_homeCtrl.'product');
-//     Route::get('regular', $prefix_homeCtrl.'regular');
-//     Route::get('category', $prefix_homeCtrl.'category');
-//     Route::post('update-infor-user/{user_id}', $prefix_homeCtrl.'update_infor_user');
+Route::group(['prefix' => $prefix_user], function () use($prefix_homeCtrl) {
+    //Front - end
+    Route::get('/', $prefix_homeCtrl.'index');
+    Route::get('home', $prefix_homeCtrl.'index');
+    Route::get('checkout', $prefix_homeCtrl.'checkout');
+    Route::get('store', $prefix_homeCtrl.'store');
+    Route::get('product-{id}', 'HomeController@product');
+    Route::get('regular', $prefix_homeCtrl.'regular');
+    Route::get('category', $prefix_homeCtrl.'category');
+    Route::post('update-infor-user-{user_id}', $prefix_homeCtrl.'update_infor_user');
 
-//     Route::post('login',$prefix_homeCtrl.'login');
-//     Route::post('register',$prefix_homeCtrl.'register');
-//     Route::get('logout', $prefix_homeCtrl.'log_out');
+    Route::post('login',$prefix_homeCtrl.'login');
+    Route::post('register',$prefix_homeCtrl.'register');
+    Route::get('logout', $prefix_homeCtrl.'log_out');
 
-//     //Search
-//     Route::get('search', $prefix_homeCtrl.'search','update_infor_user');
-// });
+    //Search
+    Route::get('search', $prefix_homeCtrl.'search','update_infor_user');
+});
 
 // Admin manager 
 $prefix_admin = config('thinkpad.url.prefix_admin');
@@ -95,39 +95,33 @@ Route::post('contact', 'HomeController@post_contact');
 Route::post('checkout', 'CartController@submitFormCheckout');
 
 //==============================================CHANGE LANGUAGE===================================================
-Route::post('update-infor-user-{user_id}','HomeController@update_infor_user');
-Route::redirect('/', '/en');
-Route::group(['prefix' => '{language}'], function () {
-    Route::get('/', function () {
-        return view('/');
-    }); 
-    Auth::routes();
-    Route::get('/','HomeController@index');
-    //Front - end
-    Route::get('/home','HomeController@index');
-    Route::get('checkout','HomeController@checkout');
-    Route::get('store','HomeController@store');
-    Route::get('product-{id}','HomeController@product');
-    Route::get('regular','HomeController@regular');
-    Route::get('category','HomeController@category');
-    
-    
-    Route::post('login','HomeController@login');
-    Route::post('register','HomeController@register');
-    Route::get('logout', 'HomeController@log_out');
-    
-    // //Search
-    Route::get('search','HomeController@search');
-    Route::get('history', 'CartController@history');
 
-    // Login with Facebook
-    Route::get('login/{social}', [
-        'as' => 'login.{social}',
-        'uses' => 'SocialAccountController@redirectToProvider'
-    ]);
+// Route::redirect('/', '/en');
 
-    Route::get('login/{social}/callback', [
-        'as' => 'login.{social}.callback',
-        'uses' => 'SocialAccountController@handleProviderCallback'
-    ]);
-});
+// Route::group(['prefix' => '{language}'], function () {
+//     Route::get('/', function () {
+//         return view('/');
+//     }); 
+//     Auth::routes();
+//     Route::get('/','HomeController@index');
+//     //Front - end
+//     Route::get('home','HomeController@index');
+//     Route::get('checkout','HomeController@checkout');
+//     Route::get('store','HomeController@store');
+//     Route::get('regular','HomeController@regular');
+//     Route::get('category','HomeController@category');
+//     // Route::get('product-{id}','HomeController@product');
+//     Route::get('product-{id}', function ($id) {
+        
+//         echo "<script> alert('".$id."');        
+//         </script>";
+//     });
+    
+//     Route::post('login','HomeController@login');
+//     Route::post('register','HomeController@register');
+//     Route::get('logout', 'HomeController@log_out');
+    
+//     // //Search
+//     Route::get('search','HomeController@search');
+//     Route::get('history', 'CartController@history');
+// });

@@ -266,12 +266,9 @@ class HomeController extends Controller
     {
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
         if ($user_id = Session::get('user_id')) {
-
-
             $infor_user = DB::table('tbl_user')
                 ->where('id', $user_id)
                 ->get();
-
             $all_category = DB::table('tbl_category')
                 ->where('category_status', '1')
                 ->get();
@@ -442,8 +439,7 @@ class HomeController extends Controller
             $message->priority(3);
             // $message->attach('pathToFile');
         });
-        echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');
-                window.location = '".url('/')."'        
+        echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');        
         </script>";
     }
 }

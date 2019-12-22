@@ -63,8 +63,8 @@
                 <li><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-map-marker"></i>{{trans('layout.09 - Ngu Hanh Son - Danang - Vietnam')}}</a></li>
                 </ul>
                 <ul class="header-links pull-right">
-                    <li><a href="/en"><img src="{{asset('public/frontend/img/usa-flag-language-icon.png')}}"  id="language" alt="">USA</a></li>
-                    <li><a href="/vi"><img src="{{asset('public/frontend/img/vn-flag-language-icon.png')}}" id="language" alt="">VN</a></li>
+                    {{-- <li><a href="/en"><img src="{{asset('public/frontend/img/usa-flag-language-icon.png')}}"  id="language" alt="">USA</a></li>
+                    <li><a href="/vi"><img src="{{asset('public/frontend/img/vn-flag-language-icon.png')}}" id="language" alt="">VN</a></li> --}}
                     <!-- Selected language -->
 
                     <!-- End Selected language  -->
@@ -73,7 +73,7 @@
                         <!-- Mở hộp thoại đăng nhập khi mới vào website  -->
                         @if($user_id = Session::get('user_id'))
 
-                        <li><a href="{{URL::to(app()->getLocale(),'infor')}}" data-toggle="modal" data-target="#myAccountModal"><i class="fa fa-user-o"></i>
+                        <li><a href="{{URL::to(  'infor')}}" data-toggle="modal" data-target="#myAccountModal"><i class="fa fa-user-o"></i>
                                 <?php
                                 $name = Session::get('user_name');
                                 /**
@@ -185,7 +185,7 @@
                                 <input type="submit" class="form-control btn btn-danger" value="Update">
                             </div>
                             <hr>
-                        <a href="{{URL::to(app()->getLocale(),'logout')}}" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
+                        <a href="{{URL::to(  'logout')}}" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
                         </form>
                         @endforeach
                         @endif
@@ -245,7 +245,7 @@
                         }
                         ?>
 
-                        <form action="{{URL::to(app()->getLocale(),'login')}}" method="post">
+                        <form action="{{URL::to(  'login')}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="col-form-label">{{trans('layout.Email')}}</label>
@@ -297,7 +297,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{URL::to(app()->getLocale(),'register')}}" method="post">
+                        <form action="{{URL::to(  'register')}}" method="post">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="col-form-label">{{trans('layout.Your Name')}}</label>
@@ -341,7 +341,7 @@
                     <!-- LOGO -->
                     <div class="col-md-3">
                         <div class="header-logo">
-                            <a href="{{URL::to(app()->getLocale(),'')}}" class="logo">
+                            <a href="{{URL::to(  '')}}" class="logo">
                                 <img src="{{asset('public/frontend/img/logo.png')}}" style="max-width: 200px; max-height: 70px;" alt="">
                                 {{-- <img src="https://www.lenovo.com/medias/thinkpad-logo-white.png?context=bWFzdGVyfHJvb3R8MzA3MHxpbWFnZS9wbmd8aDFiL2g4NC85NjM4ODE5ODIzNjQ2LnBuZ3xmNTM0Y2U2NjgzYWI4YjU2ZGNkNzg1ODRmOWUwZDhhMzhmYzU2MWRlYjVjODAyZjljN2YzMDk0MWViNzQ1N2Mz" style="max-width: 200px; max-height: 70px;" alt=""> --}}
                             </a>
@@ -351,7 +351,7 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form action="{{URL::to(app()->getLocale(),'search')}}" method="GET">
+                            <form action="{{URL::to(  'search')}}" method="GET">
                             {{-- <input type="hidden" name="_token" value="{{csrf_token()}}";> --}}
                                 <select class="input-select">
                                 <option value="0">{{trans('layout.All Category')}}</option>
@@ -401,7 +401,7 @@
                                         <div class="cart-btns">
                                             <a href="#">{{trans('layout.View Cart')}}</a>
                                             <a href="#" class="clear-cart">{{trans('layout.Clear Cart')}}</a>
-                                            <a type="button"href="{{URL::to(app()->getLocale(),'checkout')}}">{{trans('layout.Checkout')}} <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a type="button"href="{{URL::to(  'checkout')}}">{{trans('layout.Checkout')}} <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                             </div>
@@ -435,11 +435,11 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                <li class="active" id="home"><a href="{{URL::to(app()->getLocale(),'home')}}">{{trans('layout.Home')}}</a></li>
+                <li class="active" id="home"><a href="{{URL::to(  'home')}}">{{trans('layout.Home')}}</a></li>
                     {{-- @foreach($all_menu as $key => $menu) --}}
-                    <li><a href="{{URL::to(app()->getLocale(),'hot+deals')}}">{{trans('layout.Hot Deals')}}</a></li>
-                    <li><a href="{{URL::to(app()->getLocale(),'history')}}">{{trans('layout.History')}}</a></li>
-                    <li><a href="{{URL::to(app()->getLocale(),'store')}}">{{trans('layout.Store')}}</a></li>
+                    <li><a href="{{URL::to(  'hot+deals')}}">{{trans('layout.Hot Deals')}}</a></li>
+                    <li><a href="{{URL::to(  'history')}}">{{trans('layout.History')}}</a></li>
+                    <li><a href="{{URL::to(  'store')}}">{{trans('layout.Store')}}</a></li>
                     {{-- @endforeach --}}
                 </ul>
                 <!-- /NAV -->

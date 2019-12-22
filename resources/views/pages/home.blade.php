@@ -14,7 +14,7 @@
                         </div>
                         <div class="shop-body">
                         <h3>{{trans('home.Laptop')}}<br>{{trans('home.Collection')}}</h3>
-                            <a href="{{URL::to(app()->getLocale(),'store')}}" class="cta-btn">{{trans('home.Shop now')}} <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{URL::to( 'store')}}" class="cta-btn">{{trans('home.Shop now')}} <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="shop-body">
                             <h3>{{trans('home.Cameras')}}<br>{{trans('home.Collection')}}</h3>
-                            <a href="{{URL::to(app()->getLocale(),'store')}}" class="cta-btn">{{trans('home.Shop now')}} <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{URL::to('store')}}" class="cta-btn">{{trans('home.Shop now')}} <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                                     @foreach($all_product as $key => $pro)
                                     <div class="product">
                                     <input class="form-control" type="hidden" name="product_id" value="{{$pro->id}}">
-                                        <a href="{{URL::to(app()->getLocale(),'product-'.$pro->id)}}">
+                                        <a href="{{URL::to( 'product-'.$pro->id)}}">
                                                 <div class="product-img">
                                                     <img name='image' src="{{asset('public/uploads/product/more_image/'.$pro->image)}}" alt="">
                                                     <div class="product-label">
@@ -99,7 +99,7 @@
                                             </a>
                                             <div class="product-body">
                                                 <p class="product-category" name='category'>{{$pro->category_name}}</p>
-                                                <h3 class="product-name" name="$pro->id" ><a href="{{URL::to(app()->getLocale(),'product-'.$pro->id)}}">{{$pro->name}}</a></h3>
+                                                <h3 class="product-name" name="$pro->id" ><a href="{{URL::to( 'product-'.$pro->id)}}">{{$pro->name}}</a></h3>
                                                 <h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price)}}</del></h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
@@ -111,7 +111,7 @@
                                                 <div class="product-btns">
                                                     <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('home.add to wishlist')}}</span></button>
                                                     <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('home.add to compare')}}</span></button>
-                                                    <button class="quick-view" name="$pro->id"><a href="{{URL::to(app()->getLocale(),'product-'.$pro->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('home.quick view')}}</span></a></button>
+                                                    <button class="quick-view" name="$pro->id"><a href="{{URL::to( 'product-'.$pro->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('home.quick view')}}</span></a></button>
                                                 </div>
                                             </div>
                                         <div   data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
@@ -150,7 +150,7 @@
                         <h2 class="text-uppercase">{{trans('home.hot deal this year')}}</h2>
                         <p>{{trans('home.New Collection Up to 50% OFF')}}</p>
                         <h5></h5>
-                        <a class="primary-btn cta-btn" href="{{URL::to(app()->getLocale(),'store')}}">{{trans('home.Shop now')}}</a>
+                        <a class="primary-btn cta-btn" href="{{URL::to( 'store')}}">{{trans('home.Shop now')}}</a>
                     </div>
                 </div>
             </div>
