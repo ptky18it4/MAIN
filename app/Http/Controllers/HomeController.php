@@ -302,7 +302,6 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 // ->limit(5)
                 ->get();
-
             return view('pages.product')->with('all_menu', $all_menu)
                     ->with('infor_user', $infor_user)
                     ->with('all_category', $all_category)

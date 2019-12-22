@@ -95,41 +95,39 @@ Route::post('contact', 'HomeController@post_contact');
 Route::post('checkout', 'CartController@submitFormCheckout');
 
 //==============================================CHANGE LANGUAGE===================================================
-Route::post('update-infor-user/{user_id}','HomeController@update_infor_user');
+Route::post('update-infor-user-{user_id}','HomeController@update_infor_user');
 Route::redirect('/', '/en');
 Route::group(['prefix' => '{language}'], function () {
-        Route::get('/', function () {
+    Route::get('/', function () {
         return view('/');
-        }); 
-
-        Auth::routes();
-
-        Route::get('/','HomeController@index');
-        //Front - end
-        Route::get('/home','HomeController@index');
-        Route::get('checkout','HomeController@checkout');
-        Route::get('store','HomeController@store');
-        Route::get('product-{id}','HomeController@product');
-        Route::get('regular','HomeController@regular');
-        Route::get('category','HomeController@category');
-
+    }); 
+    Auth::routes();
+    Route::get('/','HomeController@index');
+    //Front - end
+    Route::get('/home','HomeController@index');
+    Route::get('checkout','HomeController@checkout');
+    Route::get('store','HomeController@store');
+    Route::get('product-{id}','HomeController@product');
+    Route::get('regular','HomeController@regular');
+    Route::get('category','HomeController@category');
     
-        Route::post('login','HomeController@login');
-        Route::post('register','HomeController@register');
-        Route::get('logout', 'HomeController@log_out');
-        
-        // //Search
-        // Route::get('search','HomeController@search','update_infor_user');
-        Route::get('history', 'CartController@history');
-
-        // Login with Facebook
-        Route::get('login/{social}', [
-            'as' => 'login.{social}',
-            'uses' => 'SocialAccountController@redirectToProvider'
-        ]);
     
-        Route::get('login/{social}/callback', [
-            'as' => 'login.{social}.callback',
-            'uses' => 'SocialAccountController@handleProviderCallback'
-        ]);
+    Route::post('login','HomeController@login');
+    Route::post('register','HomeController@register');
+    Route::get('logout', 'HomeController@log_out');
+    
+    // //Search
+    Route::get('search','HomeController@search');
+    Route::get('history', 'CartController@history');
+
+    // Login with Facebook
+    Route::get('login/{social}', [
+        'as' => 'login.{social}',
+        'uses' => 'SocialAccountController@redirectToProvider'
+    ]);
+
+    Route::get('login/{social}/callback', [
+        'as' => 'login.{social}.callback',
+        'uses' => 'SocialAccountController@handleProviderCallback'
+    ]);
 });

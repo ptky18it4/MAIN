@@ -157,7 +157,7 @@
                     <div class="modal-body">
                         @if(Session::get('user_id'))
                         @foreach($infor_user as $key => $infor)
-                        <form action="{{URL::to('update-infor-user/'.$infor->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{URL::to('update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input type="hidden" name="user_id" value="$infor->id">
                             <div class="form-group" >
