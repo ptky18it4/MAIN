@@ -136,6 +136,8 @@ class HomeController extends Controller
     public function update_infor_user(Request $request)
     {
         $this->AuthenticLogin();
+        echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');       
+</script>";
         $user_id = $request->user_id;
         $data = array();
         $data['email'] = $request->user_email;

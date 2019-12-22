@@ -29,5 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'facebook' => [
+        'client_id' => '2500922780231281',
+        'client_secret' => '1c09c2feff2c2f3680948346fc465fe9',
+        'redirect' => 'https://www.thinkpad.com.vn/login/facebook',
+    ],
 
 ];

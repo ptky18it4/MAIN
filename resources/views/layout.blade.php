@@ -157,7 +157,7 @@
                     <div class="modal-body">
                         @if(Session::get('user_id'))
                         @foreach($infor_user as $key => $infor)
-                        <form action="{{URL::to(app()->getLocale(),'update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{URL::to('update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input type="hidden" name="user_id" value="$infor->id">
                             <div class="form-group" >
@@ -258,6 +258,19 @@
                             <div class="right-w3l">
                                 <input type="submit" class="form-control" value="{{trans('layout.Log in')}}">
                             </div>
+                            {{-- CUSTOMIZE LOGIN --}}
+                            <div class="customize-login">
+                                <a href="{{URL::to('login/facebook')}}" class="fb btn">
+                                  <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                                </a>
+                                <a href="#" class="twitter btn">
+                                  <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+                                </a>
+                                <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+                                  </i> Login with Google+
+                                </a>
+                            </div>
+                            {{-- END CUSTOMIZE LOGIN --}}
                             <div class="sub-w3l">
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
