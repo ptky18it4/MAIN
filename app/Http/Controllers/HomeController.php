@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use DB,Mail;
-Use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 use Session;
@@ -24,9 +23,7 @@ class HomeController extends Controller
             return Redirect::to('/')->send();;
         }
     }
-    /**
-     * Function search 
-     */
+
     public function search(Request $request)
     {
         $keywords = $request->keywords;
@@ -61,22 +58,15 @@ class HomeController extends Controller
                 ->orWhere('description', 'like' , '%'.$keywords.'%')
                 ->orWhere('meta_tag_title', 'like' , '%'.$keywords.'%')
                 ->paginate(4);
-        
-        $contact = DB::table('tbl_contact')
-        ->orderby('id','desc')
-        ->get();
         return view('pages.regular')
                 ->with('all_menu',$all_menu)
                 ->with('keywords',$keywords)
                 ->with('result_search',$result)
                 ->with('infor_user',$infor_user)
                 ->with('all_category',$all_category)
-                ->with('related_product',$related_product)
-                ->with('contact',$contact);
+                ->with('related_product',$related_product);
     } 
-    /**
-     * Function login 
-     */
+
     public function login(Request $request)
     {
         $user_email = $request->user_email;
@@ -91,9 +81,7 @@ class HomeController extends Controller
             return Redirect::to('/home');
         }
     }
-    /**
-     * Function register 
-     */
+
     public function register(Request $request)
     {
         /**
@@ -120,9 +108,7 @@ class HomeController extends Controller
         DB::table('tbl_user')->insert($data);
         return Redirect::to('/');
     } 
-    /**
-     * Function logout 
-     */
+    
     public function log_out()
     {
         $this->AuthenticLogin();
@@ -130,15 +116,10 @@ class HomeController extends Controller
         Session::put('user_id', null);
         return Redirect::to('/');
     }
-    /**
-     * Function update information of user 
-     */
-    public function update_infor_user(Request $request)
+
+    public function update_infor_user(Request $request, $user_id)
     {
         $this->AuthenticLogin();
-        echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');       
-</script>";
-        $user_id = $request->user_id;
         $data = array();
         $data['email'] = $request->user_email;
         $data['password'] = md5($request->user_password);
@@ -153,17 +134,17 @@ class HomeController extends Controller
             $data['image'] = $new_image;
         }
         $data['remember_token'] = $request->_token;
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
         DB::table('tbl_user')->where('id', $user_id)->update($data);
         return Redirect::to('home');
     }
-    /**
-     * Function page index
-     */
+
     public function index()
     {
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
-        if ($user_id = Session::get('user_id')) 
-        {
+        if ($user_id = Session::get('user_id')) {
             $infor_user = DB::table('tbl_user')->where('id', $user_id)->get();
             $all_category = DB::table('tbl_category')->where('category_status', '1')->get();
 
@@ -175,6 +156,7 @@ class HomeController extends Controller
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where('show_on_home','1')
                 ->orderby('id', 'desc')
+                // ->limit(5)
                 ->get();
 
             $top_selling = DB::table('tbl_product')
@@ -183,19 +165,14 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 ->limit(5)
                 ->get();
-            $contact = DB::table('tbl_contact')
-                    ->orderby('id','desc')
-                    ->get();
 
             return view('pages.home')
                 ->with('all_menu', $all_menu)
                 ->with('infor_user', $infor_user)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling)
-                ->with('contact', $contact);
-        }
-         else {
+                ->with('top_selling', $top_selling);
+        } else {
             $all_menu = DB::table('tbl_menu')
                 ->where('show_on_home', '1')
                 ->get();
@@ -216,21 +193,15 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 ->limit(5)
                 ->get();
-            $contact = DB::table('tbl_contact')
-            ->orderby('id','desc')
-            ->get();
 
             return view('pages.home')
                 ->with('all_menu', $all_menu)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling)
-                ->with('contact', $contact);
+                ->with('top_selling', $top_selling);
         }
     }
-    /**
-     * Function store
-     */
+
     public function store()
     {
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
@@ -253,17 +224,13 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 // ->limit(5)
                 ->get();
-            $contact = DB::table('tbl_contact')
-            ->orderby('id','desc')
-            ->get();
+
             return view('pages.store')
                 ->with('all_menu', $all_menu)
                 ->with('infor_user', $infor_user)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling)
-                ->with('contact', $contact);
-
+                ->with('top_selling', $top_selling);
         } else {
             $all_menu = DB::table('tbl_menu')
                 ->where('show_on_home', '1')
@@ -286,26 +253,21 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 ->limit(8)
                 ->get();
-            $contact = DB::table('tbl_contact')
-            ->orderby('id','desc')
-            ->get();
+
             return view('pages.store')
                 ->with('all_menu', $all_menu)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling)
-                ->with('contact', $contact);
-
+                ->with('top_selling', $top_selling);
         }
     }
-    /**
-     * Function product
-     */
-    public function product(Request $request)
+
+    public function product($id)
     {
-        $id = $request->id;
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
         if ($user_id = Session::get('user_id')) {
+
+
             $infor_user = DB::table('tbl_user')
                 ->where('id', $user_id)
                 ->get();
@@ -340,18 +302,14 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 // ->limit(5)
                 ->get();
-            $contact = DB::table('tbl_contact')
-            ->orderby('id','desc')
-            ->get();
+
             return view('pages.product')->with('all_menu', $all_menu)
                     ->with('infor_user', $infor_user)
                     ->with('all_category', $all_category)
                     ->with('all_product', $all_product)
                     ->with('top_selling', $top_selling)
                     ->with('more_image',$more_image)
-                    ->with('infor_config_product',$infor_config_product)
-                    ->with('contact', $contact);
-
+                    ->with('infor_config_product',$infor_config_product);
 
         } else {
 
@@ -385,26 +343,21 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 // ->limit(5)
                 ->get();
-                $contact = DB::table('tbl_contact')
-                ->orderby('id','desc')
-                ->get();
+
             return view('pages.product')->with('all_menu', $all_menu)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
                 ->with('top_selling', $top_selling)
                 ->with('more_image',$more_image)
-                ->with('infor_config_product',$infor_config_product)
-                ->with('contact', $contact);
-
-        }
+                ->with('infor_config_product',$infor_config_product);
     }
-    /**
-     * Function checkout
-     */
+    }
+
     public function checkout()
     {
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
         if ($user_id = Session::get('user_id')) {
+
             $infor_user = DB::table('tbl_user')
                 ->where('id', $user_id)
                 ->get();
@@ -430,18 +383,13 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 // ->limit(5)
                 ->get();
-            $contact = DB::table('tbl_contact')
-            ->orderby('id','desc')
-            ->get();
 
             return view('pages.checkout')
                 ->with('all_menu', $all_menu)
                 ->with('infor_user', $infor_user)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling)
-                ->with('contact', $contact);
-
+                ->with('top_selling', $top_selling);
         } else {
 
             $all_menu = DB::table('tbl_menu')
@@ -465,34 +413,26 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 // ->limit(5)
                 ->get();
-            $contact = DB::table('tbl_contact')
-            ->orderby('id','desc')
-            ->get();
+
             return view('pages.checkout')
                 ->with('all_menu', $all_menu)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling)
-                ->with('contact', $contact);
-
+                ->with('top_selling', $top_selling);
         }
     }
-    /**
-     * Function get contact
-     */
+
     public function get_contact() {
         return view('mails.contact');
     }
-    /**
-     * Function post contact
-     */
+
     public function post_contact(Request $request) {
         $data = array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
         $data['content'] = $request->content;
-        Mail::send('mails.contact', $data, function ($message) {
+        Mail::send('mails.blanks', $data, function ($message) {
             $message->from('phamtrungky19032000@gmail.com','Trung Kỳ');
             $message->sender('phamtrungky19032000@gmail.com','Trung Kỳ');
             $message->to('phamtrungky012345@gmail.com', 'Kenneth');
@@ -506,8 +446,5 @@ class HomeController extends Controller
         echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');
                 window.location = '".url('/')."'        
         </script>";
-    }  
-    /**
-     * function change language using Session and Middleware
-     */
+    }
 }

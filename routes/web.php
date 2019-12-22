@@ -94,8 +94,8 @@ Route::get('contact', 'HomeController@get_contact');
 Route::post('contact', 'HomeController@post_contact');
 Route::post('checkout', 'CartController@submitFormCheckout');
 
-Route::post('update-infor-user-{user_id}','HomeController@update_infor_user');
 //==============================================CHANGE LANGUAGE===================================================
+Route::post('update-infor-user/{user_id}','HomeController@update_infor_user');
 Route::redirect('/', '/en');
 Route::group(['prefix' => '{language}'], function () {
         Route::get('/', function () {
@@ -117,7 +117,7 @@ Route::group(['prefix' => '{language}'], function () {
         Route::post('login','HomeController@login');
         Route::post('register','HomeController@register');
         Route::get('logout', 'HomeController@log_out');
-    
+        
         // //Search
         // Route::get('search','HomeController@search','update_infor_user');
         Route::get('history', 'CartController@history');

@@ -157,7 +157,7 @@
                     <div class="modal-body">
                         @if(Session::get('user_id'))
                         @foreach($infor_user as $key => $infor)
-                        <form action="{{URL::to('update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{URL::to('update-infor-user/'.$infor->id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input type="hidden" name="user_id" value="$infor->id">
                             <div class="form-group" >
@@ -464,20 +464,18 @@
                             <button class="newsletter-btn"><i class="fa fa-envelope"></i>{{trans('layout.Subscribe')}} </button>
                         </form>
                         <ul class="newsletter-follow">
-                            @foreach($contact as $key => $contact)
                             <li>
-                                <a href="{{$contact->facebook}}"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="{{$contact->twitter}}"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="{{$contact->instagram}}"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
                             </li>
-                            @endforeach
                         </ul>
                     </div>
                 </div>
