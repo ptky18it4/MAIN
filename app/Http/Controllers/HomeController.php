@@ -155,8 +155,13 @@ class HomeController extends Controller
         //=============================================== BLOCK THE IP Address OF THE CLIENT ===============================
 
         $arrayIP['address'] = $ip;
-        if ($ip == '192.168.1.24') {
-           return view('pages.404');
+        switch ($ip) {
+            case '192.168.1.24':
+                return view('pages.404');
+                break;
+            default:
+                return view('pages.404_1');
+                break;
         }
         
         //===================================================================================================================
