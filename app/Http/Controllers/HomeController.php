@@ -138,9 +138,6 @@ class HomeController extends Controller
             $data['image'] = $new_image;
         }
         $data['remember_token'] = $request->_token;
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
         DB::table('tbl_user')->where('id', $user_id)->update($data);
         return Redirect::to('home');
     }
@@ -159,8 +156,7 @@ class HomeController extends Controller
             $all_product = DB::table('tbl_product')
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where('show_on_home','1')
-                ->orderby('id', 'desc')
-                // ->limit(5)
+                ->inRandomOrder()
                 ->get();
             
             $top_selling = DB::table('tbl_product')
@@ -187,8 +183,7 @@ class HomeController extends Controller
             $all_product = DB::table('tbl_product')
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where('show_on_home', '1')
-                ->orderby('id', 'desc')
-                ->limit(5)
+                ->inRandomOrder()
                 ->get();
 
             $top_selling = DB::table('tbl_product')
@@ -302,11 +297,17 @@ class HomeController extends Controller
                 ->where('top_selling', '>', '3')
                 ->orderby('id', 'desc')
                 ->get();
+
+            $related_product = DB::table('tbl_product')
+                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
+                ->inRandomOrder()->paginate(4);
+
             $feedback = DB::table('tbl_feedback')
                 ->where('rating', '>=', '1')
                 ->orderby('rating', 'desc')
                 ->limit(4)
                 ->get();
+
             $totalFeedback = DB::table('tbl_feedback')->count();
             return view('pages.product')->with('all_menu', $all_menu)
                     ->with('infor_user', $infor_user)
@@ -316,6 +317,7 @@ class HomeController extends Controller
                     ->with('more_image',$more_image)
                     ->with('feedback',$feedback)
                     ->with('totalFeedback',$totalFeedback)
+                    ->with('related_product',$related_product)
                     ->with('infor_config_product',$infor_config_product);
 
         } else {
@@ -349,7 +351,16 @@ class HomeController extends Controller
                 ->where('top_selling', '>', '3')
                 ->orderby('id', 'desc')
                 ->get();
-
+            $related_product = DB::table('tbl_product')
+                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
+                ->where([
+                            ['name', 'like' , '%'.$id.'%'],
+                            ['category_name', 'like' , '%'.$id.'%'],
+                            ['show_on_home', '=' , '1'],
+                        ])
+                ->orWhere('description', 'like' , '%'.$id.'%')
+                ->orWhere('meta_tag_title', 'like' , '%'.$id.'%')
+                ->paginate(4);
             $feedback = DB::table('tbl_feedback')
                 ->where('rating', '>', '2')
                 ->orderby('id', 'asc')
@@ -365,6 +376,7 @@ class HomeController extends Controller
                 ->with('more_image',$more_image)
                 ->with('feedback',$feedback)
                 ->with('totalFeedback',$totalFeedback)
+                ->with('related_product',$related_product)
                 ->with('infor_config_product',$infor_config_product);
     }
     }

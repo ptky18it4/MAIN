@@ -68,7 +68,7 @@
                         <a class="review-link" href="#">{{trans('product.10 Review(s) | Add your review')}}</a>
                     </div>
                     <div>
-                        <h3 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price,2, ',', '.')}}</del></h3>
+                        <h3 class="product-price">{{number_format($pro->price - ($pro->price*($pro->vat/100)),3, ',', '.')}} VND <del class="product-old-price">${{number_format($pro->price,2, ',', '.')}}</del></h3>
                         <span class="product-available">
                             @if($pro->status == 1)
                             {{trans('product.IN STOCK')}}
@@ -323,9 +323,20 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>{{$pro->description}}</p>
-                                    </div>
+                                    <style>
+                                       
+                                    </style>
+                                   
+                                   
                                 </div>
+                                <div class="video">
+                                       <video playsinline="playsinline"  autoplay="autoplay" muted="muted" loop="loop">
+                                        <source src="{{asset('public/frontend/video/'.$pro->video)}}" type="video/mp4">
+                                        <!--Link video online :  https://f6-group-zf.zdn.vn/ebae2adc0406e858b117/9128246392226996966 -->
+                                        </video>  
+                                    </div>
                             </div>
+                        </div>
                         @endforeach
                             <!-- /tab2  -->
 
@@ -541,126 +552,50 @@
 
             <div class="col-md-12">
                 <div class="section-title text-center">
+                    <hr style="padding-top: 10px;">
                     <h3 class="title">{{trans('product.Related Products')}}</h3>
                 </div>
             </div>
-
             <!-- product -->
+            @foreach($related_product as $key => $item)
             <div class="col-md-3 col-xs-6">
                 <div class="product">
-                    <div class="product-img">
-                        <img src="{{asset('public/frontend/img/product01.png')}}" alt="">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
+                <input class="form-control" type="hidden" name="product_id" value="{{$item->id}}">
+                    <a href="{{URL::to( 'product-'.$item->id)}}">
+                            <div class="product-img">
+                                <img name='image' src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
+                                <div class="product-label">
+                                    <span class="sale" name='sale'>-{{$item->vat}}%</span>
+                                    <span class="new">{{trans('home.NEW')}}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="product-body">
+                            <p class="product-category" name='category'>{{$item->category_name}}</p>
+                            <h3 class="product-name" name="$item->id" ><a href="{{URL::to( 'product-'.$item->id)}}">{{$item->name}}</a></h3>
+                            <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price)}}VND</del></h4>
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product-btns">
+                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('home.add to wishlist')}}</span></button>
+                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('home.add to compare')}}</span></button>
+                                <button class="quick-view" name="$item->id"><a href="{{URL::to( 'product-'.$item->id)}}"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('home.quick view')}}</span></a></button>
+                            </div>
+                        </div>
+                        <div   data-id="{{$item->id}}" data-name="{{$item->name}}" data-image="{{asset('public/uploads/product/more_image/'.$item->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
+                                <button type="submit" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i>{{trans('home.add to cart')}}</button>
                         </div>
                     </div>
-                    <div class="product-body">
-                        <p class="product-category">{{trans('product.Category')}}</p>
-                        <h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        <div class="product-rating">
-                        </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>{{trans('product.add to cart')}} </button>
-                    </div>
+                    <!-- /product -->
                 </div>
-            </div>
+                @endforeach
             <!-- /product -->
-
-            <!-- product -->
-            <div class="col-md-3 col-xs-6">
-                <div class="product">
-                    <div class="product-img">
-                        <img src="{{asset('public/frontend/img/product02.png')}}" alt="">
-                        <div class="product-label">
-                            <span class="new">{{trans('product.NEW')}}</span>
-                        </div>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">{{trans('product.Category')}}</p>
-                        <h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> {{trans('product.add to cart')}}</button>
-                    </div>
-                </div>
-            </div>
-            <!-- /product -->
-
             <div class="clearfix visible-sm visible-xs"></div>
-
-            <!-- product -->
-            <div class="col-md-3 col-xs-6">
-                <div class="product">
-                    <div class="product-img">
-                        <img src="{{asset('public/frontend/img/product03.png')}}" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">{{trans('product.Category')}}</p>
-                        <h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>{{trans('product.add to cart')}} </button>
-                    </div>
-                </div>
-            </div>
-            <!-- /product -->
-
-            <!-- product -->
-            <div class="col-md-3 col-xs-6">
-                <div class="product">
-                    <div class="product-img">
-                        <img src="{{asset('public/frontend/img/product04.png')}}" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">{{trans('product.Category')}}</p>
-                        <h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
-                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        <div class="product-rating">
-                        </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">{{trans('product.add to wishlist')}}</span></button>
-                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">{{trans('product.add to compare')}}</span></button>
-                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">{{trans('product.quick view')}}</span></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>{{trans('product.add to cart')}} </button>
-                    </div>
-                </div>
-            </div>
             <!-- /product -->
         </div>
         <!-- /row -->

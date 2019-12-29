@@ -2341,3 +2341,19 @@ textarea.input {
         margin-top: 10px;
     }
 }
+
+.video {
+    position: relative;
+    bottom:-500px !important;
+    left: 45.5% !important;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    padding-bottom: 2rem;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    }
