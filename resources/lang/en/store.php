@@ -22,5 +22,7 @@
             "quick view"                          => "quick view",
             "add-to-cart"                         => "add-to-cart",
             "Showing 20-100 products"             => "Showing 20-100 products",
+            "Results"                             => "Results",
+
      ];
 ?>

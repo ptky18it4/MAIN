@@ -70,5 +70,7 @@
             "Submit"                              => "Gửi đi",
             "Your Rating"                         => "Đánh giá của bạn",
             "Processor"                           => "Bộ xử lý",
+            "Related Products"                    => "Sản phẩm liên quan",
+            "NEW"                                 => "Mới",
      ];
 ?>

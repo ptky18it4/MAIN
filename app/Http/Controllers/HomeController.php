@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Redirect;  // trả về trang j đó (khi thành
 session_start();
 class HomeController extends Controller
 {
-
+    
     //Bảo mật admin
     public function AuthenticLogin()
     {
-        $user_id = Session::get('user_id');  //admin_id ở đâu mà có : admin_id này tồn tại khi đăng nhập thành công ( xem ở funciton dashboard)
+        $user_id = Session::get('user_id');  //user_id ở đâu mà có : user_id này tồn tại khi đăng nhập thành công ( xem ở funciton dashboard)
         if ($user_id) {
             return Redirect::to('/');
         } else {
@@ -27,9 +27,9 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $keywords = $request->keywords;
-
+        $user_id = Session::get('user_id');
         $all_menu = DB::table('tbl_menu')->get();
-        $infor_user = DB::table('tbl_user')->get();
+        $infor_user = DB::table('tbl_user')->where('id',$user_id)->get();
         $all_category = DB::table('tbl_category')->get();
         $result = DB::table('tbl_product')
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
@@ -43,9 +43,7 @@ class HomeController extends Controller
                           ])
                 ->orWhere('description', 'like' , '%'.$keywords.'%')
                 ->orWhere('meta_tag_title', 'like' , '%'.$keywords.'%')
-                // ->paginate(4)
                 ->paginate(8);
-                // ->get();
         
 
         $related_product = DB::table('tbl_product')
@@ -68,10 +66,14 @@ class HomeController extends Controller
     } 
 
     public function login(Request $request)
-    {
+    {   
         $user_email = $request->user_email;
         $user_password = md5($request->user_password);
         $result = DB::table('tbl_user')->where('email', $user_email)->where('password', $user_password)->first();
+        if(isset($_POST['saveInfor'])) {
+            setcookie('email',$user_email,time()+3600,'/','',0,0);
+            setcookie('pass',$user_password,time()+3600,'/','',0,0);
+        }
         if ($result) {
             Session::put('user_name', $result->username);
             Session::put('user_id', $result->id);
@@ -114,6 +116,8 @@ class HomeController extends Controller
         $this->AuthenticLogin();
         Session::put('user_name', null);
         Session::put('user_id', null);
+        setcookie('email','',time()-3600,'/','',0,0);
+        setcookie('pass','',time()-3600,'/','',0,0);
         return Redirect::to('/');
     }
 
@@ -158,7 +162,7 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 // ->limit(5)
                 ->get();
-
+            
             $top_selling = DB::table('tbl_product')
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where('top_selling', '>', '3')
@@ -297,14 +301,21 @@ class HomeController extends Controller
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where('top_selling', '>', '3')
                 ->orderby('id', 'desc')
-                // ->limit(5)
                 ->get();
+            $feedback = DB::table('tbl_feedback')
+                ->where('rating', '>=', '1')
+                ->orderby('rating', 'desc')
+                ->limit(4)
+                ->get();
+            $totalFeedback = DB::table('tbl_feedback')->count();
             return view('pages.product')->with('all_menu', $all_menu)
                     ->with('infor_user', $infor_user)
                     ->with('all_category', $all_category)
                     ->with('all_product', $all_product)
                     ->with('top_selling', $top_selling)
                     ->with('more_image',$more_image)
+                    ->with('feedback',$feedback)
+                    ->with('totalFeedback',$totalFeedback)
                     ->with('infor_config_product',$infor_config_product);
 
         } else {
@@ -337,14 +348,23 @@ class HomeController extends Controller
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where('top_selling', '>', '3')
                 ->orderby('id', 'desc')
-                // ->limit(5)
                 ->get();
+
+            $feedback = DB::table('tbl_feedback')
+                ->where('rating', '>', '2')
+                ->orderby('id', 'asc')
+                ->limit(3)
+                ->get();
+
+            $totalFeedback = DB::table('tbl_feedback')->sum('price');
 
             return view('pages.product')->with('all_menu', $all_menu)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
                 ->with('top_selling', $top_selling)
                 ->with('more_image',$more_image)
+                ->with('feedback',$feedback)
+                ->with('totalFeedback',$totalFeedback)
                 ->with('infor_config_product',$infor_config_product);
     }
     }
@@ -427,8 +447,10 @@ class HomeController extends Controller
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
+        $data['rating'] = $request->rating;
         $data['content'] = $request->content;
-        Mail::send('mails.blanks', $data, function ($message) {
+        DB::table('tbl_feedback')->insert($data);
+        Mail::send('mails.contact', $data, function ($message) {
             $message->from('phamtrungky19032000@gmail.com','Trung Kỳ');
             $message->sender('phamtrungky19032000@gmail.com','Trung Kỳ');
             $message->to('phamtrungky012345@gmail.com', 'Kenneth');
@@ -439,7 +461,20 @@ class HomeController extends Controller
             $message->priority(3);
             // $message->attach('pathToFile');
         });
-        echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');        
+        echo "<script> alert('Cảm ơn bạn đã đánh giá và phản hồi ! Chúc quý khách một ngày làm việc hiệu quả !');        
         </script>";
+        return redirect()->back();
+    }
+    public function slide()
+    {
+        $user_id = Session::get('user_id');
+        $all_menu = DB::table('tbl_menu')->get();
+        $infor_user = DB::table('tbl_user')->where('id',$user_id)->get();
+        $all_category = DB::table('tbl_category')->get();
+        
+        return view('pages.presentation')
+                ->with('all_menu', $all_menu)
+                ->with('infor_user', $infor_user)
+                ->with('all_category', $all_category);
     }
 }

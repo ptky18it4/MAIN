@@ -4,7 +4,7 @@
             "Laptop"                    => "Laptop",
             "Smartphones"               => "Smartphones",
             "Accessories"               => "Laptop",
-            "Cameras"                   => "Cameras",
+            "Discount"                  => "Discount",
             "Collection"                => "Collection",
             "Shop now"                  => "Shop now",
             "New Products"              => "New Products",

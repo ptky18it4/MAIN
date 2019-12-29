@@ -33,16 +33,19 @@ class CatalogController extends Controller
         $parent_id = DB::table('tbl_parent_id')->orderby('parent_id','desc')->get();
         return view($this->pathViewControllerCategories.'add_category')->with('parent_id',$parent_id);
     }
+    //
+    public function sort()
+    {
+        echo "<script> alert('Thank you for your feedback, we will respond to you as soon as possible !');        
+        </script>";
+    }
+    //
     public function all_category()
     {
         $this->AuthenticLogin();
         $all_category = DB::table('tbl_category')->get();
         $manager_category = view($this->pathViewControllerCategories.'all_category')->with('all_category', $all_category);
         return view('admin_layout')->with($this->pathViewControllerCategories.'all_category', $manager_category);
-
-        // echo '<pre>';
-        // print_r($all_category);
-        // echo '</pre>';
     }
     public function save_category(Request $request)
     {
@@ -63,9 +66,6 @@ class CatalogController extends Controller
          * Tương tự các $data['....'] nhé
          * Rồi, bây giờ in ra để xem đã lấy được từ bên form qua chưa nè
          */
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
 
         //Insert
         DB::table('tbl_category')->insert($data);

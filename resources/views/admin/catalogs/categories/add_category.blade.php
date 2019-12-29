@@ -4,12 +4,12 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                ADD CATEGORYS
+                {{trans('add_category.ADD CATEGORYS')}}
             </header>
 
             <div class="panel-body">
                 <form action="{{URL::to('admin/catalogs/categories/all-category')}}">
-                    <button type="submit" name="all_category" class="btn btn-info">Show all category product</button>
+                    <button type="submit" name="all_category" class="btn btn-info">{{trans('add_category.Show all category product')}}</button>
                 </form>
                 <?php
                 $message = Session::get('message');
@@ -30,7 +30,7 @@
                         {{(csrf_field())}}
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="exampleInputEmail1">Parent ID</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Parent ID')}}</label>
                             <strong style="color: red;">*</strong></div>
                             <div class="col-sm-10">
                             <div class="row">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="exampleInputEmail1">Name</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Name')}}</label>
                             <strong style="color: red;">*</strong></div>
                             <div class="col-sm-10">
                                 <input type="text" name="category_name" class="form-control" id="exampleInputEmail1" placeholder="category name">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3">
-                                <label for="exampleInputEmail1">Meta Tag Description</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Meta Tag Description')}}</label>
                             <strong style="color: red;">*</strong>
                             </div>
                             <div class="col-sm-9">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="exampleInputEmail1">Meta Tag Title</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Meta Tag Title')}}</label>
                             <strong style="color: red;">*</strong>
                             </div>
                             <div class="col-sm-10">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="exampleInputEmail1">Meta Tag Keywords</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Meta Tag Keywords')}}</label>
                             <strong style="color: red;">*</strong></div>
                                 <div class="col-sm-10">
                                 <input type="text" name="category_meta_tag_keywords" class="form-control" id="exampleInputEmail1" placeholder="meta tag keywords">
@@ -91,15 +91,15 @@
                         
                         <div class="form-groups">
                             <div class="col-sm-2">
-                                <label for="exampleInputEmail1">Status</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Status')}}</label>
                             <strong style="color: red;">*</strong>
                             </div>
                             <div class="col-sm-10">
                                 <div class="row">
                                     <div class="col-sm-4">
                                     <select name="category_product_status" class="form-control input-sm m-bot15">
-                                    <option value="0">Unactive</option>
-                                    <option value="1">Active</option>
+                                    <option value="0">{{trans('add_category.Unactive')}}</option>
+                                    <option value="1">{{trans('add_category.Active')}}</option>
                                 </select>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="exampleInputEmail1">Display Order</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Display Order')}}</label>
                             <strong style="color: red;">*</strong></div>
                             <div class="col-sm-10">
                                 <input type="text" name="category_display_order" class="form-control" id="exampleInputEmail1" placeholder="display order">
@@ -119,7 +119,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="exampleInputEmail1">Sort order</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Sort order')}}</label>
                             <strong style="color: red;">*</strong></div>
                             <div class="col-sm-10">
                                 <input type="text" name="category_sort_order" class="form-control" id="exampleInputEmail1" placeholder="sort order">
@@ -130,7 +130,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-2">
-                                <label for="exampleInputEmail1">Description</label>
+                                <label for="exampleInputEmail1">{{trans('add_category.Description')}}</label>
                             <strong style="color: red;">*</strong>
                             </div>
                             <div class="col-sm-10">
@@ -140,7 +140,7 @@
                         <br>
                         <hr>
 
-                        <button type="submit" name="add_category" class="btn btn-info">ADD CATEGORY</button>
+                        <button type="submit" name="add_category" class="btn btn-info">{{trans('add_category.ADD CATEGORY')}}</button>
 
                     </form>
                 </div>

@@ -3,16 +3,16 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <strong>ALL CATEGORY PRODUCT</strong>
+      <strong class="title">{{trans('all_category.ALL CATEGORY PRODUCT')}}</strong>
     </div>
     <div class="row w3-res-tb">
       <form action="">
         <div class="col-sm-5 m-b-xs">
           <select class="input-sm form-control w-sm inline v-middle">
-            <option value="0">Desc</option>
-            <option value="1">Asc</option>
+            <option value="0">{{trans('all_category.Desc')}}</option>
+            <option value="1">{{trans('all_category.Asc')}}</option>
           </select>
-        <button class="btn btn-sm btn-default">Apply</button>
+        <button class="btn btn-sm btn-default">{{trans('all_category.Apply')}}</button>
       </div>
       </form>
       <div class="col-sm-4">
@@ -25,7 +25,7 @@
           </span>
         </div> -->
         <form action="{{URL::to('admin/catalogs/categories/add-category')}}">
-        <button class="btn btn-sm btn-success"  type="submit">+</button>
+        <button class="btn btn-sm btn-success title" type="submit">Thêm mới</button>
         </form>
       </div>
     </div>
@@ -50,10 +50,10 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>CATEGORY PRODUCT NAME</th>
+            <th class="title">{{trans('all_category.CATEGORY NAME')}}</th>
             {{-- <th>SORT ORDER</th> --}}
-            <th>STATUS</th>
-            <th>ACTION</th>
+            <th class="title">{{trans('all_category.STATUS')}}</th>
+            <th class="title">{{trans('all_category.ACTION')}}</th>
             <!-- <th>Ngày thêm</th> -->
             <th style="width:30px;"></th>
           </tr>
@@ -93,7 +93,7 @@
     <footer class="panel-footer">
       <div class="row">
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <small class="text-muted inline m-t-sm m-b-sm">{{trans('all_category.showing 20-30 of 50 items')}}</small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">
           <ul class="pagination pagination-sm m-t-none m-b-none">

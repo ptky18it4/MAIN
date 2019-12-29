@@ -71,49 +71,51 @@
                                     <td align="left" valign="top">
                                         <table style="width:100%" cellpadding="0" cellspacing="0" border="0">
                                             <tbody>
-                                                <tr>
-                                                    <td align="left" valign="top" style="width:120px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;padding-left:15px;padding-right:10px;line-height:20px;padding-bottom:5px"> 
-                                                        <b>Sản phẩm</b>
-                                                    </td>
-                                                    <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-bottom:5px">:</td>
-                                                    <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:10px;padding-bottom:5px">
-                                                         <a href="#" style="color:#115fff;text-decoration:none" target="_blank">
-                                                            {{$name_product}}
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" valign="top" style="width:120px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;padding-left:15px;padding-right:10px;line-height:20px;padding-bottom:5px"> 
-                                                        <b>Tên Shop</b>
-                                                    </td>
-                                                    <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-bottom:5px">:</td>
-                                                    <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:10px;padding-bottom:5px"> 
-                                                        <a href="#" style="color:#115fff;text-decoration:none" target="_blank">
-                                                            Thinkpad
-                                                        </a>
-                                                        - 0943500190
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" valign="top" style="width:120px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:15px;padding-right:10px;padding-bottom:5px"> 
-                                                        <b>Tổng thanh toán</b>
-                                                    </td>
-                                                    <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-bottom:5px">:</td>
-                                                    <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:10px;padding-bottom:5px">
-                                                        {{$total}}.000vnđ
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" valign="top" style="width:120px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:15px;padding-right:10px;padding-bottom:5px"> 
-                                                        <b>Người nhận</b>
-                                                    </td>
-                                                    <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-bottom:5px">:</td>
-                                                    <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:10px;padding-bottom:5px"> 
-                                                    <b>{{$last_name}}&nbsp;{{$first_name}}</b> - {{$tel}}
-                                                        <br>
-                                                        {{$address}}
-                                                    </td>
-                                                </tr>
+                                                <div>
+                                                    <tr>
+                                                        <td align="left" valign="top" style="width:120px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;padding-left:15px;padding-right:10px;line-height:20px;padding-bottom:5px"> 
+                                                            <b>Sản phẩm</b>
+                                                        </td>
+                                                        <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-bottom:5px">:</td>
+                                                        <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:10px;padding-bottom:5px">
+                                                             <a href="#" style="color:#115fff;text-decoration:none" target="_blank">
+                                                                {{$name_product}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top" style="width:120px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;padding-left:15px;padding-right:10px;line-height:20px;padding-bottom:5px"> 
+                                                            <b>Tên Shop</b>
+                                                        </td>
+                                                        <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-bottom:5px">:</td>
+                                                        <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:10px;padding-bottom:5px"> 
+                                                            <a href="#" style="color:#115fff;text-decoration:none" target="_blank">
+                                                                Thinkpad
+                                                            </a>
+                                                            - 0943500190
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top" style="width:120px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:15px;padding-right:10px;padding-bottom:5px"> 
+                                                            <b>Tổng thanh toán</b>
+                                                        </td>
+                                                        <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-bottom:5px">:</td>
+                                                        <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:10px;padding-bottom:5px">
+                                                            {{$total}}vnđ
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top" style="width:120px;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:15px;padding-right:10px;padding-bottom:5px"> 
+                                                            <b>Người nhận</b>
+                                                        </td>
+                                                        <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-bottom:5px">:</td>
+                                                        <td align="left" valign="top" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#666666;line-height:20px;padding-left:10px;padding-bottom:5px"> 
+                                                        <b>{{$last_name}}&nbsp;{{$first_name}}</b> - {{$tel}}
+                                                            <br>
+                                                            {{$address}}
+                                                        </td>
+                                                    </tr>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </td>

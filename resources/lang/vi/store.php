@@ -5,7 +5,7 @@
             "Home"                                => "Trang chủ",
             "All Categories"                      => "Tất cả danh mục",
             "Accessories"                         => "Phụ kiện",
-            "Headphones"                          => "Tai nghe ",
+            "Headphones"                          => "Tai nghe",
             "Categories"                          => "Thể loại",
             "Price"                               => "Giá",
             "Brand"                               => "Nhãn hiệu",
@@ -22,5 +22,6 @@
             "quick view"                          => "Xem nhanh",
             "add-to-cart"                         => "Thêm vao giỏ hàng",
             "Showing 20-100 products"             => "Hiển thị 20-100 sản phẩm",
+            "Results"                             => "kết quả",
      ];
 ?>

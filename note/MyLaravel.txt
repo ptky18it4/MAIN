@@ -47,3 +47,17 @@ zend_extension = D:\xampp\php\ext\php_xdebug-2.9.0-7.3-vc15-x86_64.dll
 
 pass vào php.ini để debung php
   
+===================================================================================================
+                                  <div class="review-rating">
+                                                        <?php 
+                                                            if($item->rating == 5) 
+                                                            {
+                                                                for($i=1;$i<=$item->rating;$i++)
+                                                            { 
+                                                        ?>
+                                                            <i class="fa fa-star"></i>
+                                                        <?php 
+                                                                } 
+                                                            }
+                                                        ?>
+                                                    </div>

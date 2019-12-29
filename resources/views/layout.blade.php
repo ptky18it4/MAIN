@@ -8,7 +8,7 @@
     
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Electro - Lenovo authorized unit in Vietnam</title>
+    <title>Thinkpad - Hệ thống bán lẻ laptop nhập khẩu giá rẻ toàn quốc</title>
     <!-- Logo title -->
     <link rel="shortcut icon" type="image/png" href="https://js1cdn.clubstatic.lenovo.com.cn/thinkpc/images/favicon.ico?version=8eebb34009b45c51691c30f8f94fd5f7"/>
     <!-- Google font -->
@@ -39,6 +39,7 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- remove this if you use Modernizr -->
     <script>
@@ -52,6 +53,16 @@
 </head>
 
 <body>
+    <?php
+    $fp = "./resources/views/accessWebsite.txt";
+    $fo = fopen($fp,'r');
+    $fr = fread($fo, filesize($fp));
+    $fr++;
+    $fc = fclose($fo);
+    $fo = fopen($fp,'w');
+    $fw = fwrite($fo, $fr);
+    $fc = fclose($fo);
+?>
     <!-- HEADER -->
     <header>
         <!-- TOP HEADER -->
@@ -63,28 +74,29 @@
                 <li><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-map-marker"></i>{{trans('layout.09 - Ngu Hanh Son - Danang - Vietnam')}}</a></li>
                 </ul>
                 <ul class="header-links pull-right">
-                    {{-- <li><a href="/en"><img src="{{asset('public/frontend/img/usa-flag-language-icon.png')}}"  id="language" alt="">USA</a></li>
-                    <li><a href="/vi"><img src="{{asset('public/frontend/img/vn-flag-language-icon.png')}}" id="language" alt="">VN</a></li> --}}
+                    <li><a href="/en"><img src="{{asset('public/frontend/img/usa-flag-language-icon.png')}}"  id="language" alt="">USA</a></li>
+                    <li><a href="/vi"><img src="{{asset('public/frontend/img/vn-flag-language-icon.png')}}" id="language" alt="">VN</a></li>
                     <!-- Selected language -->
 
                     <!-- End Selected language  -->
-                    <li><a href="#"><i class="fa fa-dollar"></i>USD</a></li>
-                    <!-- Xử lý một số tác vụ khi truy cập website -->           
+                <li><a href="#"><i class="fa fa-dollar"></i>{{trans('layout.USD')}}</a></li>
+                    <!-- Xử lý một số tác vụ khi truy cập website -->   
+
                         <!-- Mở hộp thoại đăng nhập khi mới vào website  -->
                         @if($user_id = Session::get('user_id'))
 
-                        <li><a href="{{URL::to(  'infor')}}" data-toggle="modal" data-target="#myAccountModal"><i class="fa fa-user-o"></i>
-                                <?php
-                                $name = Session::get('user_name');
-                                /**
-                                * 1. Nếu name tồn tại thì in ra bên dưới, còn không thì thôi
-                                */
-                                if ($name) {
-                                    echo $name;
-                                }
-                                ?>
-                            </a></li>
-                        {{-- <li><a href="{{URL::to('logout')}}"><i class="fa fa-sign-out"></i> Log out</a></li> --}}
+                            <li><a href="{{URL::to(  'infor')}}" data-toggle="modal" data-target="#myAccountModal"><i class="fa fa-user-o"></i>
+                                    <?php
+                                    $name = Session::get('user_name');
+                                    /**
+                                    * 1. Nếu name tồn tại thì in ra bên dưới, còn không thì thôi
+                                    */
+                                    if ($name) {
+                                        echo $name;
+                                    }
+                                    ?>
+                                </a></li>
+ 
                         @else
 
                         <script>
@@ -92,14 +104,16 @@
                                 $('#loginModal').modal('show');
                             });
                         </script>
+
+                        
                     <li class="text-center border-right text-white">
                         <a href="#" data-toggle="modal" data-target="#loginModal" class="text-white">
                         <i class="fas fa-sign-in-alt mr-2 text-red"></i>{{trans('layout.Log in')}}</a>
                     </li>
-                    <li class="text-center text-white">
+                    {{-- <li class="text-center text-white">
                         <a href="#" data-toggle="modal" data-target="#registerModal" class="text-white">
                         <i class="fas fa-sign-out-alt mr-2 text-red"></i>{{trans('layout.Log out')}}</a>
-                    </li>
+                    </li> --}}
                     @endif
 
                 </ul>
@@ -156,39 +170,69 @@
                     </div>
                     <div class="modal-body">
                         @if(Session::get('user_id'))
-                        @foreach($infor_user as $key => $infor)
-                        <form action="{{URL::to('update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="user_id" value="$infor->id">
-                            <div class="form-group" >
-                            <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="image" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>
-                            <div>
-                                <input type="file" id="edit_image" class="file"  name="product_image"  title="change image" onchange="readURL(this);" /></div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">{{trans('layout.Email')}}</label>
-                                <input type="email" class="form-control" id="name" value="{{$infor->email}}" name="user_email" required="">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">{{trans('layout.Password')}}</label>
-                                <input type="password" class="form-control" value="{{$infor->passdefault}} " id="password" name="user_password" required="">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">{{trans('layout.Address')}}</label>
-                                <input type="text" class="form-control" value="{{$infor->address}} " name="user_address" required="">
-                            </div>
-                            <div class="form-group">
-                                <label class="col-form-label">{{trans('layout.Phone number')}}</label>
-                                <input type="text" class="form-control" value="{{$infor->phone}} " name="user_phone" required="">
-                            </div>
-                            <div class="right-w3l">
-                                <input type="submit" class="form-control btn btn-danger" value="Update">
-                            </div>
-                            <hr>
-                        <a href="{{URL::to(  'logout')}}" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
-                        </form>
-                        @endforeach
+                            @foreach($infor_user as $key => $infor)
+                            <form action="{{URL::to('update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="user_id" value="$infor->id">
+                                <div class="form-group" >
+                                <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="image" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>
+                                <div>
+                                    <input type="file" id="edit_image" class="file"  name="product_image"  title="change image" onchange="readURL(this);" /></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">{{trans('layout.Email')}}</label>
+                                    <input type="email" class="form-control" id="name" value="{{$infor->email}}" name="user_email" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">{{trans('layout.Password')}}</label>
+                                    <input type="password" class="form-control" value="{{$infor->passdefault}} " id="password" name="user_password" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">{{trans('layout.Address')}}</label>
+                                    <input type="text" class="form-control" value="{{$infor->address}} " name="user_address" required="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">{{trans('layout.Phone number')}}</label>
+                                    <input type="text" class="form-control" value="{{$infor->phone}} " name="user_phone" required="">
+                                </div>
+                                <div class="right-w3l">
+                                    <input type="submit" class="form-control btn btn-danger" value="Update">
+                                </div>
+                                <hr>
+                            <a href="{{URL::to('logout')}}" name="delInfor" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
+                            </form>
+                            @endforeach
                         @endif
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Help -->
+        <div class="modal fade" id="Help" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center">
+                            Thông tin liên hệ
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       <div class="card" style="width: auto;"
+                        <div class="card-body">
+                            <div class="alert alert-primary" role="alert">
+                                <i>Qúy khách vui lòng gọi/ gửi thông tin đến bộ phận hỗ trợ để được tư vấn và giải đáp thắc mắc . Xin chân thành cảm ơn </i>
+                            </div>
+                          <p class="card-text ">Số điện thoại :<a href="tel:+84 326895190">090 909 9900</a></p>
+                          <p class="card-text">Email: <a href="mailto:phamtrungky012345@mail.com">phamtrungky19032000@gmail.com</a></p>
+
+                        </div>
+                      </div>
+                      
                     </div>
 
                 </div>
@@ -273,7 +317,7 @@
                             {{-- END CUSTOMIZE LOGIN --}}
                             <div class="sub-w3l">
                                 <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing" name="saveInfor">
                                     <label class="custom-control-label" for="customControlAutosizing">{{trans('layout.Remember me?')}}</label>
                                 </div>
                             </div>
@@ -394,14 +438,14 @@
                                         <span class="py-5 total-count"></span>
                                         <small>{{trans('layout.Item(s) selected')}}</small>
                                         <div class="cart-summary">
-                                            <strong>{{trans('layout.TOTAL PRICE')}} : $</strong>
+                                        <strong>{{trans('layout.TOTAL PRICE')}}</strong><strong>({{trans('layout.$')}})</strong>
                                             <i style='color: red;' class="total-cart" ></i>
                                         </div>
                                         
                                         <div class="cart-btns">
                                             <a href="#">{{trans('layout.View Cart')}}</a>
                                             <a href="#" class="clear-cart">{{trans('layout.Clear Cart')}}</a>
-                                            <a type="button"href="{{URL::to(  'checkout')}}">{{trans('layout.Checkout')}} <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a type="button" href="{{URL::to('checkout')}}">{{trans('layout.Checkout')}} <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                             </div>
@@ -437,9 +481,10 @@
                 <ul class="main-nav nav navbar-nav">
                 <li class="active" id="home"><a href="{{URL::to(  'home')}}">{{trans('layout.Home')}}</a></li>
                     {{-- @foreach($all_menu as $key => $menu) --}}
-                    <li><a href="{{URL::to(  'hot+deals')}}">{{trans('layout.Hot Deals')}}</a></li>
-                    <li><a href="{{URL::to(  'history')}}">{{trans('layout.History')}}</a></li>
+                    {{-- <li><a href="{{URL::to(  'hot+deals')}}">{{trans('layout.Hot Deals')}}</a></li> --}}
                     <li><a href="{{URL::to(  'store')}}">{{trans('layout.Store')}}</a></li>
+                    <li><a href="{{URL::to(  'history')}}">{{trans('layout.History')}}</a></li>
+                    <li><a href="{{URL::to(  'slide')}}">{{trans('layout.presentation')}}</a></li>
                     {{-- @endforeach --}}
                 </ul>
                 <!-- /NAV -->
@@ -524,7 +569,7 @@
                         <div class="footer">
                             <h3 class="footer-title">{{trans('layout.Information')}}</h3>
                             <ul class="footer-links">
-                                <li><a href="#">{{trans('layout.About Us')}}</a></li>
+                                <li><a href="http://trungky.tk">{{trans('layout.About Us')}}</a></li>
                                 <li><a href="#">{{trans('layout.Contact Us')}}</a></li>
                                 <li><a href="#">{{trans('layout.Privacy Policy')}}</a></li>
                                 <li><a href="#">{{trans('layout.Orders and Returns')}}</a></li>
@@ -541,7 +586,7 @@
                                 <li><a href="#">{{trans('layout.View Cart')}}</a></li>
                                 <li><a href="#">{{trans('layout.Wishlist')}}</a></li>
                                 <li><a href="#">{{trans('layout.Track My Order')}}</a></li>
-                                <li><a href="#">{{trans('layout.Help')}}</a></li>
+                                <li><a href="" data-toggle="modal" data-target="#Help" >{{trans('layout.Help')}}</a></li>
                             </ul>
                         </div>
                     </div>

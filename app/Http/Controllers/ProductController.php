@@ -138,10 +138,7 @@ class ProductController extends Controller
         $image[$i]->move('public/uploads/product/more_image',$create_name[$i]);
         
         $img['image'] = $create_name[$i];
-        // echo '<pre>';
-        // // print_r($img);
-        // echo var_dump($img);
-        // echo '</pre>';
+
         DB::table('tbl_more_image')->insert($img);
     }
         return Redirect::to($this->RedirectProduct.'all-product');

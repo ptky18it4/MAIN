@@ -27,6 +27,7 @@ class CartController extends Controller
 
             //===========================================GET INFORMATION OF USER ORDER==========================================
             $user_order = array();
+            $user_order['user_id']  = $request->user_id;
             $user_order['first_name'] = $request->first_name;
             $user_order['last_name'] = $request->last_name;
             $user_order['email'] = $request->email;
@@ -46,13 +47,18 @@ class CartController extends Controller
             if(isset($_POST['cart-content']))
             {
             //================================== GET String from URL, passing from checkout.blade.php=======================
-                $data = $_POST['cart-content'];
-            //===========================================Count character "}" ===============================================
-                $countChar = substr_count($data, "}");
 
-                $json = json_decode($data);
+                $data = $_POST['cart-content'];
+
+            //=========================================== Count character "}" ===============================================
+
+                $countChar = substr_count($data, "}");
+                echo $countChar;
+            //=========================================== Set total ========================================================
 
                 $user_order['total'] = 0;
+
+            //=========================================== Random ==========================================================
 
                 $randomString = '';
 
@@ -62,28 +68,48 @@ class CartController extends Controller
                         $randomString .= $characters[rand(0, $charactersLength - 1)];
                     }
                     $user_order['code_order'] = $randomString;
-                    
+
+            //=========================================== Parse Json ======================================================
+
+                $json = json_decode($data);
+            //============================================ Handling =======================================================
+                $user_order['total'] = 0;
+
                 for ($i = 0; $i < $countChar; $i++) { 
+
                     $data = array();
                     $data['name']   = $json[$i]->name;
-                    $data['price']  = $json[$i]->price;
+                    $data['ProductID']   = $json[$i]->id;
                     $data['count']  = $json[$i]->count;
+                    $data['user_id'] = $user_order['user_id'];
                     $data['code_order']  = $randomString;
+
                     $user_order['name_product'] = $data['name'];
-                    $user_order['price_product'] = $data['price'];
                     $user_order['count_product'] = $data['count'];
                     $user_order['created_at'] = date("F j, Y, g:i a");
-                    $user_order['total'] += $data['price'];
-                    DB::table('tbl_checkout')->insert($data); 
+
+                    DB::table('tbl_checkout')->insert($data);
+                    $productCount = DB::table('tbl_product')->select('quantity','price','name','image')->where('id',$data['ProductID'])->get();
+                    $newQuantity = $productCount[0]->quantity; // output : id : number
+                    $newQuantity = $newQuantity - 1;            // handing: id - 1
+                    $price = $productCount[0]->price;
+                    $name = $productCount[0]->name;
+
+                    DB::table('tbl_product')->where('id',$data['ProductID'])->update(['quantity' => $newQuantity]);
+
+                    $user_order['total'] += $price;
+                    DB::table('tbl_checkout')->where('ProductID',$data['ProductID'])->update(['price'=> $price]);
+
+                    
+                    Mail::send('mails.notification', $user_order, function ($message) {
+                        $message->from('phamtrungky19032000@gmail.com','Trung Kỳ');
+                        $message->sender('phamtrungky19032000@gmail.com','Trung Kỳ');
+                        $message->to('phamtrungky012345@gmail.com','Kenneth');
+                        $message->replyTo('phamtrungky19032000@gmail.com', 'replyTo');
+                        $message->subject('Đặt hàng thành công'.'');
+                        $message->priority(3);
+                    });
                 }
-                Mail::send('mails.notification', $user_order, function ($message) {
-                    $message->from('phamtrungky19032000@gmail.com','Trung Kỳ');
-                    $message->sender('phamtrungky19032000@gmail.com','Trung Kỳ');
-                    $message->to('phamtrungky012345@gmail.com','Kenneth');
-                    $message->replyTo('phamtrungky19032000@gmail.com', 'replyTo');
-                    $message->subject('ĐẶT HÀNH THÀNH CÔNG'.'');
-                    $message->priority(3);
-                });
                 return Redirect::to('/history');
             }
                   
@@ -93,12 +119,18 @@ class CartController extends Controller
          */
         public function history()
         {
-            Session::put('message', 'Order success !');
+            if(Session::put('message')){
+                Session::put('message', 'Đặt hàng thành công !');
+            }
+            else {
+                Session::put('message', 'Lịch sử đặt hàng ! ');
+            }
+            $user_id = Session::get('user_id');
             $all_menu = DB::table('tbl_menu')->get();
-            $infor_user = DB::table('tbl_user')->get();
+            $infor_user = DB::table('tbl_user')->where('id',$user_id)->get();
             $all_category = DB::table('tbl_category')->get();
             $contact = DB::table('tbl_contact')->get();
-            $order_product = DB::table('tbl_checkout')->get();
+            $order_product = DB::table('tbl_checkout')->where('user_id',$user_id)->get();
             return view('pages.history')
                      ->with('all_menu', $all_menu)
                      ->with('infor_user', $infor_user)

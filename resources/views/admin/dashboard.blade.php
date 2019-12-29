@@ -1,6 +1,8 @@
 @extends('admin_layout')
 @section('admin_content')
+    {{-- GOOGLE ANALYSIS --}}
 
+    {{-- // --}}
 		<!-- //market-->
 		<div class="market-updates">
                     <div class="col-md-3 market-update-gd">
@@ -9,9 +11,18 @@
                                 <i class="fa fa-eye"> </i>
                             </div>
                             <div class="col-md-8 market-update-left">
-                                <h4>Visitors</h4>
-                                <h3>13,500</h3>
-                                <p>Other hand, we denounce</p>
+                                <h4>{{trans('dashboard.Visitors')}}</h4>
+                                <h3>
+                                    <?php
+                                    $fpIP = "./resources/views/counter.txt";
+                                    $fpReload = "./resources/views/accessWebsite.txt";
+                                    $foReload = fopen($fpReload,'r');
+                                    $foIP = fopen($fpIP,'r');
+                                    $frReload = fread($foReload, filesize($fpReload));
+                                    $frIP = fread($foIP, filesize($fpIP));
+                                    echo ($frIP.'&emsp;|&emsp;'.$frReload);
+                                    ?></h3>
+                                <p>Thống kê số lượng khách truy cập</p>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -22,9 +33,9 @@
                                 <i class="fa fa-users"></i>
                             </div>
                             <div class="col-md-8 market-update-left">
-                                <h4>Users</h4>
-                                <h3>1,250</h3>
-                                <p>Other hand, we denounce</p>
+                                <h4>{{trans('dashboard.Users')}}</h4>
+                                <h3><?php echo $users; ?></h3>
+                                <p>Thống kê số lượng người dùng</p>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -35,9 +46,9 @@
                                 <i class="fa fa-usd"></i>
                             </div>
                             <div class="col-md-8 market-update-left">
-                                <h4>Sales</h4>
-                                <h3>1,500</h3>
-                                <p>Other hand, we denounce</p>
+                                <h4>{{trans('dashboard.Products')}}</h4>
+                                <h3><?php echo $product; ?></h3>
+                                <p>Thống kê số lượng hàng còn trong kho</p>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -48,9 +59,9 @@
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             </div>
                             <div class="col-md-8 market-update-left">
-                                <h4>Orders</h4>
-                                <h3>1,500</h3>
-                                <p>Other hand, we denounce</p>
+                                <h4>{{trans('dashboard.Orders')}}  </h4>
+                            <h3><?php echo $count; ?>/<?php echo $price; ?> </h3>
+                                <p>Thống kê số lượng đơn đặt hàng</p>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -65,8 +76,8 @@
                             <div class="agileinfo-grap">
                                 <div class="agileits-box">
                                     <header class="agileits-box-header clearfix">
-                                        <h3>Visitor Statistics</h3>
-                                        <div class="toolbar">
+                                        <h3>{{trans('dashboard.Visitor Statistics')}}</h3>
+                                    <div class="toolbar">
 
 
                                         </div>
@@ -89,7 +100,7 @@
                                 <span class="panel-icon">
                       <i class="fa fa-calendar-o"></i>
                     </span>
-                                <span class="panel-title"> Calendar Widget</span>
+                                <span class="panel-title">{{trans('dashboard.Calendar')}}</span>
                             </div>
                             <!-- grids -->
                             <div class="agile-calendar-grid">
@@ -113,7 +124,7 @@
                             <!--notification start-->
 
                             <header class="panel-heading">
-                                Notification
+                                {{trans('dashboard.Notification')}}
                             </header>
                             <div class="notify-w3ls">
                                 <div class="alert alert-info clearfix">
@@ -189,7 +200,7 @@
                     <div class="col-md-4 agile-last-left">
                         <div class="agile-last-grid">
                             <div class="area-grids-heading">
-                                <h3>Monthly</h3>
+                                <h3>{{trans('dashboard.Monthly')}}</h3>
                             </div>
                             <div id="graph7"></div>
                             <script>
@@ -197,25 +208,18 @@
                                 Morris.Area({
                                     element: 'graph7',
                                     data: [{
-                                        x: '2013-03-30 22:00:00',
-                                        y: 3,
-                                        z: 3
-                                    }, {
-                                        x: '2013-03-31 00:00:00',
-                                        y: 2,
-                                        z: 0
-                                    }, {
-                                        x: '2013-03-31 02:00:00',
-                                        y: 0,
-                                        z: 2
-                                    }, {
-                                        x: '2013-03-31 04:00:00',
-                                        y: 4,
-                                        z: 4
+                                        'Ngày': '<?php echo ($created_from_Month." - ".$created_to_Month)?> ',
+                                        'Sản phẩm': '<?php echo $countOfMonth ?>',
+                                        'Tiền': '<?php echo $priceOfMonth ?>'
+                                    },
+                                    {
+                                        'Ngày': '<?php echo ($created_from_Month_New." - ".$created_to_Month_New)?> ',
+                                        'Sản phẩm': '<?php echo $countOfMonth_New ?>',
+                                        'Tiền': '<?php echo $priceOfMonth_New ?>'
                                     }],
-                                    xkey: 'x',
-                                    ykeys: ['y', 'z'],
-                                    labels: ['Y', 'Z']
+                                    xkey: 'Ngày',
+                                    ykeys: ['Sản phẩm', 'Tiền'],
+                                    labels: ['Sản phẩm', 'Tiền']
                                 });
                             </script>
 
@@ -224,58 +228,21 @@
                     <div class="col-md-4 agile-last-left agile-last-middle">
                         <div class="agile-last-grid">
                             <div class="area-grids-heading">
-                                <h3>Daily</h3>
+                                <h3>{{trans('dashboard.Daily')}}</h3>
                             </div>
                             <div id="graph8"></div>
                             <script>
-                                /* data stolen from http://howmanyleft.co.uk/vehicle/jaguar_'e'_type */
                                 var day_data = [{
-                                    "period": "2016-10-01",
-                                    "licensed": 3407,
-                                    "sorned": 660
-                                }, {
-                                    "period": "2016-09-30",
-                                    "licensed": 3351,
-                                    "sorned": 629
-                                }, {
-                                    "period": "2016-09-29",
-                                    "licensed": 3269,
-                                    "sorned": 618
-                                }, {
-                                    "period": "2016-09-20",
-                                    "licensed": 3246,
-                                    "sorned": 661
-                                }, {
-                                    "period": "2016-09-19",
-                                    "licensed": 3257,
-                                    "sorned": 667
-                                }, {
-                                    "period": "2016-09-18",
-                                    "licensed": 3248,
-                                    "sorned": 627
-                                }, {
-                                    "period": "2016-09-17",
-                                    "licensed": 3171,
-                                    "sorned": 660
-                                }, {
-                                    "period": "2016-09-16",
-                                    "licensed": 3171,
-                                    "sorned": 676
-                                }, {
-                                    "period": "2016-09-15",
-                                    "licensed": 3201,
-                                    "sorned": 656
-                                }, {
-                                    "period": "2016-09-10",
-                                    "licensed": 3215,
-                                    "sorned": 622
+                                    "Ngày": '<?php echo ($created_from_Day." - ".$created_to_Day  )?> ',
+                                    "Sản phẩm": '<?php echo $countOfDay; ?>' ,
+                                    "Tiền":'<?php echo $priceOfDay; ?>'
                                 }];
                                 Morris.Bar({
                                     element: 'graph8',
                                     data: day_data,
-                                    xkey: 'period',
-                                    ykeys: ['licensed', 'sorned'],
-                                    labels: ['Licensed', 'SORN'],
+                                    xkey: 'Ngày',
+                                    ykeys: ['Sản phẩm', 'Tiền'],
+                                    labels: ['Sản phẩm', 'Tiền'],
                                     xLabelAngle: 60
                                 });
                             </script>
@@ -284,40 +251,40 @@
                     <div class="col-md-4 agile-last-left agile-last-right">
                         <div class="agile-last-grid">
                             <div class="area-grids-heading">
-                                <h3>Yearly</h3>
+                                <h3>{{trans('dashboard.Yearly')}}</h3>
                             </div>
                             <div id="graph9"></div>
                             <script>
                                 var day_data = [{
                                     "elapsed": "I",
-                                    "value": 34
+                                    "value": 1
                                 }, {
                                     "elapsed": "II",
-                                    "value": 24
+                                    "value": 2
                                 }, {
                                     "elapsed": "III",
-                                    "value": 3
+                                    "value": 1
                                 }, {
                                     "elapsed": "IV",
-                                    "value": 12
+                                    "value": 3.5
                                 }, {
                                     "elapsed": "V",
-                                    "value": 13
-                                }, {
-                                    "elapsed": "VI",
-                                    "value": 22
-                                }, {
-                                    "elapsed": "VII",
                                     "value": 5
                                 }, {
+                                    "elapsed": "VI",
+                                    "value": 2
+                                }, {
+                                    "elapsed": "VII",
+                                    "value": 8
+                                }, {
                                     "elapsed": "VIII",
-                                    "value": 26
+                                    "value": 4
                                 }, {
                                     "elapsed": "IX",
-                                    "value": 12
+                                    "value": 5
                                 }, {
                                     "elapsed": "X",
-                                    "value": 19
+                                    "value": 10
                                 }];
                                 Morris.Line({
                                     element: 'graph9',
@@ -338,7 +305,7 @@
                     <div class="col-md-4 stats-info widget">
                         <div class="stats-info-agileits">
                             <div class="stats-title">
-                                <h4 class="title">Browser Stats</h4>
+                                <h4 class="title">{{trans('dashboard.Browser Stats')}}</h4>
                             </div>
                             <div class="stats-body">
                                 <ul class="list-unstyled">
@@ -381,10 +348,10 @@
                             <table class="table stats-table ">
                                 <thead>
                                     <tr>
-                                        <th>S.NO</th>
-                                        <th>PRODUCT</th>
-                                        <th>STATUS</th>
-                                        <th>PROGRESS</th>
+                                        <th>{{trans('dashboard.NO')}}</th>
+                                        <th>{{trans('dashboard.PRODUCT')}}</th>
+                                        <th>{{trans('dashboard.STATUS')}}</th>
+                                        <th>{{trans('dashboard.PROGRESS')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

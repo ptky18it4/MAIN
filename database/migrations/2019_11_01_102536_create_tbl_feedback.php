@@ -18,7 +18,7 @@ class CreateTblFeedback extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('email');
-            $table->string('address');
+            $table->string('rating');
             $table->string('content');
             $table->timestamps();
         });

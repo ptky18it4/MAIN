@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
 <head>
-        <title>ADMIN - Electro - Lenovo authorized unit in Vietnam</title>
+    <title>Admin - Thinkpad - Hệ thống bán lẻ laptop nhập khẩu giá rẻ toàn quốc</title>
     <!-- Logo title -->
-    <link rel="shortcut icon" type="image/png" href="/public/backend/images/thinkpad-logo.png"/>
+    <link rel="shortcut icon" type="image/png" href="https://js1cdn.clubstatic.lenovo.com.cn/thinkpc/images/favicon.ico?version=8eebb34009b45c51691c30f8f94fd5f7"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Electro - Lenovo authorized unit in Vietnam" />
+    <meta name="keywords" content="Admin - Thinkpad - Hệ thống bán lẻ laptop nhập khẩu giá rẻ toàn quốc" />
     <script type="application/x-javascript">
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
@@ -47,7 +47,7 @@
         <header class="header fixed-top clearfix">
             <!--logo start-->
             <div class="brand">
-                <a href="{{URL::to('admin/dashboard')}}" class="logo">
+                <a href="{{URL::to('/admin/dashboard')}}" class="logo">
         THINKPAD
                 </a>
                 <div class="sidebar-toggle-box">
@@ -259,9 +259,9 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                            <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="#"><i class=" fa fa-suitcase"></i>{{trans('admin_layout.Profile')}}</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i> {{trans('admin_layout.Settings')}}</a></li>
+                            <li><a href="{{URL::to('/logout')}}"><i class="fa fa-key"></i> {{trans('admin_layout.Log Out')}}</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -280,18 +280,18 @@
                         <li>
                             <a class="active" href="{{URL::to('admin/dashboard')}}">
                                 <i class="fa fa-dashboard"></i>
-                                <span>Dashboard</span>
+                                <span>{{trans('admin_layout.Dashboard')}}</span>
                             </a>
                         </li>
 
                         <li class="sub-menu">
                             <a href="javascript:;">
                                 <i class="fa fa-book"></i>
-                                <span>Catalog</span>
+                                <span>{{trans('admin_layout.Catalog')}}</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="{{URL::to('admin/catalogs/categories/category')}}">Categories</a></li>
-                                <li><a href="{{URL::to('admin/catalogs/products/product')}}">Products</a></li>
+                                <li><a href="{{URL::to('admin/catalogs/categories/category')}}">{{trans('admin_layout.Categories')}}</a></li>
+                                <li><a href="{{URL::to('admin/catalogs/products/product')}}">{{trans('admin_layout.Products')}}</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -308,7 +308,13 @@
             <!-- footer -->
             <div class="footer">
                 <div class="wthree-copyright">
-                    <p>© 2017 Visitors. All rights reserved | Design by </p>
+                    <span class="copyright" style="color: white;">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        {{trans('layout.Copyright')}} &copy;<script>
+                            document.write(new Date().getFullYear());
+                        </script>{{trans('admin_layout.All rights reserved | This template is made with')}} <i class="fa fa-heart-o" aria-hidden="true"></i>{{trans('admin_layout.by')}} <a href="https://www.instagram.com/trungky1402/?hl=vi" target="_blank" style="color: #D10024">{{trans('admin_layout.Trung Ky')}}</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </span>
                 </div>
             </div>
             <!-- / footer -->

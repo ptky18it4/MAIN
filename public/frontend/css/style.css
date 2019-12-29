@@ -1889,7 +1889,7 @@ textarea.input {
     color: #E4E7ED;
 }
 
-.reviews .review-heading .review-rating>i.fa-star {
+.reviews .review-heading .review-rating>div > i.fa-star {
     color: #D10024;
 }
 

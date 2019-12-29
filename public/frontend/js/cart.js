@@ -20,7 +20,6 @@
           }
       }
   }
-
   var shoppingCart = (function () {
       // =============================
       // Private methods and propeties
@@ -39,13 +38,13 @@
 
       // Save cart
       function saveCart() {
-          sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+          localStorage.setItem('shoppingCart', JSON.stringify(cart));
       }
       // Load cart  
       function loadCart() {
-          cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+          cart = JSON.parse(localStorage.getItem('shoppingCart'));
       }
-      if (sessionStorage.getItem("shoppingCart") != null) {
+      if (localStorage.getItem("shoppingCart") != null) {
           loadCart();
       }
 
@@ -190,7 +189,7 @@
               "</div>" +
               "<div class='product-body'>" +
               "<h3 class='product-name' name='name'><a href='{{URL::to('product-'." + cartArray[i].id + ")}}'>" + cartArray[i].name + "</a></h3>" +
-              "<h4 class='product-price'><span class='qty'>" + cartArray[i].count + " x " + "</span>$" + cartArray[i].price + "</h4>" +
+              "<h4 class='product-price'><span class='qty'>" + cartArray[i].count + " x " + "</span>" + cartArray[i].price + "</h4>" +
               "<div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name='" + cartArray[i].name + "'>-</button>" +
               "<button class='plus-item btn btn-primary input-group-addon' data-name='" + cartArray[i].name + "'>+</button></div></<div>" +
               "</div>" +
@@ -256,9 +255,6 @@
           contentString += ',';  
           contentString += '"count":';
           contentString += cartArray[item].count.toString();
-          contentString += ","; 
-          contentString += '"price":';
-          contentString += cartArray[item].price.toString();
           contentString += "}";
           object.push(contentString);
         }
@@ -270,7 +266,7 @@
         alert(ngoacZuong);
       $('#cart-content').val(ngoacZuong);
       $("#form-content-cart").submit();
-    //   shoppingCart.clearCart();
+      shoppingCart.clearCart();
     }
       var cartArray = [];
   displayCart();

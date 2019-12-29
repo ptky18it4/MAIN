@@ -8,10 +8,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="breadcrumb-tree">
-							<li><a href="#">{{trans('product.Home')}}</a></li>
-							<li><a href="#">{{trans('product.All Categories')}}</a></li>
-							<li><a href="#">{{trans('product.Accessories')}}</a></li>
-							<li class="active">{{trans('product.Headphones ')}}(227,490 Results)</li>
+							<li><a href="#">{{trans('store.Home')}}</a></li>
+							<li><a href="#">{{trans('store.All Categories')}}</a></li>
+							<li><a href="#">{{trans('store.Accessories')}}</a></li>
+							<li class="active">{{trans('store.Headphones')}} (227,490 {{trans('store.Results')}})</li>
 						</ul>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 					<!-- ASIDE -->
 					<div id="aside" class="col-md-3">
 						<!-- aside Widget -->
-						<h3 class="aside-title">{{trans('product.Categories')}}</h3>
+						<h3 class="aside-title">{{trans('store.Categories')}}</h3>
 						<div class="aside">
 							<div class="checkbox-filter">
 								@foreach($all_category as $key => $cate)
@@ -50,7 +50,7 @@
 
 						<!-- aside Widget -->
 						<div class="aside">
-							<h3 class="aside-title">{{trans('product.Price')}}</h3>
+							<h3 class="aside-title">{{trans('store.Price')}}</h3>
 							<div class="price-filter">
 								<div id="price-slider"></div>
 								<div class="input-number price-min">
@@ -70,7 +70,7 @@
 
 						<!-- aside Widget -->
 						<div class="aside">
-							<h3 class="aside-title">{{trans('product.Brand')}}</h3>
+							<h3 class="aside-title">{{trans('store.Brand')}}</h3>
 							<div class="checkbox-filter">
 								<div class="input-checkbox">
 									<input type="checkbox" id="brand-1">
@@ -126,13 +126,13 @@
 
 						<!-- aside Widget -->
 						<div class="aside">
-							<h3 class="aside-title">{{trans('product.Top selling')}}</h3>
+							<h3 class="aside-title">{{trans('store.Top selling')}}</h3>
 							<div class="product-widget">
 								<div class="product-img">
 									<img src="{{asset('public/frontend/img/product01.png')}}" alt="">
 								</div>
 								<div class="product-body">
-									<p class="product-category">{{trans('product.Category')}}</p>
+									<p class="product-category">{{trans('store.Category')}}</p>
 									<h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
 									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 								</div>
@@ -154,7 +154,7 @@
 									<img src="{{asset('public/frontend/img/product03.png')}}" alt="">
 								</div>
 								<div class="product-body">
-									<p class="product-category">{{trans('product.Category')}}</p>
+									<p class="product-category">{{trans('store.Category')}}</p>
 									<h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
 									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 								</div>
@@ -170,15 +170,15 @@
 						<div class="store-filter clearfix">
 							<div class="store-sort">
 								<label>
-									{{trans('product.Sort By')}}:
+									{{trans('store.Sort By')}}:
 									<select class="input-select">
-										<option value="0">{{trans('product.Popular')}}</option>
-										<option value="1">{{trans('product.Position')}}</option>
+										<option value="0">{{trans('store.Popular')}}</option>
+										<option value="1">{{trans('store.Position')}}</option>
 									</select>
 								</label>
 
 								<label>
-									{{trans('product.Show')}}:
+									{{trans('store.Show')}}:
 									<select class="input-select">
 										<option value="0">20</option>
 										<option value="1">50</option>
@@ -203,14 +203,14 @@
 									<img src="{{asset('public/uploads/product/more_image/'.$pro->image)}}" alt="">
 										<div class="product-label">
 											<span class="sale">-{{$pro->vat}}%</span>
-											<span class="new">{{trans('product.NEW')}}</span>
+											<span class="new">{{trans('store.NEW')}}</span>
 										</div>
 									</div>
 									</a>
 									<div class="product-body">
 										<p class="product-category">{{$pro->category_name}}</p>
 										<h3 class="product-name"><a href="{{asset("/product-$pro->id")}}">{{$pro->name}}</a></h3>
-									<h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),2, ',', '.')}} <del class="product-old-price">${{number_format($pro->price,2, ',', '.')}}</del></h4>
+									<h4 class="product-price">${{number_format($pro->price - ($pro->price*($pro->vat/100)),3, ',', '.')}} <del class="product-old-price">${{number_format($pro->price,2, ',', '.')}}</del></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>

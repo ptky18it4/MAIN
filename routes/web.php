@@ -31,6 +31,7 @@ Route::group(['prefix' => $prefix_user], function () use($prefix_homeCtrl) {
 
     //Search
     Route::get('search', $prefix_homeCtrl.'search','update_infor_user');
+    Route::get('slide', $prefix_homeCtrl.'slide');
 });
 
 // Admin manager 
@@ -39,7 +40,7 @@ $prefix_admin = config('thinkpad.url.prefix_admin');
 Route::group(['prefix' => $prefix_admin], function () {
     Route::get('/', 'AdminController@login');
     Route::post('proc-admin-login', 'AdminController@processor_admin_login');
-    Route::get('dashboard', 'AdminController@show_dashboard');
+    Route::get('proc-admin-login', 'AdminController@show_dashboard');
     Route::get('register', 'AdminController@admin_register');
     Route::post('proc-register', 'AdminController@processor_register');
     Route::get('logout', 'AdminController@log_out');
@@ -65,6 +66,7 @@ Route::group(['prefix' => $prefix_categories], function () {
     Route::get('unactive-category/{category_id}', 'CatalogController@unactive_category');
     
     Route::post('save-category', 'CatalogController@save_category');
+    Route::post('sort', 'CatalogController@sort');
 });
 
 
@@ -94,34 +96,7 @@ Route::get('contact', 'HomeController@get_contact');
 Route::post('contact', 'HomeController@post_contact');
 Route::post('checkout', 'CartController@submitFormCheckout');
 
-//==============================================CHANGE LANGUAGE===================================================
-
-// Route::redirect('/', '/en');
-
-// Route::group(['prefix' => '{language}'], function () {
-//     Route::get('/', function () {
-//         return view('/');
-//     }); 
-//     Auth::routes();
-//     Route::get('/','HomeController@index');
-//     //Front - end
-//     Route::get('home','HomeController@index');
-//     Route::get('checkout','HomeController@checkout');
-//     Route::get('store','HomeController@store');
-//     Route::get('regular','HomeController@regular');
-//     Route::get('category','HomeController@category');
-//     // Route::get('product-{id}','HomeController@product');
-//     Route::get('product-{id}', function ($id) {
-        
-//         echo "<script> alert('".$id."');        
-//         </script>";
-//     });
-    
-//     Route::post('login','HomeController@login');
-//     Route::post('register','HomeController@register');
-//     Route::get('logout', 'HomeController@log_out');
-    
-//     // //Search
-//     Route::get('search','HomeController@search');
-//     Route::get('history', 'CartController@history');
+    // //Search
+    Route::get('search','HomeController@search');
+    Route::get('history', 'CartController@history');
 // });

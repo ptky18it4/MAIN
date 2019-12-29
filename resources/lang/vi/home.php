@@ -4,7 +4,8 @@
             "Laptop"                    => "Máy tính xách tay",
             "Smartphones"               => "Điện thoại thông minh",
             "Accessories"               => "Phụ kiện",
-            "Cameras"                   => "Máy ảnh",
+            "Discount"                  => "Ưu đãi",
+            "Cameras"                  => "Khuyến mại",
             "Collection"                => "Bộ sưu tập",
             "Shop now"                  => "Mua ngay bây giờ",
             "New Products"              => "Sản phẩm mới",
@@ -16,5 +17,6 @@
             "hot deal this year"        => "Khuyến mại hấp dẫn của năm",
             "New Collection Up to 50% OFF"=> "Bộ sưu tập mới GIẢM GIÁ tới 50%",
             "Top selling"               => "Bán chạy nhất",
+            "$"                         => "VND",
         ];
 ?>

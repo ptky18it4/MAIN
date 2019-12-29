@@ -43,18 +43,74 @@ class AdminController extends Controller
         $admin_password = md5($request->admin_password);
 
         $result = DB::table('tbl_admin')->where('email', $admin_email)->where('password', $admin_password)->first();
-        //  echo '<pre>';
-        //  print_r ($result);
-        //  echo '</pre>';
-        // return view('admin.dashboard');
+        if(isset($_POST['saveInfor'])) {
+            setcookie('email',$admin_email,time()+3600,'/','',0,0);
+            setcookie('pass',$admin_password,time()+3600,'/','',0,0);
+        }
         if ($result) {
             Session::put('admin_name', $result->name);
             Session::put('admin_id', $result->id);
-            return Redirect::to('admin/dashboard');
+            $users = DB::table('tbl_user')->count();
+
+            //=======================================ALL - PRODUCTS ==========================================
+
+            $product = DB::table('tbl_product')->sum('quantity');
+            $count = DB::table('tbl_checkout')->sum('count');
+            $price = DB::table('tbl_checkout')->sum('price');
+
+            //================================= ALL RPODUCTS & MONEY / DAILY =================================
+
+            $to = date("Y-m-d 23:59:59");
+            $from = date("Y-m-d 00:00:00",strtotime("-0 days"));
+            $created_from_Day =$from;
+            $created_to_Day =$to;
+            $countOfDay = DB::table('tbl_checkout')->whereBetween('created_at',[$from,$to])->sum('count');
+            $priceOfDay = DB::table('tbl_checkout')->whereBetween('created_at',[$from,$to])->sum('price');
+            //================================= ALL PRODUCTS & MONEY / MONTH =================================
+
+            $fromMonth = date('Y-m-1');
+            $toMonth = date('Y-m-30');
+            $created_from_Month =$fromMonth;
+            $created_to_Month =$toMonth;
+            $countOfMonth = DB::table('tbl_checkout')->whereBetween('created_at',[$fromMonth,$toMonth])->sum('count');
+            $priceOfMonth = DB::table('tbl_checkout')->whereBetween('created_at',[$fromMonth,$toMonth])->sum('price');
+
+            //================================= ALL PRODUCTS & MONEY / MONTH =================================
+            
+            $fromMonthNew = date('Y-m-1 00:00:00',strtotime("-1 months"));
+            $toMonthNew = date('Y-m-1 00:00:00');
+            $created_from_Month_New =$fromMonthNew;
+            $created_to_Month_New =$toMonthNew;
+            $countOfMonth_New = DB::table('tbl_checkout')->whereBetween('created_at',[$fromMonthNew,$toMonthNew])->sum('count');
+            $priceOfMonth_New = DB::table('tbl_checkout')->whereBetween('created_at',[$fromMonthNew,$toMonthNew])->sum('price');
+
+            //========================================== RETURN =============-================================
+
+            return view('admin.dashboard', 
+                            [
+                                'count' => $count,
+                                'users'=> $users,
+                                'product' =>$product,
+                                'price' =>$price,
+                                'countOfDay' =>$countOfDay,
+                                'priceOfDay' =>$priceOfDay,
+                                'created_from_Day' => $created_from_Day,
+                                'created_to_Day' => $created_to_Day,
+                                'countOfMonth' =>$countOfMonth,
+                                'priceOfMonth' =>$priceOfMonth,
+                                'created_from_Month' => $created_from_Month,
+                                'created_to_Month' => $created_to_Month,
+                                'countOfMonth_New' =>$countOfMonth_New,
+                                'priceOfMonth_New' =>$priceOfMonth_New,
+                                'created_from_Month_New' => $created_from_Month_New,
+                                'created_to_Month_New' => $created_to_Month_New
+
+                            ]);
         } else {
             Session::put('message', 'Email hoặc mật khẩu bị sai, Vui lòng đăng nhập lại !');
             return Redirect::to('admin');
         }
+
     }
     
     public function log_out()
@@ -62,6 +118,8 @@ class AdminController extends Controller
         $this->AuthenticLogin();
         Session::put('admin_name', null);
         Session::put('admin_id', null);
+        setcookie('email','',time()-3600,'/','',0,0);
+        setcookie('pass','',time()-3600,'/','',0,0);
         return Redirect::to('/admin');
     }
 
@@ -82,12 +140,10 @@ class AdminController extends Controller
          * Tương tự các $data['....'] nhé
          * Rồi, bây giờ in ra để xem đã lấy được từ bên form qua chưa nè
          */
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
         //Insert
         DB::table('tbl_admin')->insert($data);
         Session::put('message', 'Đăng kí tài khoản quản trị viên thành công !');
         return Redirect::to('admin');
     }
+
 }

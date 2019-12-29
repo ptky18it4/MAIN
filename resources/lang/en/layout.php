@@ -21,6 +21,7 @@
             "Your Name"                           => "Your Name",
             "Confirm password"                    => "Confirm password",
             "I Accept to the Terms & Conditions"  => "I Accept to the Terms & Conditions",
+            "presentation"                        => "Slide",
 
             //===================================================== HEADER ===================================================
             "Menu"                                => "Menu",
@@ -65,6 +66,7 @@
             "All rights reserved | This template is made with" => "All rights reserved | This template is made with ",
             "by"                                  => "by",
             "Trung Ky"                            => "Trung Ky",
-
+            "Days"                                => "Days",
+            "$"                                   => "$",
      ];
 ?>

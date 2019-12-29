@@ -29,6 +29,22 @@
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+					<style>
+					.items-alert{
+						background-color: #ffffff;
+						padding: 10px;
+						border-radius: 99px;
+						position: relative;
+						}
+					.items-alert q {
+						font-weight: 600 !important;
+					}
+					.items-alert b {
+						left: 72%;
+						font-weight: 600 !important;
+					}	
+					</style>
+					
 					<?php
 						$message = Session::get('message');
 						/**
@@ -37,8 +53,8 @@
 						 */
 						if ($message) {
 							// echo $message;
-							echo '<div class="alert alert-success" role="alert">'
-									.$message.'<a href="http://www.thinkpad.com.vn/" style="color: #D10024"><i>Come back home</i></a>
+							echo '<div class="alert alert-success items-alert" role="alert"><q> '
+									.$message.'</q><a href="http://www.thinkpad.com.vn/" style="color: #D10024"><b class="fa fa-arrow-left items-alert">&emsp;Quay lại trang chủ</b></a>
 								</div>';
 							Session::put('message',null);
 						}
@@ -46,21 +62,21 @@
 					<table class="table table-striped table-dark">
 						<thead>
 						  <tr>
-							<th scope="col">#</th>
+							<th scope="col">STT</th>
 							<th scope="col">{{trans('history.name')}}</th>
 							<th scope="col">{{trans('history.count')}}</th>
 							<th scope="col">{{trans('history.price')}}</th>
 							<th scope="col">{{trans('history.Order time')}}</th>
 						  </tr>
 						</thead>
-						@foreach($order_product as $key => $pro)
+						@foreach($order_product as $key => $item)
 						<tbody>
-						  <tr>
+							<tr>
 							<th scope="row"></th>
-							<td>{{$pro->name}}</td>
-							<td>{{$pro->count}}</td>
-							<td>{{$pro->price}}</td>
-							<td>{{$pro->created_at}}</td>
+							<td>{{$item->name}}</td>
+							<td>{{$item->count}}</td>
+							<td>{{$item->price}}</td>
+							<td>{{$item->created_at}}</td>
 						  </tr>
 						
 						</tbody>
@@ -68,6 +84,7 @@
 					  </table>
 				</div>
 				<!-- /row -->
+
 			</div>
 			<!-- /container -->
 		</div>

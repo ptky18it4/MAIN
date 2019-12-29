@@ -1,10 +1,10 @@
-    <?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblCheckout extends Migration
+class CreateActiveSessions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTblCheckout extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_checkout', function (Blueprint $table) {
+        Schema::create('active_sessions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('price');
-            $table->string('count');
-            $table->string('code_order');
+            $table->string('session');
+            $table->date('date');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateTblCheckout extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_checkout');
+        Schema::dropIfExists('active_sessions');
     }
 }

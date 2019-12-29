@@ -3,29 +3,24 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <strong>ALL PRODUCT</strong>
+      <strong>{{trans('all_product.ALL PRODUCT')}}</strong>
     </div>
     <div class="row w3-res-tb">
-      <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
-          <option value="0">Bulk action</option>
-          <option value="1">Delete selected</option>
-          <option value="2">Bulk edit</option>
-          <option value="3">Export</option>
-        </select>
-        <button class="btn btn-sm btn-default">Apply</button>
-      </div>
+      <form action="{{URL::to('admin/catalogs/products/add-product/sort')}}"  method="post">
+        <div class="col-sm-5 m-b-xs">
+          <select name="sort" class="input-sm form-control w-sm inline v-middle">
+            <option name="Desc"  value="Desc">{{trans('all_product.Desc')}}</option>
+            <option name="Asc" value="Asc">{{trans('all_product.Asc')}}</option>
+          </select>
+          <button type="submit" class="btn btn-sm btn-default">{{trans('all_product.Apply')}}</button>
+        </div>
+      </form>
       <div class="col-sm-4">
       </div>
       <div class="col-sm-3">
-        <!-- <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
-          <span class="input-group-btn">
-          <button class="btn btn-sm btn-default" type="button">Go!</button>
-          </span>
-        </div> -->
+
         <form method="get" action="{{URL::to('admin/catalogs/products/add-product')}}">
-          <button class="btn btn-sm btn-primary fa fa-plus" type="submit">&emsp;<strong>Add new</strong></button>
+          <button class="btn btn-sm btn-primary fa fa-plus" type="submit">&emsp;<strong>{{trans('all_product.Add new')}}</strong></button>
         </form>
       </div>
     </div>
@@ -50,17 +45,17 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>IMAGE</th>
-            <th>CATEGORY</th>
-            <th>NAME</th>
-            <th>PRICE</th>
-            <th>VAT</th>
-            <th>QUANTITY</th>
+            <th>{{trans('all_product.IMAGE')}}</th>
+            <th>{{trans('all_product.CATEGORY')}}</th>
+            <th>{{trans('all_product.NAME')}}</th>
+            <th>{{trans('all_product.PRICE')}}</th>
+            <th>{{trans('all_product.VAT')}}</th>
+            <th>{{trans('all_product.QUANTITY')}}</th>
             <!-- <th>DESCRIPTION</th> -->
-            <th>STATUS</th>
-            <th>SHOW ON HOME</th>
-            <th>VIEW COUNT</th>
-            <th>OPTION</th>
+            <th>{{trans('all_product.STATUS')}}</th>
+            <th>{{trans('all_product.SHOW ON HOME')}}</th>
+            <th>{{trans('all_product.VIEW COUNT')}}</th>
+            <th>{{trans('all_product.OPTION')}}</th>
             <!-- <th>Ngày thêm</th> -->
             <th style="width:30px;"></th>
           </tr>
@@ -121,7 +116,7 @@
     <footer class="panel-footer">
       <div class="row">
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <small class="text-muted inline m-t-sm m-b-sm">{{trans('all_product.showing 20-30 of 50 items')}}</small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">
           <ul class="pagination pagination-sm m-t-none m-b-none">
