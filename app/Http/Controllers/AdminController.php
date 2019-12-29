@@ -85,7 +85,9 @@ class AdminController extends Controller
             $priceOfMonth_New = DB::table('tbl_checkout')->whereBetween('created_at',[$fromMonthNew,$toMonthNew])->sum('price');
 
             //========================================== RETURN =============-================================
+            $getIpClient = DB::table('ip_client')->count('address');
 
+            //========================================== GET IP CLIENT =======================================
             return view('admin.dashboard', 
                             [
                                 'count' => $count,
@@ -103,7 +105,8 @@ class AdminController extends Controller
                                 'countOfMonth_New' =>$countOfMonth_New,
                                 'priceOfMonth_New' =>$priceOfMonth_New,
                                 'created_from_Month_New' => $created_from_Month_New,
-                                'created_to_Month_New' => $created_to_Month_New
+                                'created_to_Month_New' => $created_to_Month_New,
+                                'getIpClient'   => $getIpClient,
 
                             ]);
         } else {

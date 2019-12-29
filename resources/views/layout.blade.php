@@ -62,7 +62,7 @@
     $fo = fopen($fp,'w');
     $fw = fwrite($fo, $fr);
     $fc = fclose($fo);
-?>
+    ?>
     <!-- HEADER -->
     <header>
         <!-- TOP HEADER -->

@@ -143,7 +143,19 @@ class HomeController extends Controller
     }
 
     public function index()
-    {
+    {   
+        $arrayIP = array();
+        $ip = getenv('HTTP_CLIENT_IP')?:
+        getenv('HTTP_X_FORWARDED_FOR')?:
+        getenv('HTTP_X_FORWARDED')?:
+        getenv('HTTP_FORWARDED_FOR')?:
+        getenv('HTTP_FORWARDED')?:
+        getenv('REMOTE_ADDR');
+
+        $arrayIP['address'] = $ip;
+
+        DB::table('ip_client')->where('address', '=', $ip)->delete();
+        DB::table('ip_client')->insert($arrayIP);
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
         if ($user_id = Session::get('user_id')) {
             $infor_user = DB::table('tbl_user')->where('id', $user_id)->get();
