@@ -152,7 +152,14 @@ class HomeController extends Controller
         getenv('HTTP_FORWARDED')?:
         getenv('REMOTE_ADDR');
 
+        //=============================================== BLOCK THE IP Address OF THE CLIENT ===============================
+
         $arrayIP['address'] = $ip;
+        if ($ip == '192.168.1.24') {
+           return view('pages.404');
+        }
+        
+        //===================================================================================================================
 
         DB::table('ip_client')->where('address', '=', $ip)->delete();
         DB::table('ip_client')->insert($arrayIP);

@@ -85,6 +85,7 @@ class AdminController extends Controller
             $priceOfMonth_New = DB::table('tbl_checkout')->whereBetween('created_at',[$fromMonthNew,$toMonthNew])->sum('price');
 
             //========================================== RETURN =============-================================
+            
             $getIpClient = DB::table('ip_client')->count('address');
 
             //========================================== GET IP CLIENT =======================================
