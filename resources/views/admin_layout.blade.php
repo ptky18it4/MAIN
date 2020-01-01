@@ -32,11 +32,15 @@
     <!-- calendar -->
     <link rel="stylesheet" href="{{asset('public/backend/css/monthly.css')}}">
     <!-- //calendar -->
+    <!-- //get location  -->
+    
+
     <!-- //font-awesome icons -->
     <script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
     <script src="{{asset('public/backend/js/raphael-min.js')}}"></script>
     <script src="{{asset('public/backend/js/morris.js')}}"></script>
     <script src="{{asset('public/backend/js/admin.js')}}"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 

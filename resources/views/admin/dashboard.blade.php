@@ -14,13 +14,10 @@
                                 <h4>{{trans('dashboard.Visitors')}}</h4>
                                 <h3>
                                     <?php
-                                    $fpIP = "./resources/views/counter.txt";
                                     $fpReload = "./resources/views/accessWebsite.txt";
                                     $foReload = fopen($fpReload,'r');
-                                    $foIP = fopen($fpIP,'r');
                                     $frReload = fread($foReload, filesize($fpReload));
-                                    $frIP = fread($foIP, filesize($fpIP));
-                                    echo ($frIP.'&emsp;|&emsp;'.$frReload);
+                                    echo ($getIpClient.'&emsp;|&emsp;'.$frReload);
                                     ?></h3>
                                 <p>Thống kê số lượng khách truy cập</p>
                             </div>
@@ -60,7 +57,7 @@
                             </div>
                             <div class="col-md-8 market-update-left">
                                 <h4>{{trans('dashboard.Orders')}}  </h4>
-                            <h3><?php echo $count; ?>/<?php echo $price; ?> </h3>
+                            <h3><?php echo $count; ?>/<?php echo number_format($price, 3); ?> </h3>
                                 <p>Thống kê số lượng đơn đặt hàng</p>
                             </div>
                             <div class="clearfix"> </div>

@@ -62,7 +62,7 @@
     $fo = fopen($fp,'w');
     $fw = fwrite($fo, $fr);
     $fc = fclose($fo);
-?>
+    ?>
     <!-- HEADER -->
     <header>
         <!-- TOP HEADER -->
@@ -556,8 +556,6 @@
                             <ul class="footer-links">
                                 <li><a href="#">{{trans('layout.Hot Deals')}}</a></li>
                                 <li><a href="#">{{trans('layout.Laptops')}}</a></li>
-                                <li><a href="#">{{trans('layout.Smartphones')}}</a></li>
-                                <li><a href="#">{{trans('layout.Cameras')}}</a></li>
                                 <li><a href="#">{{trans('layout.Accessories')}}</a></li>
                             </ul>
                         </div>

@@ -66,8 +66,6 @@
                         <div class="section-nav">
                             <ul class="section-tab-nav tab-nav">
                                 <li class="active"><a data-toggle="tab" href="#tab1">{{trans('home.Laptop')}}</a></li>
-                                <li><a data-toggle="tab" href="#tab1">{{trans('home.Smartphones')}}</a></li>
-                                <li><a data-toggle="tab" href="#tab1">{{trans('home.Cameras')}}</a></li>
                                 <li><a data-toggle="tab" href="#tab1">{{trans('home.Accessories')}}</a></li>
                             </ul>
                         </div>
@@ -174,8 +172,6 @@
                         <div class="section-nav">
                             <ul class="section-tab-nav tab-nav">
                                 <li class="active"><a data-toggle="tab" href="#tab2">{{trans('home.Laptop')}}</a></li>
-                                <li><a data-toggle="tab" href="#tab2">{{trans('home.Smartphones')}}</a></li>
-                                <li><a data-toggle="tab" href="#tab2">{{trans('home.Cameras')}}</a></li>
                                 <li><a data-toggle="tab" href="#tab2">{{trans('home.Accessories')}}</a></li>
                             </ul>
                         </div>
@@ -205,87 +201,61 @@
                     </div>
 
                     <div class="products-widget-slick" data-nav="#slick-nav-3">
+                        @foreach($all_product as $key => $item)
                         <div>
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product07.png')}}" alt="">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
+                            
                             <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product08.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product09.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- product widget -->
                         </div>
-
+                        @endforeach
+                    </div>
+                    <div class="products-widget-slick" ">
+                        @foreach($all_product as $key => $item)
                         <div>
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product01.png')}}" alt="">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
+                            
                             <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product02.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product03.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- product widget -->
                         </div>
+                        @endforeach
+                    </div>
+                    <div class="products-widget-slick" ">
+                        @foreach($all_product as $key => $item)
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
+                                </div>
+                            </div>
+                            
+                            <!-- /product widget -->
+                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -298,87 +268,61 @@
                     </div>
 
                     <div class="products-widget-slick" data-nav="#slick-nav-4">
+                        @foreach($all_product as $key => $item)
                         <div>
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="public/frontend//img/product04.png" alt="">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
+                            
                             <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product05.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product06.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- product widget -->
                         </div>
-
+                        @endforeach
+                    </div>
+                    <div class="products-widget-slick">
+                        @foreach($all_product as $key => $item)
                         <div>
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product07.png')}}" alt="">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
+                            
                             <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product08.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product09.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- product widget -->
                         </div>
+                        @endforeach
+                    </div>
+                    <div class="products-widget-slick">
+                        @foreach($all_product as $key => $item)
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
+                                </div>
+                            </div>
+                            
+                            <!-- /product widget -->
+                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -393,87 +337,62 @@
                     </div>
 
                     <div class="products-widget-slick" data-nav="#slick-nav-5">
+                        @foreach($all_product as $key => $item)
                         <div>
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product01.png')}}" alt="">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
+                            
                             <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product02.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product03.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- product widget -->
                         </div>
-
+                        @endforeach
+                    </div>
+                    
+                    <div class="products-widget-slick">
+                        @foreach($all_product as $key => $item)
                         <div>
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product04.png')}}" alt="">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
+                            
                             <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product05.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- /product widget -->
-
-                            <!-- product widget -->
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="{{asset('public/frontend/img/product06.png')}}" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-                            <!-- product widget -->
                         </div>
+                        @endforeach
+                    </div>
+                    <div class="products-widget-slick">
+                        @foreach($all_product as $key => $item)
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="{{asset('public/uploads/product/more_image/'.$item->image)}}" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">{{$item->category_name}}</p>
+                                    <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
+                                </div>
+                            </div>
+                            
+                            <!-- /product widget -->
+                        </div>
+                        @endforeach
                     </div>
                 </div>
 
