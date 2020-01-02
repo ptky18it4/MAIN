@@ -85,7 +85,7 @@
                         }
                     ?>
                     <p>{{mysubstr($pro->description)}}</p>
-                    <button style=" position: relative; left: 25%;" type="button" data-toggle="modal" data-target="#configModal" class="btn">{{trans('product.Configuration information')}}</button>
+                    <button style=" position: relative; left: 25%; background-color: whitesmoke;" type="button" data-toggle="modal" data-target="#configModal" class="btn">{{trans('product.Configuration information')}}</button>
                     <!-- Configuration -->
                     <div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -247,7 +247,7 @@
                                 <option value="15.6 inch">15.6 inch</option>
                                 <option value="17 inch">17 inch</option>
                             </select>
-                            
+
                         </label>
                         <label>
                             {{trans('product.Color')}} :
@@ -255,7 +255,7 @@
                                 <option value="black">{{trans('product.Black')}}</option>
                                 <option value="white">{{trans('product.White')}}</option>
                             </select>
-                        </label> 
+                        </label>
                         <label data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}">
                             {{trans('product.Qty')}}:
                             <div class="input-number" style="width: 100px;">
@@ -263,7 +263,7 @@
                                 <span class="qty-up">+</span>
                                 <span class="qty-down">-</span>
                             </div>
-                        </label> 
+                        </label>
                     </div>
 
                      <div data-id="{{$pro->id}}" data-name="{{$pro->name}}" data-image="{{asset('public/uploads/product/more_image/'.$pro->image)}}" data-price="{{$pro->price}}" class="add-to-cart">
@@ -317,23 +317,23 @@
                             </div>
                         </div>
                         <!-- /tab1  -->
-                        
+
                         <!-- tab2  -->
                         <div id="tab2" class="tab-pane fade in">
                             <div class="row">
                                 <div class="col-md-12">
                                     <p>{{$pro->description}}</p>
                                     <style>
-                                       
+
                                     </style>
-                                   
-                                   
+
+
                                 </div>
                                 <div class="video">
                                        <video playsinline="playsinline"  autoplay="autoplay" muted="muted" loop="loop">
                                         <source src="{{asset('public/frontend/video/'.$pro->video)}}" type="video/mp4">
                                         <!--Link video online :  https://f6-group-zf.zdn.vn/ebae2adc0406e858b117/9128246392226996966 -->
-                                        </video>  
+                                        </video>
                                     </div>
                             </div>
                         </div>
@@ -437,7 +437,7 @@
                                                     <h5 class="name">{{$item->name}}</h5>
                                                     <p class="date">{{$item->created_at}}</p>
                                                     <div class="review-rating">
-                                                            <?php switch($item->rating): 
+                                                            <?php switch($item->rating):
                                                             case 1: ?>
                                                             <div>
                                                                 <i class="fa fa-star"></i>
@@ -524,7 +524,7 @@
                                                 </div>
                                             </div>
                                             <button class="primary-btn">{{trans('product.Submit')}}</button>
-                                        </form>                                              
+                                        </form>
                                     </div>
                                 </div>
                                 <!-- /Review Form -->
