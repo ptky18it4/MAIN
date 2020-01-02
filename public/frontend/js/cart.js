@@ -1,6 +1,7 @@
   // ************************************************
   // Shopping Cart API
   // ************************************************
+
   var cartArray = [];
   // -1
   function removeItemFromCartArray(name) {
@@ -20,27 +21,29 @@
           }
       }
   }
-  var shoppingCart = (function () {
+
+
+  var shoppingCart = (function() {
       // =============================
       // Private methods and propeties
       // =============================
       cart = [];
 
       // Constructor
-      function Item( name, price, count, id, image) {
+      function Item(name, price, count, id, image) {
           this.name = name;
           this.price = price;
           this.count = count;
           this.id = id;
           this.image = image;
-          console.log('Name : ' + name,' Price : ' + price,' Count : ' + count, 'ID : ' + id + ' Image : ' + image);
+          console.log('Name : ' + name, ' Price : ' + price, ' Count : ' + count, 'ID : ' + id + ' Image : ' + image);
       }
 
       // Save cart
       function saveCart() {
           localStorage.setItem('shoppingCart', JSON.stringify(cart));
       }
-      // Load cart  
+      // Load cart
       function loadCart() {
           cart = JSON.parse(localStorage.getItem('shoppingCart'));
       }
@@ -54,7 +57,7 @@
       var obj = {};
 
       // Add to cart
-      obj.addItemToCart = function (name, price, count, id, image ) {
+      obj.addItemToCart = function(name, price, count, id, image) {
           for (var item in cart) {
               if (cart[item].name === name) {
                   cart[item].count++;
@@ -66,7 +69,7 @@
           cart.push(item);
           saveCart();
       }
-      obj.setCountForItem = function (name, count) {
+      obj.setCountForItem = function(name, count) {
           for (var i in cart) {
               if (cart[i].name === name) {
                   cart[i].count = count;
@@ -75,7 +78,7 @@
           }
       };
       // Remove item from cart
-      obj.removeItemFromCart = function (name) {
+      obj.removeItemFromCart = function(name) {
           for (var item in cart) {
               if (cart[item].name === name) {
                   cart[item].count--;
@@ -89,7 +92,7 @@
       }
 
       // Remove all items from cart
-      obj.removeItemFromCartAll = function (name) {
+      obj.removeItemFromCartAll = function(name) {
           for (var item in cart) {
               if (cart[item].name === name) {
                   cart.splice(item, 1);
@@ -100,13 +103,13 @@
       }
 
       // Clear cart
-      obj.clearCart = function () {
+      obj.clearCart = function() {
           cart = [];
           saveCart();
       }
 
-      // Count cart 
-      obj.totalCount = function () {
+      // Count cart
+      obj.totalCount = function() {
           var totalCount = 0;
           for (var item in cart) {
               totalCount += cart[item].count;
@@ -115,7 +118,7 @@
       }
 
       // Total cart
-      obj.totalCart = function () {
+      obj.totalCart = function() {
           var totalCart = 0;
           for (var item in cart) {
               totalCart += cart[item].price * cart[item].count;
@@ -125,7 +128,7 @@
       }
 
       // List cart
-      obj.listCart = function () {
+      obj.listCart = function() {
           var cartCopy = [];
           for (i in cart) {
               item = cart[i];
@@ -156,9 +159,9 @@
 
   // *****************************************
   // Triggers / Events
-  // ***************************************** 
+  // *****************************************
   // Add item
-  $('.add-to-cart').click(function (event) {
+  $('.add-to-cart').click(function(event) {
       event.preventDefault();
       var name = $(this).data('name');
       var price = Number($(this).data('price'));
@@ -169,19 +172,18 @@
   });
 
   // Clear items
-  $('.clear-cart').click(function () {
+  $('.clear-cart').click(function() {
       shoppingCart.clearCart();
       displayCart();
   });
-
+  //========================================================================= FUNCTION displayCart =============================================================
   function displayCart() {
       cartArray = shoppingCart.listCart();
-      // cartArray.price = isNaN(cartArray.price)?"":cartArray.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       var output = "";
       for (var i in cartArray) {
           // format price
           cartArray[i].price = isNaN(cartArray[i].price) ? "" : cartArray[i].price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
+          //============================================================== OUTPUT - SHOW ON HOME WHERE "YOUR CART" ============================================================
           output +=
               "<div class='product-widget'>" +
               "<div class='product-img'>" +
@@ -209,7 +211,7 @@
 
   // Delete item button
 
-  $('.show-cart').on("click", ".delete", function (event) {
+  $('.show-cart').on("click", ".delete", function(event) {
       var name = $(this).data('name')
       shoppingCart.removeItemFromCartAll(name);
       displayCart();
@@ -217,14 +219,14 @@
 
 
   // -1
-  $('.show-cart').on("click", ".minus-item", function (event) {
-      var name = $(this).data('name')
-      removeItemFromCartArray(name);
-      shoppingCart.removeItemFromCart(name);
-      displayCart();
-  })
-  // +1
-  $('.show-cart').on("click", ".plus-item", function (event) {
+  $('.show-cart').on("click", ".minus-item", function(event) {
+          var name = $(this).data('name')
+          removeItemFromCartArray(name);
+          shoppingCart.removeItemFromCart(name);
+          displayCart();
+      })
+      // +1
+  $('.show-cart').on("click", ".plus-item", function(event) {
       var name = $(this).data('name')
       addToCartArray(name);
       shoppingCart.addItemToCart(name);
@@ -233,40 +235,40 @@
   })
 
   // Item count input   // Item count input
-  $('.show-cart').on("change", ".item-count", function (event) {
+  $('.show-cart').on("change", ".item-count", function(event) {
       var name = $(this).data('name');
       var count = Number($(this).val());
       shoppingCart.setCountForItem(name, count);
       displayCart();
   });
-
+  //===================================================================== FUNCTION submitFormCheckout =========================================================
   function submitFormCheckout() {
       console.log(cartArray);
       var object = [];
-      for(var item in cartArray) {
+      for (var item in cartArray) {
           var contentString = "";
           contentString += "{";
           contentString += '"id":';
           contentString += cartArray[item].id.toString();
           contentString += ",";
           contentString += '"name":"';
-          contentString += cartArray[item].name.toString();  
-          contentString += '"';  
-          contentString += ',';  
+          contentString += cartArray[item].name.toString();
+          contentString += '"';
+          contentString += ',';
           contentString += '"count":';
           contentString += cartArray[item].count.toString();
           contentString += "}";
           object.push(contentString);
-        }
-        var ngoacZuong = "";
-        ngoacZuong += '[';
-        ngoacZuong += object;
-        ngoacZuong += ']';
-        
-        alert(ngoacZuong);
+      }
+      var ngoacZuong = "";
+      ngoacZuong += '[';
+      ngoacZuong += object;
+      ngoacZuong += ']';
+
+      alert(ngoacZuong);
       $('#cart-content').val(ngoacZuong);
       $("#form-content-cart").submit();
       shoppingCart.clearCart();
-    }
-      var cartArray = [];
+  }
+  var cartArray = [];
   displayCart();

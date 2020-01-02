@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use DB,Mail;
+use DB;
+use Mail;
 
 use App\Http\Requests;
 use Session;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Redirect;  // trả về trang j đó (khi thành
 session_start();
 class HomeController extends Controller
 {
-    
+
     //Bảo mật admin
     public function AuthenticLogin()
     {
@@ -37,14 +38,14 @@ class HomeController extends Controller
                             ['name', 'like' , '%'.$keywords.'%'],
                             ['show_on_home', '=' , '1'],
                         ])
-                ->orWhere([ 
+                ->orWhere([
                                 ['category_name', 'like' , '%'.$keywords.'%'],
                                 ['show_on_home', '=' , '1']
                           ])
                 ->orWhere('description', 'like' , '%'.$keywords.'%')
                 ->orWhere('meta_tag_title', 'like' , '%'.$keywords.'%')
                 ->paginate(8);
-        
+
 
         $related_product = DB::table('tbl_product')
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
@@ -63,10 +64,10 @@ class HomeController extends Controller
                 ->with('infor_user',$infor_user)
                 ->with('all_category',$all_category)
                 ->with('related_product',$related_product);
-    } 
+    }
 
     public function login(Request $request)
-    {   
+    {
         $user_email = $request->user_email;
         $user_password = md5($request->user_password);
         $result = DB::table('tbl_user')->where('email', $user_email)->where('password', $user_password)->first();
@@ -109,8 +110,8 @@ class HomeController extends Controller
         //Insert
         DB::table('tbl_user')->insert($data);
         return Redirect::to('/');
-    } 
-    
+    }
+
     public function log_out()
     {
         $this->AuthenticLogin();
@@ -143,7 +144,7 @@ class HomeController extends Controller
     }
 
     public function index()
-    {   
+    {
         $arrayIP = array();
         $ip = getenv('HTTP_CLIENT_IP')?:
         getenv('HTTP_X_FORWARDED_FOR')?:
@@ -163,7 +164,7 @@ class HomeController extends Controller
             //     return view('pages.404_1');
             //     break;
         }
-        
+
         //===================================================================================================================
 
         DB::table('ip_client')->where('address', '=', $ip)->delete();
@@ -182,10 +183,10 @@ class HomeController extends Controller
                 ->where('show_on_home','1')
                 ->inRandomOrder()
                 ->get();
-            
+
             $top_selling = DB::table('tbl_product')
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('top_selling', '>', '3')
+                ->where('top_selling', '>', '1')
                 ->orderby('id', 'desc')
                 ->limit(5)
                 ->get();
@@ -497,7 +498,7 @@ class HomeController extends Controller
             $message->priority(3);
             // $message->attach('pathToFile');
         });
-        echo "<script> alert('Cảm ơn bạn đã đánh giá và phản hồi ! Chúc quý khách một ngày làm việc hiệu quả !');        
+        echo "<script> alert('Cảm ơn bạn đã đánh giá và phản hồi ! Chúc quý khách một ngày làm việc hiệu quả !');
         </script>";
         return redirect()->back();
     }
@@ -507,7 +508,7 @@ class HomeController extends Controller
         $all_menu = DB::table('tbl_menu')->get();
         $infor_user = DB::table('tbl_user')->where('id',$user_id)->get();
         $all_category = DB::table('tbl_category')->get();
-        
+
         return view('pages.presentation')
                 ->with('all_menu', $all_menu)
                 ->with('infor_user', $infor_user)
