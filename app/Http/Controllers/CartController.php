@@ -9,7 +9,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;  // trả về trang j đó (khi thành công hoặc thất bại)
 session_start();
 class CartController extends Controller
-{       
+{
         public function AuthenticLogin()
         {
             $admin_id = Session::get('admin_id');  //admin_id ở đâu mà có : admin_id này tồn tại khi đăng nhập thành công ( xem ở funciton dashboard)
@@ -22,7 +22,7 @@ class CartController extends Controller
                 return Redirect::to('admin')->send();;
             }
         }
-        public function submitFormCheckout(Request $request) 
+        public function submitFormCheckout(Request $request)
         {
 
             //===========================================GET INFORMATION OF USER ORDER==========================================
@@ -75,7 +75,7 @@ class CartController extends Controller
             //============================================ Handling =======================================================
                 $user_order['total'] = 0;
 
-                for ($i = 0; $i < $countChar; $i++) { 
+                for ($i = 0; $i < $countChar; $i++) {
 
                     $data = array();
                     $data['name']   = $json[$i]->name;
@@ -100,7 +100,7 @@ class CartController extends Controller
                     $user_order['total'] += $price;
                     DB::table('tbl_checkout')->where('ProductID',$data['ProductID'])->update(['price'=> $price]);
 
-                    
+
                     Mail::send('mails.notification', $user_order, function ($message) {
                         $message->from('phamtrungky19032000@gmail.com','Trung Kỳ');
                         $message->sender('phamtrungky19032000@gmail.com','Trung Kỳ');
@@ -112,7 +112,7 @@ class CartController extends Controller
                 }
                 return Redirect::to('/history');
             }
-                  
+
         }
         /**
          * Function show history product order user

@@ -239,7 +239,7 @@ class HomeController extends Controller
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where('show_on_home', '1')
                 ->orderby('id', 'desc')
-                ->limit(8)
+                ->limit(9)
                 ->get();
 
             $top_selling = DB::table('tbl_product')
