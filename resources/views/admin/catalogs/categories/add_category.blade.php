@@ -37,7 +37,7 @@
                                 <div class="col-sm-4">
                                 <select name="category_parent_id" class="form-control input-sm m-bot15">
                                 @foreach($parent_id as $key => $parent_id)
-                                    <option value="{{$parent_id->parent_name}}">{{$parent_id->parent_name}}</option>
+                                    <option value="{{$parent_id->parent_id}}">{{$parent_id->parent_name}}</option>
                                 @endforeach
                                 </select>
                                 </div>
@@ -88,7 +88,7 @@
                             <br>
                             <hr>
                         </div>
-                        
+
                         <div class="form-groups">
                             <div class="col-sm-2">
                                 <label for="exampleInputEmail1">{{trans('add_category.Status')}}</label>

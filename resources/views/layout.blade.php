@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>Thinkpad - Hệ thống bán lẻ laptop nhập khẩu giá rẻ toàn quốc</title>
@@ -35,11 +35,11 @@
     <link type="text/css" rel="stylesheet" href="{{asset('public/frontend/css/backtop.css')}}" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]> 
+    <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- remove this if you use Modernizr -->
     <script>
@@ -80,7 +80,7 @@
 
                     <!-- End Selected language  -->
                 <li><a href="#"><i class="fa fa-dollar"></i>{{trans('layout.USD')}}</a></li>
-                    <!-- Xử lý một số tác vụ khi truy cập website -->   
+                    <!-- Xử lý một số tác vụ khi truy cập website -->
 
                         <!-- Mở hộp thoại đăng nhập khi mới vào website  -->
                         @if($user_id = Session::get('user_id'))
@@ -96,7 +96,7 @@
                                     }
                                     ?>
                                 </a></li>
- 
+
                         @else
 
                         <script>
@@ -105,7 +105,7 @@
                             });
                         </script>
 
-                        
+
                     <li class="text-center border-right text-white">
                         <a href="#" data-toggle="modal" data-target="#loginModal" class="text-white">
                         <i class="fas fa-sign-in-alt mr-2 text-red"></i>{{trans('layout.Log in')}}</a>
@@ -222,7 +222,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                       <div class="card" style="width: auto;"
+                       <div class="card" style="width: auto;">
                         <div class="card-body">
                             <div class="alert alert-primary" role="alert">
                                 <i>Qúy khách vui lòng gọi/ gửi thông tin đến bộ phận hỗ trợ để được tư vấn và giải đáp thắc mắc . Xin chân thành cảm ơn </i>
@@ -232,7 +232,7 @@
 
                         </div>
                       </div>
-                      
+
                     </div>
 
                 </div>
@@ -434,14 +434,14 @@
                                        <div class="cart-list show-cart">
                                                 {{-- Here is place to show content of function javascript --}}
                                         </div>
-                                       
+
                                         <span class="py-5 total-count"></span>
                                         <small>{{trans('layout.Item(s) selected')}}</small>
                                         <div class="cart-summary">
                                         <strong>{{trans('layout.TOTAL PRICE')}}</strong><strong>({{trans('layout.$')}})</strong>
                                             <i style='color: red;' class="total-cart" ></i>
                                         </div>
-                                        
+
                                         <div class="cart-btns">
                                             <a href="#">{{trans('layout.View Cart')}}</a>
                                             <a href="#" class="clear-cart">{{trans('layout.Clear Cart')}}</a>

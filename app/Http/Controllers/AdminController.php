@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;  // trả về trang j đó (khi thành
 session_start();
 class AdminController extends Controller
 {
-    
+
     //Bảo mật admin
     public function AuthenticLogin()
     {
@@ -76,7 +76,7 @@ class AdminController extends Controller
             $priceOfMonth = DB::table('tbl_checkout')->whereBetween('created_at',[$fromMonth,$toMonth])->sum('price');
 
             //================================= ALL PRODUCTS & MONEY / MONTH =================================
-            
+
             $fromMonthNew = date('Y-m-1 00:00:00',strtotime("-1 months"));
             $toMonthNew = date('Y-m-1 00:00:00');
             $created_from_Month_New =$fromMonthNew;
@@ -85,11 +85,11 @@ class AdminController extends Controller
             $priceOfMonth_New = DB::table('tbl_checkout')->whereBetween('created_at',[$fromMonthNew,$toMonthNew])->sum('price');
 
             //========================================== RETURN =============-================================
-            
+
             $getIpClient = DB::table('ip_client')->count('address');
 
             //========================================== GET IP CLIENT =======================================
-            return view('admin.dashboard', 
+            return view('admin.dashboard',
                             [
                                 'count' => $count,
                                 'users'=> $users,
@@ -116,7 +116,7 @@ class AdminController extends Controller
         }
 
     }
-    
+
     public function log_out()
     {
         $this->AuthenticLogin();
@@ -131,7 +131,7 @@ class AdminController extends Controller
     {
         return view('admin_register');
     }
-    
+
     public function processor_register(Request $request)
     {
         $data = array();

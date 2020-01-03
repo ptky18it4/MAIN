@@ -54,7 +54,6 @@ class ProductController extends Controller
         $data['image'] = $request->product_image;
         $data['show_on_home'] = $request->show_on_home;
         $data['price'] = $request->product_price;
-        // $data['promotion_price'] = $request->product_promotion_price;
         $data['vat'] = $request->product_vat;
         $data['quantity'] = $request->product_quantity;
         $data['content'] = $request->product_meta_tag_title;
@@ -71,7 +70,7 @@ class ProductController extends Controller
             // echo $name_image;
             $new_image ='thum-'.$name_image.'-'.rand(0,99).'-'.date("Ymd").'.'.$get_image->getClientOriginalExtension(); // Lấy lên file + phần random + phần đuôi mở rộng
             // echo $new_image;
-            $get_image->move('public/uploads/product/more_image/',$new_image);  
+            $get_image->move('public/uploads/product/more_image/',$new_image);
             $data['image'] = $new_image;
         }
         // /**
@@ -83,10 +82,11 @@ class ProductController extends Controller
 
 
         //Lưu dữ liệu tag 1
-        DB::table('tbl_product')->insert($data);
 
-        // Lấy ra id của sản phẩm vừa được tạo ra để tiếp tục thêm thông tin chi tiết của sản phẩm ấy vào 
+        DB::table('tbl_product')->insert($data);
+        // Lấy ra id của sản phẩm vừa được tạo ra để tiếp tục thêm thông tin chi tiết của sản phẩm ấy vào
         $get_id = DB::table('tbl_product')->where('id', DB::raw("(select max(`id`) from tbl_product)"))->get();
+
         $result_id = $get_id[0]->id;
         echo $result_id;
         $infor_config = array();
@@ -118,13 +118,16 @@ class ProductController extends Controller
         $infor_config['Pin_battery'] = $request->pin_battery;
         $infor_config['Time_used_often'] = $request->time_used_often;
         $infor_config['Charger'] = $request->charger;
+        $infor_config['operating_system'] = $request->operating_system;
         $infor_config['Dimensions_L_W_H'] = $request->dimensions;
         $infor_config['Weight'] = $request->weight;
         //OTHER
         $infor_config['Gateway'] = $request->gateway;
         $infor_config['Resolution_webcam'] = $request->resolution_webcam;
+
         DB::table('tbl_infor_config_product')->insert($infor_config);
-        // ========================================================================
+
+        // // ========================================================================
         $img = array();
         for($i = 0; $i<5; ++$i){
         $image[$i] = $request->file('product_detail'.$i);
@@ -136,7 +139,7 @@ class ProductController extends Controller
         $get_name[$i] = current(explode('.',$get_input[$i]));
         $create_name[$i] = 'thumb-thinkpad-'.$get_name[$i].'-'.date("Ymd").'.'.$image[$i]->getClientOriginalExtension();
         $image[$i]->move('public/uploads/product/more_image',$create_name[$i]);
-        
+
         $img['image'] = $create_name[$i];
 
         DB::table('tbl_more_image')->insert($img);
@@ -194,7 +197,7 @@ class ProductController extends Controller
         DB::table('tbl_infor_config_product')->where('id_infor_config_product',$product_id)->delete();
         DB::table('tbl_more_image')->where('product_id',$product_id)->delete();
         Session::put('message','Delete product success !');
-        return Redirect::to($this->RedirectProduct.'all-product');   
+        return Redirect::to($this->RedirectProduct.'all-product');
      }
 
      public function update_product(Request $request, $product_id)
@@ -233,14 +236,14 @@ class ProductController extends Controller
          //  * Tương tự các $data['....'] nhé
          //  * Rồi, bây giờ in ra để xem đã lấy được từ bên form qua chưa nè
          //  */
- 
- 
+
+
          //Lưu dữ liệu tag 1
          DB::table('tbl_product')->where('id',$product_id)->update($data);
 
           // ================================UPDATE CONFIGURE ========================================
 
-         // Lấy ra id của sản phẩm vừa được tạo ra để tiếp tục thêm thông tin chi tiết của sản phẩm ấy vào 
+         // Lấy ra id của sản phẩm vừa được tạo ra để tiếp tục thêm thông tin chi tiết của sản phẩm ấy vào
         //  $get_id = DB::table('tbl_product')->where('id', DB::raw("(select max(`id`) from tbl_product)"))->get();
         //  $result_id = $get_id[0]->id;
         //  echo $result_id;
@@ -252,13 +255,13 @@ class ProductController extends Controller
          $infor_config['CPU_speed'] = $request->cpu_speed;
          $infor_config['CPU_caching'] = $request->cpu_caching;
          $infor_config['Maximum_speed_Turbo'] = $request->maximum_speed_turbo;
- 
+
          // RAM , HARD RIVE
          $infor_config['RAM_memory'] = $request->ram_memory;
          $infor_config['RAM_types'] = $request->ram_types;
          $infor_config['Speed​_Bus'] = $request->speed_bus;
          $infor_config['Hard_Drive'] = $request->hard_drive;
- 
+
          // SCREEN
          $infor_config['Size_Screen'] = $request->size_screen;
          $infor_config['Resolution_W_x_H'] = $request->resolution_w_h;
@@ -286,14 +289,14 @@ class ProductController extends Controller
          {
             $img['product_id'] = $product_id;
             $img['item'] = $request->item.$i;
-            $image[$i] = $request->file('product_detail'.$i);    
+            $image[$i] = $request->file('product_detail'.$i);
             $get_input[$i] = $image[$i]->getClientOriginalName();
             $get_name[$i] = current(explode('.',$get_input[$i]));
             $create_name[$i] = 'thumb-thinkpad-'.$get_name[$i].'-'.date("Ymd").'.'.$image[$i]->getClientOriginalExtension();
             $image[$i]->move('public/uploads/product/more_image',$create_name[$i]);
-            
+
             $img['image'] = $create_name[$i];
-            
+
             echo '<pre>';
             print_r('Hinh '.$i.': '.$img['image']);
             echo '</pre>';
@@ -303,7 +306,7 @@ class ProductController extends Controller
                 ['item', '=', $i],
                 ])
                 ->orderby('id','desc')
-                ->update($img); 
+                ->update($img);
             }
             return Redirect::to($this->RedirectProduct.'all-product');
     }
