@@ -1,5 +1,5 @@
 <?php
-    
+
         return [
             "Home"                                => "Trang chủ",
             "All Category"                        => "Tất cả danh mục",
@@ -72,5 +72,8 @@
             "Processor"                           => "Bộ xử lý",
             "Related Products"                    => "Sản phẩm liên quan",
             "NEW"                                 => "Mới",
+
+            "quick view"                          => "Xem nhanh",
+            "Showing 20-100 products"             => "Hiển thị 20-100 sản phẩm",
      ];
 ?>

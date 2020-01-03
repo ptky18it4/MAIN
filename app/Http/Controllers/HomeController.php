@@ -514,4 +514,11 @@ class HomeController extends Controller
                 ->with('infor_user', $infor_user)
                 ->with('all_category', $all_category);
     }
+
+    public function terms_conditions() {
+        return view('pages.term_condition');
+    }
+    public function security(){
+        return view('pages.security');
+    }
 }

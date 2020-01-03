@@ -82,39 +82,11 @@
                 <li><a href="#"><i class="fa fa-dollar"></i>{{trans('layout.USD')}}</a></li>
                     <!-- Xử lý một số tác vụ khi truy cập website -->
 
-                        <!-- Mở hộp thoại đăng nhập khi mới vào website  -->
-                        @if($user_id = Session::get('user_id'))
-
-                            <li><a href="{{URL::to(  'infor')}}" data-toggle="modal" data-target="#myAccountModal"><i class="fa fa-user-o"></i>
-                                    <?php
-                                    $name = Session::get('user_name');
-                                    /**
-                                    * 1. Nếu name tồn tại thì in ra bên dưới, còn không thì thôi
-                                    */
-                                    if ($name) {
-                                        echo $name;
-                                    }
-                                    ?>
-                                </a></li>
-
-                        @else
-
-                        <script>
-                            $(window).load(function() {
-                                $('#loginModal').modal('show');
-                            });
-                        </script>
-
 
                     <li class="text-center border-right text-white">
                         <a href="#" data-toggle="modal" data-target="#loginModal" class="text-white">
                         <i class="fas fa-sign-in-alt mr-2 text-red"></i>{{trans('layout.Log in')}}</a>
                     </li>
-                    {{-- <li class="text-center text-white">
-                        <a href="#" data-toggle="modal" data-target="#registerModal" class="text-white">
-                        <i class="fas fa-sign-out-alt mr-2 text-red"></i>{{trans('layout.Log out')}}</a>
-                    </li> --}}
-                    @endif
 
                 </ul>
             </div>
@@ -153,15 +125,7 @@
                         <h5 class="modal-title text-center">
                             {{trans('layout.Hello')}},
                             <strong style="color: red; text-transform: uppercase;">
-                                <?php
-                                $name = Session::get('user_name');
-                                /**
-                                 * 1. Nếu name tồn tại thì in ra bên dưới, còn không thì thôi
-                                 */
-                                if ($name) {
-                                    echo $name;
-                                }
-                                ?>
+
                             </strong>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -169,31 +133,30 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        @if(Session::get('user_id'))
-                            @foreach($infor_user as $key => $infor)
-                            <form action="{{URL::to('update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
-                                {{ csrf_field() }}
+
+                            <form action="" method="post" enctype="multipart/form-data">
+
                                 <input type="hidden" name="user_id" value="$infor->id">
                                 <div class="form-group" >
-                                <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="image" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>
+                                <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="" title="image" data-placeholder="" /></a>
                                 <div>
                                     <input type="file" id="edit_image" class="file"  name="product_image"  title="change image" onchange="readURL(this);" /></div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">{{trans('layout.Email')}}</label>
-                                    <input type="email" class="form-control" id="name" value="{{$infor->email}}" name="user_email" required="">
+                                    <input type="email" class="form-control" id="name" value="" name="user_email" required="">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">{{trans('layout.Password')}}</label>
-                                    <input type="password" class="form-control" value="{{$infor->passdefault}} " id="password" name="user_password" required="">
+                                    <input type="password" class="form-control" value=" " id="password" name="user_password" required="">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">{{trans('layout.Address')}}</label>
-                                    <input type="text" class="form-control" value="{{$infor->address}} " name="user_address" required="">
+                                    <input type="text" class="form-control" value="" name="user_address" required="">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">{{trans('layout.Phone number')}}</label>
-                                    <input type="text" class="form-control" value="{{$infor->phone}} " name="user_phone" required="">
+                                    <input type="text" class="form-control" value="" name="user_phone" required="">
                                 </div>
                                 <div class="right-w3l">
                                     <input type="submit" class="form-control btn btn-danger" value="Update">
@@ -201,8 +164,6 @@
                                 <hr>
                             <a href="{{URL::to('logout')}}" name="delInfor" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
                             </form>
-                            @endforeach
-                        @endif
                     </div>
 
                 </div>
@@ -399,9 +360,9 @@
                             {{-- <input type="hidden" name="_token" value="{{csrf_token()}}";> --}}
                                 <select class="input-select">
                                 <option value="0">{{trans('layout.All Category')}}</option>
-                                    @foreach($all_category as $key => $cate)
-                                    <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
-                                    @endforeach
+
+                                    <option value=""></option>
+
                                 </select>
                                 <input class="input" placeholder="{{trans('Search')}}" name="keywords" type="text">
                             <button type="submit" class="search-btn">{{trans('layout.Search')}}</button>
@@ -494,7 +455,127 @@
         <!-- /container -->
     </nav>
     <!-- /NAVIGATION -->
-    @yield('content')
+    <div class="content-middle">
+        <div class="container">
+            <div class="content-middle-bottom">
+                <div class="left_content">
+                    <div class="tintucdetail-title">
+                        <h1 style="padding-top: 1rem;">Chính sách bảo mật thông tin khách hàng</h1>
+                    </div>
+                    <div class="content-baiviet ck-content">
+                        <p><strong></strong></p>
+                        <p style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif"><strong><u>I. MỤC ĐÍCH VÀ PHẠM VI THU THẬP</u></strong></span></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Việc
+     thu thập dữ liệu chủ yếu trên website bao gồm: họ tên, email, điện
+    thoại, địa chỉ khách hàng trong mục liên hệ. Đây là các thông tin mà
+    chúng tôi &nbsp;cần thành viên cung cấp bắt buộc khi gửi thông tin nhờ
+    tư vấn hay muốn mua sản phẩm và để chúng tôi &nbsp;&nbsp;liên hệ xác
+    nhận lại với khách hàng trên website nhằm đảm bảo quyền lợi cho cho
+    người tiêu dùng. </span></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Các
+     thành viên sẽ tự chịu trách nhiệm về bảo mật và lưu giữ mọi hoạt động
+    sử dụng dịch vụ dưới thông tin mà mình cung cấp và hộp thư điện tử của
+    mình. Ngoài ra, thành viên có trách nhiệm thông báo kịp thời cho webiste
+     chúng tôi &nbsp;&nbsp;về những hành vi sử dụng trái phép, lạm dụng, vi
+    phạm bảo mật, lưu giữ tên đăng ký và mật khẩu của bên thứ ba để có biện
+    pháp giải quyết phù hợp. </span></span></span></p>
+
+    <p style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif"><strong><u>II. PHẠM VI SỬ DỤNG THÔNG TIN</u></strong></span></span></span></p>
+
+    <p style="margin-left:0.5in; margin-right:0in; text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Chúng tôi sử dụng thông tin thành viên cung cấp để:</span></span></span></p>
+
+    <ul>
+     <li style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Liên hệ xác nhận đơn hàng và giao hàng cho thành viên khi nhận được yêu cầu từ thành viên;</span></span></span></li>
+     <li style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Cung cấp thông tin về sản phẩm đến khách hàng nếu có yêu cầu từ khách hàng;</span></span></span></li>
+     <li style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Gửi email tiếp thị, khuyến mại về hàng hóa do chúng tôi bán;</span></span></span></li>
+     <li style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Gửi các thông báo về các hoạt động trên website</span></span></span></li>
+     <li style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Liên lạc và giải quyết với người dùng trong những trường hợp đặc biệt;</span></span></span></li>
+     <li style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Không sử dụng thông tin cá nhân của người dùng ngoài mục đích xác nhận và liên hệ có liên quan đến giao dịch </span></span></span></li>
+    </ul>
+
+    <p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">-&nbsp;&nbsp;
+     Khi có yêu cầu của cơ quan tư pháp bao gồm: Viện kiểm sát, tòa án, cơ
+    quan công an điều tra liên quan đến hành vi vi phạm pháp luật nào đó của
+     khách hàng. </span></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in; text-align:justify">&nbsp;</p>
+
+    <p style="text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif"><strong><u>III.&nbsp; THỜI GIAN LƯU TRỮ THÔNG TIN </u></strong></span></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Dữ
+     liệu cá nhân của thành viên sẽ được lưu trữ cho đến khi có yêu cầu ban
+    quản trị hủy bỏ. Còn lại trong mọi trường hợp thông tin cá nhân thành
+    viên sẽ được bảo mật trên máy chủ của chúng tôi &nbsp;&nbsp;</span></span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><strong><u>IV. NHỮNG NGƯỜI HOẶC TỔ CHỨC CÓ THỂ ĐƯỢC TIẾP CẬN VỚI THÔNG TIN CÁ NHÂN</u></strong></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in"><span style="color:null"><span style="font-size:16px">Đối tượng được tiếp cận với thông tin cá nhân của khách hàng thuộc một trong những trường hợp sau:</span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in"><span style="color:null"><span style="font-size:16px">- Nhân viên của công ty </span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in"><span style="color:null"><span style="font-size:16px">-
+     Các đối tác có ký hợp động thực hiện 1 phần dịch vụ của Công Ty. Các
+    đối tác này sẽ nhận được những thông tin theo thỏa thuận hợp đồng (có
+    thể 1 phần hoặc toàn bộ thông tin tuy theo điều khoản hợp đồng) để tiến
+    hành hỗ trợ người dùng sử dụng dịch vụ do Công ty cung cấp.</span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><strong><u>V. ĐỊA CHỈ CỦA ĐƠN VỊ THU THẬP VÀ QUẢN LÝ THÔNG TIN CÁ NHÂN</u></strong></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Công ty TNHH Công nghệ Think Việt Nam Think VN Co., LTD</span></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Địa chỉ: 105/562 Đường Láng, P.Láng Hạ, Q.Đống Đa, Hà Nội</span></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Email: longtvbk@gmail.com - Điện thoại: 1900.63.3579</span></span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><strong><u>VI. PHƯƠNG TIỆN VÀ CÔNG CỤ ĐỂ NGƯỜI DÙNG TIẾP CẬN VÀ CHỈNH SỬA DỮ LIỆU CÁ NHÂN CỦA MÌNH</u></strong></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Thành
+     viên có quyền tự kiểm tra, cập nhật, điều chỉnh hoặc hủy bỏ thông tin
+    cá nhân của mình bằng cách liên hệ với ban quản trị website thực hiện
+    việc này.</span></span></span></p>
+
+    <p style="margin-left:0in; margin-right:0in; text-align:justify"><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Thành
+     viên có quyền gửi khiếu nại về nội dung bảo mật thông tin đề nghị liên
+    hệ Ban quản trị của website. Khi tiếp nhận những phản hồi này, chúng tôi
+     sẽ xác nhận lại thông tin, trường hợp đúng như phản ánh của thành viên
+    tùy theo mức độ, chúng tôi sẽ có những biện pháp xử lý kịp thời.</span></span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><span style="background-color:white"><strong><u>VII. CƠ CHẾ TIẾP NHẬN VÀ GIẢI QUYẾT KHIẾU NẠI CỦA NGƯỜI TIÊU DÙNG</u></strong></span></span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Thông
+     tin cá nhân của thành viên được cam kết bảo mật tuyệt đối theo chính
+    sách bảo vệ thông tin cá nhân. Việc thu thập và sử dụng thông tin của
+    mỗi thành viên chỉ được thực hiện khi có sự đồng ý của khách hàng đó trừ
+     những trường hợp pháp luật có quy định khác.</span></span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Không
+     sử dụng, không chuyển giao, cung cấp hay tiết lộ cho bên thứ 3 nào về
+    thông tin cá nhân của thành viên khi không có sự cho phép đồng ý từ
+    thành viên.</span></span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Trong
+     trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát
+     dữ liệu cá nhân thành viên, chúng tôi sẽ có trách nhiệm thông báo vụ
+    việc cho cơ quan chức năng điều tra xử lý kịp thời và thông báo cho
+    thành viên được biết.</span></span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">Bảo mật tuyệt đối mọi thông tin giao dịch trực tuyến của thành viên bao gồm thông tin hóa đơn kế toán chứng từ số hóa </span></span></span></p>
+
+    <p><span style="color:null"><span style="font-size:16px"><span style="font-family:Calibri,sans-serif">&nbsp;Ban
+     quản lý yêu cầu các cá nhân khi đăng ký/mua hàng phải cung cấp đầy đủ
+    thông tin cá nhân có liên quan như: Họ và tên, địa chỉ liên lạc, email,
+    điện thoại,…., và chịu trách nhiệm về tính pháp lý của những thông tin
+    trên. Ban quản lý không chịu trách nhiệm cũng như không giải quyết mọi
+    khiếu nại có liên quan đến quyền lợi của thành viên đó nếu xét thấy tất
+    cả thông tin cá nhân của thành viên đó cung cấp khi đăng ký ban đầu là
+    không chính xác.</span></span></span></p>
+                    </div>
+                </div>
+                <div class="right_content sidebar mt-xs-20">
+                    <div class="block block-newfeature">
+                    </div></div></div></div>
     <!-- NEWSLETTER -->
     <div id="newsletter" class="section">
         <!-- container -->
@@ -569,9 +650,9 @@
                             <ul class="footer-links">
                                 <li><a href="http://trungky.tk">{{trans('layout.About Us')}}</a></li>
                                 <li><a href="#">{{trans('layout.Contact Us')}}</a></li>
-                                <li><a href="{{URL::to('security')}}">{{trans('layout.Privacy Policy')}}</a></li>
-                                <li><a href="{{URL::to('terms-conditions')}}">{{trans('layout.Orders and Returns')}}</a></li>
-                            <li><a href="{{URL::to('terms-conditions')}}">{{trans('layout.Terms & Conditions')}}</a></li>
+                                <li><a href="#">{{trans('layout.Privacy Policy')}}</a></li>
+                                <li><a href="#">{{trans('layout.Orders and Returns')}}</a></li>
+                                <li><a href="#">{{trans('layout.Terms & Conditions')}}</a></li>
                             </ul>
                         </div>
                     </div>

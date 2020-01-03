@@ -43,7 +43,7 @@
 									</label>
 								</div>
 								@endforeach
-								
+
 							</div>
 						</div>
 						<!-- /aside Widget -->
@@ -134,7 +134,7 @@
 								<div class="product-body">
 									<p class="product-category">{{trans('store.Category')}}</p>
 									<h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									<h4 class="product-price">980.00 VND<del class="product-old-price">990.00 VND</del></h4>
 								</div>
 							</div>
 
@@ -143,9 +143,9 @@
 									<img src="{{asset('public/frontend/img/product02.png')}}" alt="">
 								</div>
 								<div class="product-body">
-									<p class="product-category">{{trans('product.Category')}}</p>
+									<p class="product-category">{{trans('store.Category')}}</p>
 									<h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									<h4 class="product-price">980.00 VND<del class="product-old-price">990.00 VND</del></h4>
 								</div>
 							</div>
 
@@ -156,7 +156,7 @@
 								<div class="product-body">
 									<p class="product-category">{{trans('store.Category')}}</p>
 									<h3 class="product-name"><a href="#">{{trans('product.product name goes here')}}</a></h3>
-									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									<h4 class="product-price">980.00 VND<del class="product-old-price">990.00 VND</del></h4>
 								</div>
 							</div>
 						</div>
@@ -255,5 +255,5 @@
 		</div>
 		<!-- /SECTION -->
 
-    
+
 @endsection

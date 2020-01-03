@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <!-- /shop -->
-                
+
                 <!-- shop -->
                 <div class="col-md-4 col-xs-6">
                     <div class="shop">
@@ -72,12 +72,12 @@
                     </div>
                 </div>
                 <!-- /section title -->
-                <!-- Products tab & slick --> 
+                <!-- Products tab & slick -->
             <form action="{{URL::to('save-cart')}}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="col-md-12">
                     <div class="row">
-                        
+
                         <div class="products-tabs">
                             <!-- tab -->
                             <div id="tab1" class="tab-pane active">
@@ -98,7 +98,7 @@
                                             <div class="product-body">
                                                 <p class="product-category" name='category'>{{$pro->category_name}}</p>
                                                 <h3 class="product-name" name="$pro->id" ><a href="{{URL::to( 'product-'.$pro->id)}}">{{$pro->name}}</a></h3>
-                                                <h4 class="product-price">{{number_format($pro->price - ($pro->price*($pro->vat/100)),3, ',', '.')}}VND <del class="product-old-price">${{number_format($pro->price)}}</del></h4>
+                                                <h4 class="product-price">{{number_format($pro->price - ($pro->price*($pro->vat/100)),3, ',', '.')}} VND <del class="product-old-price"><br>{{number_format($pro->price ,3, ',', '.')}} VND</del></h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -118,7 +118,7 @@
                                             </div>
                                     <!-- /product -->
                                     @endforeach
-                                    
+
                                 </div>
                                 <div id="slick-nav-1" class="products-slick-nav"></div>
                             </div>
@@ -128,7 +128,7 @@
                 </div>
                 <!-- Products tab & slick -->
             </div>
-        </form>  
+        </form>
             <!-- /row -->
         </div>
         <!-- /container -->
@@ -214,7 +214,7 @@
                                     <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach
@@ -233,7 +233,7 @@
                                     <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach
@@ -252,7 +252,7 @@
                                     <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach
@@ -278,10 +278,10 @@
                                 <div class="product-body">
                                     <p class="product-category">{{$item->category_name}}</p>
                                     <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
-                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}} VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}} VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach
@@ -297,10 +297,10 @@
                                 <div class="product-body">
                                     <p class="product-category">{{$item->category_name}}</p>
                                     <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
-                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}} VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}} VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach
@@ -316,10 +316,10 @@
                                 <div class="product-body">
                                     <p class="product-category">{{$item->category_name}}</p>
                                     <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
-                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}} VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}} VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach
@@ -347,15 +347,15 @@
                                 <div class="product-body">
                                     <p class="product-category">{{$item->category_name}}</p>
                                     <h3 class="product-name"><a href="#">{{$item->name}}</a></h3>
-                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
+                                    <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}} VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}} VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach
                     </div>
-                    
+
                     <div class="products-widget-slick">
                         @foreach($all_product as $key => $item)
                         <div>
@@ -370,7 +370,7 @@
                                     <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach
@@ -389,7 +389,7 @@
                                     <h4 class="product-price">{{number_format($item->price - ($item->price*($item->vat/100)),3, ',', '.')}}VND <del class="product-old-price">{{number_format($item->price,3, ',', '.')}}VND</del></h4>
                                 </div>
                             </div>
-                            
+
                             <!-- /product widget -->
                         </div>
                         @endforeach

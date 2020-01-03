@@ -34,7 +34,7 @@ Route::group(['prefix' => $prefix_user], function () use($prefix_homeCtrl) {
     Route::get('slide', $prefix_homeCtrl.'slide');
 });
 
-// Admin manager 
+// Admin manager
 $prefix_admin = config('thinkpad.url.prefix_admin');
 
 Route::group(['prefix' => $prefix_admin], function () {
@@ -61,10 +61,10 @@ Route::group(['prefix' => $prefix_categories], function () {
     Route::post('update-category/{category_id}', 'CatalogController@update_category');
     //All
     Route::get('all-category', 'CatalogController@all_category');
-    
+
     Route::get('active-category/{category_id}', 'CatalogController@active_category');
     Route::get('unactive-category/{category_id}', 'CatalogController@unactive_category');
-    
+
     Route::post('save-category', 'CatalogController@save_category');
     Route::post('sort', 'CatalogController@sort');
 });
@@ -97,6 +97,8 @@ Route::post('contact', 'HomeController@post_contact');
 Route::post('checkout', 'CartController@submitFormCheckout');
 
     // //Search
-    Route::get('search','HomeController@search');
-    Route::get('history', 'CartController@history');
+Route::get('search','HomeController@search');
+Route::get('history', 'CartController@history');
+Route::get('terms-conditions', 'HomeController@terms_conditions');
+Route::get('security', 'HomeController@security');
 // });

@@ -82,39 +82,11 @@
                 <li><a href="#"><i class="fa fa-dollar"></i>{{trans('layout.USD')}}</a></li>
                     <!-- Xử lý một số tác vụ khi truy cập website -->
 
-                        <!-- Mở hộp thoại đăng nhập khi mới vào website  -->
-                        @if($user_id = Session::get('user_id'))
-
-                            <li><a href="{{URL::to(  'infor')}}" data-toggle="modal" data-target="#myAccountModal"><i class="fa fa-user-o"></i>
-                                    <?php
-                                    $name = Session::get('user_name');
-                                    /**
-                                    * 1. Nếu name tồn tại thì in ra bên dưới, còn không thì thôi
-                                    */
-                                    if ($name) {
-                                        echo $name;
-                                    }
-                                    ?>
-                                </a></li>
-
-                        @else
-
-                        <script>
-                            $(window).load(function() {
-                                $('#loginModal').modal('show');
-                            });
-                        </script>
-
 
                     <li class="text-center border-right text-white">
                         <a href="#" data-toggle="modal" data-target="#loginModal" class="text-white">
                         <i class="fas fa-sign-in-alt mr-2 text-red"></i>{{trans('layout.Log in')}}</a>
                     </li>
-                    {{-- <li class="text-center text-white">
-                        <a href="#" data-toggle="modal" data-target="#registerModal" class="text-white">
-                        <i class="fas fa-sign-out-alt mr-2 text-red"></i>{{trans('layout.Log out')}}</a>
-                    </li> --}}
-                    @endif
 
                 </ul>
             </div>
@@ -153,15 +125,7 @@
                         <h5 class="modal-title text-center">
                             {{trans('layout.Hello')}},
                             <strong style="color: red; text-transform: uppercase;">
-                                <?php
-                                $name = Session::get('user_name');
-                                /**
-                                 * 1. Nếu name tồn tại thì in ra bên dưới, còn không thì thôi
-                                 */
-                                if ($name) {
-                                    echo $name;
-                                }
-                                ?>
+
                             </strong>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -169,31 +133,30 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        @if(Session::get('user_id'))
-                            @foreach($infor_user as $key => $infor)
-                            <form action="{{URL::to('update-infor-user-'.$infor->id)}}" method="post" enctype="multipart/form-data">
-                                {{ csrf_field() }}
+
+                            <form action="" method="post" enctype="multipart/form-data">
+
                                 <input type="hidden" name="user_id" value="$infor->id">
                                 <div class="form-group" >
-                                <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="{{asset('public/uploads/users/'.$infor->image)}}" title="image" data-placeholder="{{asset('public/uploads/users/'.$infor->image)}}" /></a>
+                                <img id="blah" class="user-image" style="width: 111px; height: 111px;" src="" title="image" data-placeholder="" /></a>
                                 <div>
                                     <input type="file" id="edit_image" class="file"  name="product_image"  title="change image" onchange="readURL(this);" /></div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">{{trans('layout.Email')}}</label>
-                                    <input type="email" class="form-control" id="name" value="{{$infor->email}}" name="user_email" required="">
+                                    <input type="email" class="form-control" id="name" value="" name="user_email" required="">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">{{trans('layout.Password')}}</label>
-                                    <input type="password" class="form-control" value="{{$infor->passdefault}} " id="password" name="user_password" required="">
+                                    <input type="password" class="form-control" value=" " id="password" name="user_password" required="">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">{{trans('layout.Address')}}</label>
-                                    <input type="text" class="form-control" value="{{$infor->address}} " name="user_address" required="">
+                                    <input type="text" class="form-control" value="" name="user_address" required="">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">{{trans('layout.Phone number')}}</label>
-                                    <input type="text" class="form-control" value="{{$infor->phone}} " name="user_phone" required="">
+                                    <input type="text" class="form-control" value="" name="user_phone" required="">
                                 </div>
                                 <div class="right-w3l">
                                     <input type="submit" class="form-control btn btn-danger" value="Update">
@@ -201,8 +164,6 @@
                                 <hr>
                             <a href="{{URL::to('logout')}}" name="delInfor" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{trans('layout.Log out')}}</a>
                             </form>
-                            @endforeach
-                        @endif
                     </div>
 
                 </div>
@@ -399,9 +360,9 @@
                             {{-- <input type="hidden" name="_token" value="{{csrf_token()}}";> --}}
                                 <select class="input-select">
                                 <option value="0">{{trans('layout.All Category')}}</option>
-                                    @foreach($all_category as $key => $cate)
-                                    <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
-                                    @endforeach
+
+                                    <option value=""></option>
+
                                 </select>
                                 <input class="input" placeholder="{{trans('Search')}}" name="keywords" type="text">
                             <button type="submit" class="search-btn">{{trans('layout.Search')}}</button>
@@ -494,7 +455,272 @@
         <!-- /container -->
     </nav>
     <!-- /NAVIGATION -->
-    @yield('content')
+    <div class="content-middle">
+        <div class="container">
+            <div class="content-middle-bottom">
+                <div class="left_content">
+                    <div class="tintucdetail-title">
+                        <h1 style="padding-top: 3rem;"> Chính sách đổi trả sản phẩm tại Thinkpad</h1>
+                    </div>
+                    <div class="content-baiviet ck-content">
+                        <p><strong>Thinkpad đã có chính sách đổi trả sản phẩm đối với tất cả các sản phẩm được mua tại cửa hàng.</strong></p>
+                        <p>
+     Có rất nhiều lý do dẫn đến việc Quý Khách Hàng muốn đổi trả sản phẩm
+    sau khi mua . Vì vậy, Thinkpad đã có Chính Sách Đổi Trả Sản Phẩm rõ
+    ràng, rất mong quý khách đọc kỹ khi mua bất kỳ sản phẩm nào tại cửa hàng
+     của chúng tôi. Những sản phẩm đổi trả bắt buộc phải đủ <a href="https://www.Thinkpad.vn/chinh-sach-chung/chinh-sach-bao-hanh-tai-Thinkpad-nd497703.html"><strong>Điều Kiện Bảo Hành tại Thinkpad</strong></a>.</p>
+    <h1>
+     I. Trường hợp các sản phẩm được cung cấp bởi Thinkpad không có lỗi, hoặc lỗi không phải do NSX</h1>
+    <h2>
+     <span style="font-size:14px;"><strong>1. Đối với các sản phẩm cũ, sản phẩm đã qua sử dụng</strong></span></h2>
+    <p>
+     <span style="font-size:14px;">Thinkpad cung cấp dịch vụ với 15 ngày đầu
+     dùng thử sản phẩm. Trong thời gian này, nếu quý khách hàng cảm thấy
+    chiếc Laptop của mình thực sự chưa đáp ứng được nhu cầu sử dụng, hoặc
+    cảm thấy sản phẩm không phù hợp với bản thân, thì quý khách có thể đổi
+    sang bất kỳ sản phẩm nào mà Thinkpad đang sẵn hàng hoàn toàn miễn phí.</span></p>
+    <h2>
+     <span style="font-size: 14px;">2. Đối với sản phẩm mới, sản phẩm chưa qua sử dụng</span></h2>
+    <p>
+     Thinkpad cung cấp dịch vụ với 15 ngày đầu dùng thử. Trong thời gian
+    này, nếu quý khách muốn đổi trả sản phẩm, chúng tôi sẽ tính phí theo
+    phần trăm giá trị sản phẩm. Mức phí đổi trả sản phẩm sẽ được tính theo
+    bảng sau:</p>
+    <p>
+     &nbsp;</p>
+    <table style="width:732px;" width="0" cellspacing="0" cellpadding="0" border="1" align="center">
+     <tbody>
+      <tr>
+       <td style="width:94px;height:41px;">
+        <p align="center">
+         <strong>Sản phẩm</strong></p>
+       </td>
+       <td style="width:194px;height:41px;">
+        <p align="center">
+         <strong>Tình trạng sản phẩm tại thời điểm đổi, trả</strong></p>
+       </td>
+       <td style="width:142px;height:41px;">
+        <p align="center">
+         <strong>Thời gian đổi sản phẩm</strong></p>
+       </td>
+       <td style="width:142px;height:41px;">
+        <p align="center">
+         <strong>Phí đổi sản phẩm</strong></p>
+       </td>
+       <td style="width:160px;height:41px;">
+        <p align="center">
+         <strong>Phí trả sản phẩm</strong></p>
+       </td>
+      </tr>
+      <tr>
+       <td rowspan="3" style="width:94px;height:37px;">
+        <p align="center">
+         <strong>Sản phẩm mới</strong></p>
+       </td>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm lỗi do nhà SX</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         15 Ngày</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         Miễn phí</p>
+       </td>
+       <td style="width:160px;height:37px;">
+        <p align="center">
+         15% giá trị sản phẩm</p>
+       </td>
+      </tr>
+      <tr>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm không lỗi</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         15 Ngày</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         15% giá trị sản phẩm</p>
+       </td>
+       <td style="width:160px;height:37px;">
+        <p align="center">
+         25% giá trị sản phẩm</p>
+       </td>
+      </tr>
+      <tr>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm lỗi do người sử dụng</p>
+       </td>
+       <td colspan="3" style="width:444px;height:37px;">
+        <p align="center">
+         Hỗ trợ sửa chữa, thay thế linh kiện có tính phí</p>
+       </td>
+      </tr>
+      <tr>
+       <td rowspan="3" style="width:94px;height:37px;">
+        <p align="center">
+         <strong>Sản phẩm đã qua sử dụng</strong></p>
+       </td>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm lỗi do nhà SX</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         15 Ngày</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         Miễn phí</p>
+       </td>
+       <td style="width:160px;height:37px;">
+        <p align="center">
+         Miễn phí (*)</p>
+       </td>
+      </tr>
+      <tr>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm không lỗi</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         15 Ngày</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         Miễn phí</p>
+       </td>
+       <td style="width:160px;height:37px;">
+        <p align="center">
+         15% giá trị sản phẩm</p>
+       </td>
+      </tr>
+      <tr>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm lỗi do người sử dụng</p>
+       </td>
+       <td colspan="3" style="width:444px;height:37px;">
+        <p align="center">
+         Hỗ trợ sửa chữa, thay thế linh kiện có tính phí</p>
+       </td>
+      </tr>
+      <tr>
+       <td rowspan="3" style="width:94px;height:37px;">
+        <p align="center">
+         <strong>Linh kiện, phụ kiện</strong></p>
+       </td>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm lỗi do nhà SX</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         15 Ngày</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         Miễn phí</p>
+       </td>
+       <td style="width:160px;height:37px;">
+        <p align="center">
+         Miễn phí (*)</p>
+       </td>
+      </tr>
+      <tr>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm không lỗi</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         Không hỗ trợ</p>
+       </td>
+       <td style="width:142px;height:37px;">
+        <p align="center">
+         Không hỗ trợ</p>
+       </td>
+       <td style="width:160px;height:37px;">
+        <p align="center">
+         20% giá trị sản phẩm</p>
+       </td>
+      </tr>
+      <tr>
+       <td style="width:194px;height:37px;">
+        <p align="center">
+         Sản phẩm lỗi do người sử dụng</p>
+       </td>
+       <td colspan="3" style="width:444px;height:37px;">
+        <p align="center">
+         Hỗ trợ sửa chữa, thay thế linh kiện có tính phí</p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <div style="clear:both;">
+     <strong>***CHÚ Ý:</strong></div>
+    <ul>
+     <li style="clear: both;">
+      <u>Giá sản phẩm được tính theo giá trị trên hóa đơn thanh toán khi mua hàng</u></li>
+     <li style="clear: both;">
+      Những sản phẩm đã qua 30 ngày sử dụng, Thinkpad sẽ không hỗ trợ nhập
+    lại. Hoặc khách hàng có thể trao đổi trực tiếp với bộ phận bán hàng, tùy
+     theo tình trạng hàng hóa, cũng như giá thành sản phẩm tại thời điểm đó,
+     chúng tôi mới quyết định có hỗ trợ nhập lại hay không.</li>
+     <li style="clear: both;">
+      Phụ lục (*) Thinkpad chỉ miễn phí trả sản phẩm, và hoàn lại 100% số
+    tiền ghi trên hóa đơn trong trường hợp cửa hàng không có sản phẩm để
+    đổi.</li>
+    </ul>
+    <h1 style="clear: both;">
+     II. Trong trường hợp sản phẩm do Thinkpad cung cấp có lỗi do nhà sản xuất</h1>
+    <p>
+     <strong>1. Đối với các sản phẩm cũ, sản phẩm đã qua sử dụng</strong></p>
+    <p>
+     Trong 15 ngày đầu tiên sau khi mua máy, nếu sản phẩm do Thinkpad bán ra
+     có lỗi về linh kiện phần cứng, Quý Khách Hàng sẽ được thay thế linh
+    kiện bị lỗi hoặc đổi ngay một máy tương đương, trong trường hợp Thinkpad
+     hết hàng, Quý Khách Hàng sẽ được hoàn tiền 100% giá trị sản phẩm được
+    in trên hóa đơn. Trường hợp máy xảy ra lỗi, nếu quý khách yêu cầu hoàn
+    lại tiền, chúng tôi sẽ tính phí theo số phần trăm giá trị sản phẩm được
+    ghi trên bảng phía trên.</p>
+    <h2>
+     <span style="font-size: 14px;">2. Đối với sản phẩm mới, sản phẩm chưa qua sử dụng</span></h2>
+    <p>
+     <span style="font-size:14px;">Trong 15 ngày đầu tiên sau khi mua máy,
+    nếu sản phẩm do Thinkpad bán ra có lỗi do nhà sản xuất, Quý khách hàng
+    sẽ được đổi ngày một máy khác tương đương, </span>trong trường hợp
+    Thinkpad hết hàng, Quý Khách Hàng sẽ được hoàn tiền 100% giá trị sản
+    phẩm được in trên hóa đơn. Trường hợp máy xảy ra lỗi, nếu quý khách yêu
+    cầu hoàn lại tiền, chúng tôi sẽ tính phí theo số phần trăm giá trị sản
+    phẩm được ghi trên bảng phía trên.</p>
+    <h1>
+     III. Trường hợp xảy ra lỗi đối với các linh kiện, phụ kiện do Thinkpad cung cấp</h1>
+    <p>
+     Đối với các linh kiện, phụ kiện được cung cấp bởi Thinkpad xảy ra lỗi,
+    cửa hàng sẽ 1 đổi 1 cho quý khách trong toàn bộ thời gian bảo hành (trừ
+    trường hợp đối với Mainboard). Trường hợp hết hàng, Thinkpad sẽ hoàn lại
+     100% giá trị sản phẩm cho quý khách. Nếu khách hàng không còn nhu cầu
+    muốn trả lại, Thinkpad sẽ tính phí theo bảng phía trên.</p>
+                    </div>
+                </div>
+                <div class="right_content sidebar mt-xs-20">
+                    <div class="block block-newfeature">
+
+
+
+        </div>
+    </div>            </div>
+            </div>
+        </div>
+    </div>
     <!-- NEWSLETTER -->
     <div id="newsletter" class="section">
         <!-- container -->
@@ -569,9 +795,9 @@
                             <ul class="footer-links">
                                 <li><a href="http://trungky.tk">{{trans('layout.About Us')}}</a></li>
                                 <li><a href="#">{{trans('layout.Contact Us')}}</a></li>
-                                <li><a href="{{URL::to('security')}}">{{trans('layout.Privacy Policy')}}</a></li>
-                                <li><a href="{{URL::to('terms-conditions')}}">{{trans('layout.Orders and Returns')}}</a></li>
-                            <li><a href="{{URL::to('terms-conditions')}}">{{trans('layout.Terms & Conditions')}}</a></li>
+                                <li><a href="#">{{trans('layout.Privacy Policy')}}</a></li>
+                                <li><a href="#">{{trans('layout.Orders and Returns')}}</a></li>
+                                <li><a href="#">{{trans('layout.Terms & Conditions')}}</a></li>
                             </ul>
                         </div>
                     </div>

@@ -39,29 +39,29 @@
 							@foreach($infor_user as $key => $infor)
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="form-group">
-								<input class="input" required type="hidden" name="user_id" value="{{$infor->id}}">
-								<input class="input" required type="text" name="first_name" placeholder="First Name" value="{{$infor->username}}">
+								<input class="input"  type="hidden" name="user_id" value="{{$infor->id}}" required>
+								<input class="input"  type="text" name="first_name" placeholder="First Name" value="{{$infor->username}}" required>
 								</div>
 								<div class="form-group">
-									<input class="input" required type="text" name="last_name" placeholder="Last Name">
+									<input class="input"  type="text" name="last_name" placeholder="Last Name" required>
 								</div>
 								<div class="form-group">
-								<input class="input" required type="email" name="email" placeholder="Email" value="{{$infor->email}}">
+								<input class="input"  type="email" name="email" placeholder="Email" value="{{$infor->email}}" required>
 								</div>
 								<div class="form-group">
-								<input class="input" required type="text" name="address" placeholder="Address" value="{{$infor->address}}">
+								<input class="input"  type="text" name="address" placeholder="Address" value="{{$infor->address}}" required>
 								</div>
 								<div class="form-group">
-									<input class="input" required type="text" name="city" placeholder="City">
+									<input class="input"  type="text" name="city" placeholder="City" required>
 								</div>
 								<div class="form-group">
-									<input class="input" required type="text" name="country" placeholder="Country">
+									<input class="input"  type="text" name="country" placeholder="Country" required>
 								</div>
 								<div class="form-group">
-									<input class="input" required type="text" name="zip_code" placeholder="ZIP Code">
+									<input class="input"  type="text" name="zip_code" placeholder="ZIP Code" required>
 								</div>
 								<div class="form-group">
-								<input class="input" required type="tel" name="tel" placeholder="Telephone" value="{{$infor->phone}}">
+								<input class="input"  type="tel" name="tel" placeholder="Telephone" value="{{$infor->phone}}" required>
 								</div>
 							@endforeach
 							<div class="form-group">
@@ -72,7 +72,7 @@
 										{{trans('checkout.Create Account?')}}
 									</label>
 									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+										<p>Tính năng đang được nâng cấp. Vui lòng quay lại sau.</p>
 										<input class="input" type="password" name="password" placeholder="Enter Your Password">
 									</div>
 								</div>
@@ -132,7 +132,7 @@
 					{{-- <form action="" id="form-content-cart" name="form-content-cart" method="post"> --}}
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="cart-content" id="cart-content">
-					
+
 						<div class="col-md-5 order-details">
 							<div class="section-title text-center">
 								<h3 class="title">{{trans('checkout.Your Order')}}</h3>
@@ -145,56 +145,58 @@
 									<div class="order-products show-cart">
 											{{-- content code of javascript --}}
 										</div>
-										
+
 										<div class="order-col">
 											<div>{{trans('checkout.Shipping')}}</div>
 											<div><strong>{{trans('checkout.FREE')}}</strong></div>
 										</div>
 										<div class="order-col ">
 											<div ><strong>{{trans('checkout.TOTAL')}}</strong></div>
-											<div><strong style="color:#D10024; font-size: 24px !important;">$&nbsp;</strong><strong class="order-total total-cart"></strong></div>
+											<div><strong style="color:#D10024; font-size: 24px !important;"></strong><strong class="order-total total-cart"></strong><strong style="color: #D10024; font-size: 24px;">&nbsp;VND</strong></div>
 										</div>
 									</div>
 								<div class="payment-method">
 									<div class="input-radio">
-										<input type="radio" name="payment" id="payment-1">
+										<input type="radio" name="payment" id="payment-1" required>
 										<label for="payment-1">
 											<span></span>
 											{{trans('checkout.Direct Bank Transfer')}}
 										</label>
 										<div class="caption">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+											<p>Tính nang đang được nâng cấp.</p>
 										</div>
 									</div>
 									<div class="input-radio">
-										<input type="radio" name="payment" id="payment-2">
+										<input type="radio" name="payment" id="payment-2" required>
 										<label for="payment-2">
 											<span></span>
 											{{trans('checkout.Cheque Payment')}}
 										</label>
 										<div class="caption">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            <p>Tính nang đang được nâng cấp.</p>
+
 										</div>
 									</div>
 									<div class="input-radio">
-										<input type="radio" name="payment" id="payment-3">
+										<input type="radio" name="payment" id="payment-3" required>
 										<label for="payment-3">
 											<span></span>
 											{{trans('checkout.Paypal System')}}
 										</label>
 										<div class="caption">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            <p>Tính nang đang được nâng cấp.</p>
+
 										</div>
 									</div>
 								</div>
 								<div class="input-checkbox">
-									<input type="checkbox" id="terms">
+									<input type="checkbox" id="terms" required>
 									<label for="terms">
 										<span></span>
 									{{trans("checkout.I've read and accept the")}} <a href="#">{{trans('checkout.terms & conditions')}}</a>
 									</label>
 								</div>
-								<button type="button" class="primary-btn order-submit" onclick="submitFormCheckout();" >{{trans('checkout.Place order')}}</button>
+								<button type="submit" class="primary-btn order-submit" onclick="submitFormCheckout();" >{{trans('checkout.Place order')}}</button>
 
 							</div>
 							<!-- /Order Details -->

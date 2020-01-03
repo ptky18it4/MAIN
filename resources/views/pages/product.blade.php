@@ -68,7 +68,7 @@
                         <a class="review-link" href="#">{{trans('product.10 Review(s) | Add your review')}}</a>
                     </div>
                     <div>
-                        <h3 class="product-price">{{number_format($pro->price - ($pro->price*($pro->vat/100)),3, ',', '.')}} VND <del class="product-old-price">${{number_format($pro->price,2, ',', '.')}}</del></h3>
+                        <h3 class="product-price">{{number_format($pro->price - ($pro->price*($pro->vat/100)),3, ',', '.')}} VND <del class="product-old-price">{{number_format($pro->price,3, ',', '.')}}<strong> VND</strong></del></h3>
                         <span class="product-available">
                             @if($pro->status == 1)
                             {{trans('product.IN STOCK')}}
@@ -324,13 +324,19 @@
                                 <div class="col-md-12">
                                     <p>{{$pro->description}}</p>
                                     <style>
-
+                                        .video {
+                                            position: relative;
+                                            top : 300px !important;
+                                            max-width: 500px !important;
+                                            max-height: 500px !important;
+                                            left: 50% !important;
+                                        }
                                     </style>
 
 
                                 </div>
                                 <div class="video">
-                                       <video playsinline="playsinline"  autoplay="autoplay" muted="muted" loop="loop">
+                                       <video playsinline="playsinline" class="video"  autoplay="autoplay" muted="muted" loop="loop">
                                         <source src="{{asset('public/frontend/video/'.$pro->video)}}" type="video/mp4">
                                         <!--Link video online :  https://f6-group-zf.zdn.vn/ebae2adc0406e858b117/9128246392226996966 -->
                                         </video>
@@ -549,7 +555,7 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-
+            <hr style="padding-top: 1rem;">
             <div class="col-md-12">
                 <div class="section-title text-center">
                     <hr style="padding-top: 10px;">

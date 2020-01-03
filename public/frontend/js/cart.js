@@ -265,7 +265,7 @@
       ngoacZuong += object;
       ngoacZuong += ']';
 
-      alert(ngoacZuong);
+      //   alert(ngoacZuong);
       $('#cart-content').val(ngoacZuong);
       $("#form-content-cart").submit();
       shoppingCart.clearCart();
