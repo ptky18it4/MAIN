@@ -53,6 +53,16 @@
 </head>
 
 <body>
+    <!--
+        SDK Login with facebook
+    -->
+    <div id="fb-root"></div>
+
+    <!--
+        End
+    -->
+    <div id="fb-root"></div>
+
     <?php
     $fp = "./resources/views/accessWebsite.txt";
     $fo = fopen($fp,'r');
@@ -236,7 +246,6 @@
                     </div>
 
                 </div>
-
             </div>
         </div>
         <!-- Alert Register -->
@@ -303,7 +312,7 @@
                                 <input type="submit" class="form-control" value="{{trans('layout.Log in')}}">
                             </div>
                             {{-- CUSTOMIZE LOGIN --}}
-                            <div class="customize-login">
+                            {{-- <div class="customize-login">
                                 <a href="{{URL::to('login/facebook')}}" class="fb btn">
                                   <i class="fa fa-facebook fa-fw"></i> Login with Facebook
                                 </a>
@@ -313,7 +322,8 @@
                                 <a href="#" class="google btn"><i class="fa fa-google fa-fw">
                                   </i> Login with Google+
                                 </a>
-                            </div>
+                            </div> --}}
+
                             {{-- END CUSTOMIZE LOGIN --}}
                             <div class="sub-w3l">
                                 <div class="custom-control custom-checkbox mr-sm-2">

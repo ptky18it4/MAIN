@@ -332,11 +332,9 @@
                                             left: 50% !important;
                                         }
                                     </style>
-
-
                                 </div>
                                 <div class="video">
-                                       <video playsinline="playsinline" class="video"  autoplay="autoplay" muted="muted" loop="loop">
+                                       <video controls playsinline="playsinline" class="video"   autoplay="autoplay" muted="muted" loop="loop">
                                         <source src="{{asset('public/frontend/video/'.$pro->video)}}" type="video/mp4">
                                         <!--Link video online :  https://f6-group-zf.zdn.vn/ebae2adc0406e858b117/9128246392226996966 -->
                                         </video>

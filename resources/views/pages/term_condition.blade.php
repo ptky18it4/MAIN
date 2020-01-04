@@ -824,7 +824,6 @@
         <!-- test -->
         <a id="button" title="Back - Top"></a>
         <!-- /test -->
-
         <!-- bottom footer -->
         <div id="bottom-footer" class="section">
             <div class="container">
