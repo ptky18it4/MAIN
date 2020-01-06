@@ -56,7 +56,7 @@
     <!--
         SDK Login with facebook
     -->
-    <div id="fb-root"></div>
+
 
     <!--
         End

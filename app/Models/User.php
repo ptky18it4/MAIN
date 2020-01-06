@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'provider', 'provider_id'
     ];
 
     /**
@@ -36,7 +36,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
- 
+
     public function addNew($input)
     {
         $check = static::where('facebook_id',$input['facebook_id'])->first();
@@ -46,6 +46,6 @@ class User extends Authenticatable
         }
 
         return $check;
-        
+
     }
 }

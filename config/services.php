@@ -32,7 +32,7 @@ return [
     'facebook' => [
         'client_id' => '2500922780231281',
         'client_secret' => '1c09c2feff2c2f3680948346fc465fe9',
-        'redirect' => 'https://www.thinkpad.com.vn/login/facebook',
+        'redirect' => 'http://www.thinkpad.com.vn/auth/facebook/callback',
     ],
 
 ];

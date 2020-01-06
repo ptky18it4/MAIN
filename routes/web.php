@@ -101,4 +101,10 @@ Route::get('search','HomeController@search');
 Route::get('history', 'CartController@history');
 Route::get('terms-conditions', 'HomeController@terms_conditions');
 Route::get('security', 'HomeController@security');
+
+//
+
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 // });
