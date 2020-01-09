@@ -45,8 +45,6 @@ class HomeController extends Controller
                 ->orWhere('description', 'like' , '%'.$keywords.'%')
                 ->orWhere('meta_tag_title', 'like' , '%'.$keywords.'%')
                 ->paginate(8);
-
-
         $related_product = DB::table('tbl_product')
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where([
@@ -57,6 +55,7 @@ class HomeController extends Controller
                 ->orWhere('description', 'like' , '%'.$keywords.'%')
                 ->orWhere('meta_tag_title', 'like' , '%'.$keywords.'%')
                 ->paginate(4);
+
         return view('pages.regular')
                 ->with('all_menu',$all_menu)
                 ->with('keywords',$keywords)
@@ -78,10 +77,12 @@ class HomeController extends Controller
         if ($result) {
             Session::put('user_name', $result->username);
             Session::put('user_id', $result->id);
-            return Redirect::to('/home');
+            return redirect()
+            ->back();
         } else {
             Session::put('message', 'Email hoặc mật khẩu bị sai, Vui lòng đăng nhập lại !');
-            return Redirect::to('/home');
+            return redirect()
+            ->back();
         }
     }
 
@@ -104,10 +105,6 @@ class HomeController extends Controller
          * Tương tự các $data['....'] nhé
          * Rồi, bây giờ in ra để xem đã lấy được từ bên form qua chưa nè
          */
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
-        //Insert
         DB::table('tbl_user')->insert($data);
         return Redirect::to('/');
     }
@@ -119,7 +116,8 @@ class HomeController extends Controller
         Session::put('user_id', null);
         setcookie('email','',time()-3600,'/','',0,0);
         setcookie('pass','',time()-3600,'/','',0,0);
-        return Redirect::to('/');
+        return redirect()
+              ->back();
     }
 
     public function update_infor_user(Request $request, $user_id)
@@ -170,7 +168,7 @@ class HomeController extends Controller
         DB::table('ip_client')->where('address', '=', $ip)->delete();
         DB::table('ip_client')->insert($arrayIP);
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
-        if ($user_id = Session::get('user_id')) {
+            $user_id = Session::get('user_id');
             $infor_user = DB::table('tbl_user')->where('id', $user_id)->get();
             $all_category = DB::table('tbl_category')->where('category_status', '1')->get();
 
@@ -186,50 +184,28 @@ class HomeController extends Controller
 
             $top_selling = DB::table('tbl_product')
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('top_selling', '>', '1')
                 ->orderby('id', 'desc')
-                ->limit(5)
+                ->limit(11)
                 ->get();
-
+            $tagCategory = DB::table('tbl_category')->inRandomOrder()->paginate(4);
+            $tagPrice = DB::table('tbl_product')->inRandomOrder()->paginate(4);
+            $tagParent = DB::table('tbl_parent_id')->inRandomOrder()->paginate(9);
             return view('pages.home')
                 ->with('all_menu', $all_menu)
                 ->with('infor_user', $infor_user)
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
+                ->with('tagCategory', $tagCategory)
+                ->with('tagPrice', $tagPrice)
+                ->with('tagParent', $tagParent)
                 ->with('top_selling', $top_selling);
-        } else {
-            $all_menu = DB::table('tbl_menu')
-                ->where('show_on_home', '1')
-                ->get();
 
-            $all_category = DB::table('tbl_category')
-                ->where('category_status', '1')
-                ->get();
-            $all_product = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('show_on_home', '1')
-                ->inRandomOrder()
-                ->get();
-
-            $top_selling = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('top_selling', '>', '15')
-                ->orderby('id', 'desc')
-                ->limit(5)
-                ->get();
-
-            return view('pages.home')
-                ->with('all_menu', $all_menu)
-                ->with('all_category', $all_category)
-                ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling);
-        }
     }
 
     public function store()
     {
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
-        if ($user_id = Session::get('user_id')) {
+            $user_id = Session::get('user_id');
             $infor_user = DB::table('tbl_user')->where('id', $user_id)->get();
             $all_category = DB::table('tbl_category')->where('category_status', '1')->get();
 
@@ -255,41 +231,13 @@ class HomeController extends Controller
                 ->with('all_category', $all_category)
                 ->with('all_product', $all_product)
                 ->with('top_selling', $top_selling);
-        } else {
-            $all_menu = DB::table('tbl_menu')
-                ->where('show_on_home', '1')
-                ->get();
 
-            $all_category = DB::table('tbl_category')
-                ->where('category_status', '1')
-                ->get();
-
-            $all_product = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('show_on_home', '1')
-                ->orderby('id', 'desc')
-                ->limit(8)
-                ->get();
-
-            $top_selling = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('top_selling', '>', '15')
-                ->orderby('id', 'desc')
-                ->limit(8)
-                ->get();
-
-            return view('pages.store')
-                ->with('all_menu', $all_menu)
-                ->with('all_category', $all_category)
-                ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling);
-        }
     }
 
     public function product($id)
     {
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
-        if ($user_id = Session::get('user_id')) {
+            $user_id = Session::get('user_id');
             $infor_user = DB::table('tbl_user')
                 ->where('id', $user_id)
                 ->get();
@@ -345,72 +293,13 @@ class HomeController extends Controller
                     ->with('related_product',$related_product)
                     ->with('infor_config_product',$infor_config_product);
 
-        } else {
 
-            $all_category = DB::table('tbl_category')
-                ->where('category_status', '1')
-                ->get();
-
-            $all_menu = DB::table('tbl_menu')
-                ->where('show_on_home', '1')
-                ->get();
-
-            $all_product = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('id', $id)
-                ->orderby('id', 'desc')
-                ->get();
-
-            $more_image = DB::table('tbl_product')
-                ->join('tbl_more_image','tbl_more_image.product_id','=','tbl_product.id')
-                ->where('product_id',$id)
-                ->get();
-
-            $infor_config_product = DB::table('tbl_infor_config_product')
-                ->where('id_infor_config_product',$id)
-                ->orderby('id','desc')
-                ->get();
-
-            $top_selling = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('top_selling', '>', '3')
-                ->orderby('id', 'desc')
-                ->get();
-            $related_product = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where([
-                            ['name', 'like' , '%'.$id.'%'],
-                            ['category_name', 'like' , '%'.$id.'%'],
-                            ['show_on_home', '=' , '1'],
-                        ])
-                ->orWhere('description', 'like' , '%'.$id.'%')
-                ->orWhere('meta_tag_title', 'like' , '%'.$id.'%')
-                ->paginate(4);
-            $feedback = DB::table('tbl_feedback')
-                ->where('rating', '>', '2')
-                ->orderby('id', 'asc')
-                ->limit(3)
-                ->get();
-
-            $totalFeedback = DB::table('tbl_feedback')->sum('price');
-
-            return view('pages.product')->with('all_menu', $all_menu)
-                ->with('all_category', $all_category)
-                ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling)
-                ->with('more_image',$more_image)
-                ->with('feedback',$feedback)
-                ->with('totalFeedback',$totalFeedback)
-                ->with('related_product',$related_product)
-                ->with('infor_config_product',$infor_config_product);
-    }
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
         // Đăng nhập thành công -> tồn tại $user_id -> dùng user_id này để lấy thông tin của người dùng
-        if ($user_id = Session::get('user_id')) {
-
+            $user_id = Session::get('user_id');
             $infor_user = DB::table('tbl_user')
                 ->where('id', $user_id)
                 ->get();
@@ -427,52 +316,13 @@ class HomeController extends Controller
                 ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
                 ->where('show_on_home', '1')
                 ->orderby('id', 'desc')
-                ->limit(4)
-                ->get();
-
-            $top_selling = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('top_selling', '>', '3')
-                ->orderby('id', 'desc')
-                // ->limit(5)
                 ->get();
 
             return view('pages.checkout')
                 ->with('all_menu', $all_menu)
                 ->with('infor_user', $infor_user)
                 ->with('all_category', $all_category)
-                ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling);
-        } else {
-
-            $all_menu = DB::table('tbl_menu')
-                ->where('show_on_home', '1')
-                ->get();
-
-            $all_category = DB::table('tbl_category')
-                ->where('category_status', '1')
-                ->get();
-
-            $all_product = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('status', '1')
-                ->orderby('id', 'desc')
-                ->limit(4)
-                ->get();
-
-            $top_selling = DB::table('tbl_product')
-                ->join('tbl_category', 'tbl_category.category_id', '=', 'tbl_product.cate_id')
-                ->where('top_selling', '>', '15')
-                ->orderby('id', 'desc')
-                // ->limit(5)
-                ->get();
-
-            return view('pages.checkout')
-                ->with('all_menu', $all_menu)
-                ->with('all_category', $all_category)
-                ->with('all_product', $all_product)
-                ->with('top_selling', $top_selling);
-        }
+                ->with('all_product', $all_product);
     }
 
     public function get_contact() {

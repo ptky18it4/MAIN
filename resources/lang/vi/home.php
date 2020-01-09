@@ -1,5 +1,5 @@
 <?php
-    
+
         return [
             "Laptop"                    => "Máy tính xách tay",
             "Smartphones"               => "Điện thoại thông minh",
@@ -18,5 +18,7 @@
             "New Collection Up to 50% OFF"=> "Bộ sưu tập mới GIẢM GIÁ tới 50%",
             "Top selling"               => "Bán chạy nhất",
             "$"                         => "VND",
+            "Categorys"                 => "DANH MỤC SẢN PHẨM NỔI BẬC",
+            "hint"                      => "Một số gợi ý dưới đây có thể giúp bạn tìm sản phẩm nhanh hơn..."
         ];
 ?>

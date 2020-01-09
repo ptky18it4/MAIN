@@ -1,0 +1,524 @@
+nav ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+
+/* change colours to suit your needs */
+
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+
+
+/* change colours to suit your needs */
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* change border colour to suit your needs */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input,
+select {
+    vertical-align: middle;
+}
+
+
+/*
+body {
+    align-content: center !important;
+} */
+
+
+/* End Reset CSS */
+
+
+/* Navigation */
+
+#mainNav {
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(202, 202, 202, 0.15);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: #393B3B !important;
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+    color: #fff !important;
+    font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.75rem 0;
+}
+
+@media (min-width: 992px) {
+    #mainNav {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background-color: transparent;
+    }
+    #mainNav .navbar-brand {
+        color: #fff !important;
+    }
+    #mainNav .navbar-brand:hover {
+        color: #fff;
+    }
+    #mainNav .navbar-nav .nav-item .nav-link {
+        color: #fff !important;
+        padding: 0 1rem;
+    }
+    #mainNav .navbar-nav .nav-item .nav-link:hover {
+        color: #fff;
+    }
+    #mainNav .navbar-nav .nav-item:last-child .nav-link {
+        padding-right: 0;
+    }
+    #mainNav.navbar-scrolled {
+        -webkit-box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.856) !important;
+        box-shadow: 0 0.5rem 1rem #fff !important;
+        background-color: #fff;
+    }
+    #mainNav.navbar-scrolled .navbar-brand {
+        color: #212529;
+    }
+    #mainNav.navbar-scrolled .navbar-brand:hover {
+        color: #373535;
+    }
+    #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link {
+        color: #212529;
+    }
+    #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link:hover {
+        color: #373535;
+    }
+}
+
+#mainNav .navbar-brand {
+    font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 700;
+    color: #212529;
+}
+
+
+/*  */
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+}
+
+*,
+::after,
+::before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+user agent stylesheet a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/* End navigation */
+
+
+/* Start Introduction */
+
+#thongtin {
+    z-index: 1 !important;
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 0px solid rgba(0, 0, 0, 0.125) !important;
+    border-radius: 0.25rem;
+    padding: 0 2.5rem !important;
+    background-color: #393b3b !important;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: calc(0.25rem - 1px);
+}
+
+.bg-dark {
+    background-color: #343a40 !important;
+    z-index: -999 !important;
+}
+
+#infor:hover {
+    color: #E2231A !important;
+    text-decoration: none;
+}
+
+
+/* timeline */
+
+.timeline {
+    position: relative;
+    width: 660px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 1em 0;
+    list-style-type: none;
+}
+
+.timeline:before {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    content: ' ';
+    display: block;
+    width: 6px;
+    height: 100%;
+    margin-left: -3px;
+    background: rgb(80, 80, 80);
+    background: -moz-linear-gradient(top, rgba(80, 80, 80, 0) 0%, rgb(80, 80, 80) 8%, rgb(80, 80, 80) 92%, rgba(80, 80, 80, 0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(30, 87, 153, 1)), color-stop(100%, rgba(125, 185, 232, 1)));
+    background: -webkit-linear-gradient(top, rgba(80, 80, 80, 0) 0%, rgb(80, 80, 80) 8%, rgb(80, 80, 80) 92%, rgba(80, 80, 80, 0) 100%);
+    background: -o-linear-gradient(top, rgba(80, 80, 80, 0) 0%, rgb(80, 80, 80) 8%, rgb(80, 80, 80) 92%, rgba(80, 80, 80, 0) 100%);
+    background: -ms-linear-gradient(top, rgba(80, 80, 80, 0) 0%, rgb(80, 80, 80) 8%, rgb(80, 80, 80) 92%, rgba(80, 80, 80, 0) 100%);
+    background: linear-gradient(to bottom, rgba(80, 80, 80, 0) 0%, rgb(80, 80, 80) 8%, rgb(80, 80, 80) 92%, rgba(80, 80, 80, 0) 100%);
+    z-index: 0;
+}
+
+.timeline li {
+    padding: 1em 0;
+}
+
+.timeline li:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.direction-l {
+    position: relative;
+    width: 300px;
+    float: left;
+    text-align: right;
+}
+
+.direction-r {
+    position: relative;
+    width: 300px;
+    float: right;
+}
+
+.flag-wrapper {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.flag {
+    position: relative;
+    display: inline;
+    background: rgb(248, 248, 248);
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.direction-l .flag {
+    -webkit-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.direction-r .flag {
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.direction-l .flag:before,
+.direction-r .flag:before {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    content: ' ';
+    display: block;
+    width: 17px;
+    height: 17px;
+    margin-top: -10px;
+    background: #fff;
+    border-radius: 10px;
+    border: 4px solid #E2231A;
+    z-index: 10;
+}
+
+.direction-r .flag:before {
+    left: -40px;
+}
+
+.direction-l .flag:after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    height: 0;
+    width: 0;
+    margin-top: -8px;
+    border: solid transparent;
+    border-left-color: rgb(248, 248, 248);
+    border-width: 8px;
+    pointer-events: none;
+}
+
+.direction-r .flag:after {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    height: 0;
+    width: 0;
+    margin-top: -8px;
+    border: solid transparent;
+    border-right-color: rgb(248, 248, 248);
+    border-width: 8px;
+    pointer-events: none;
+}
+
+.time-wrapper {
+    display: inline;
+    line-height: 1em;
+    font-size: 0.88888em;
+    color: #E2231A;
+    vertical-align: middle;
+}
+
+.direction-l .time-wrapper {
+    float: left;
+}
+
+.direction-r .time-wrapper {
+    float: right;
+}
+
+.time {
+    display: inline-block;
+    padding: 4px 6px;
+    background: rgb(248, 248, 248);
+}
+
+.desc {
+    margin: 1em 0.75em 0 0;
+    color: #fff;
+    font-size: 0.77777em;
+    font-style: italic;
+    line-height: 1.5em;
+}
+
+.direction-r .desc {
+    margin: 1em 0 0 0.75em;
+}
+
+
+/* ================ Timeline Media Queries ================ */
+
+@media screen and (max-width: 660px) {
+    .timeline {
+        width: 100%;
+        padding: 4em 0 1em 0;
+    }
+    .timeline li {
+        padding: 2em 0;
+    }
+    .direction-l,
+    .direction-r {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    .flag-wrapper {
+        text-align: center;
+    }
+    .flag {
+        background: rgb(255, 255, 255);
+        z-index: 15;
+    }
+    .direction-l .flag:before,
+    .direction-r .flag:before {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        content: ' ';
+        display: block;
+        width: 12px;
+        height: 12px;
+        margin-left: -9px;
+        background: #fff;
+        border-radius: 10px;
+        border: 4px solid rgb(255, 80, 80);
+        z-index: 10;
+    }
+    .direction-l .flag:after,
+    .direction-r .flag:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: -8px;
+        height: 0;
+        width: 0;
+        margin-left: -8px;
+        border: solid transparent;
+        border-bottom-color: rgb(255, 255, 255);
+        border-width: 8px;
+        pointer-events: none;
+    }
+    .time-wrapper {
+        display: block;
+        position: relative;
+        margin: 4px 0 0 0;
+        z-index: 14;
+    }
+    .direction-l .time-wrapper {
+        float: none;
+    }
+    .direction-r .time-wrapper {
+        float: none;
+    }
+    .desc {
+        position: relative;
+        margin: 1em 0 0 0;
+        padding: 1em;
+        color: #393b3b;
+        background: rgb(245, 245, 245);
+        -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.20);
+        -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.20);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.20);
+        z-index: 15;
+    }
+    .direction-l .desc,
+    .direction-r .desc {
+        position: relative;
+        margin: 1em 1em 0 1em;
+        padding: 1em;
+        z-index: 15;
+    }
+}
+
+@media screen and (min-width: 400px ?? max-width: 660px) {
+    .direction-l .desc,
+    .direction-r .desc {
+        margin: 1em 4em 0 4em;
+    }
+}
+
+
+/* end timeline */
+
+
+/* Start Animation */
+
+.zoomInLeft {
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    animation-name: zoomInLeft;
+}
+
+.zoomInRight {
+    animation-duration: 2.5s;
+    animation-fill-mode: both;
+    animation-name: zoomInRight;
+}
+
+.zoomInLeft_0 {
+    animation-duration: 3.5s;
+    animation-fill-mode: both;
+    animation-name: zoomInLeft;
+}
+
+.slideInDown {
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    animation-name: slideInDown;
+}
+
+
+/* End Animation */
+
+
+/* End Introduction */
+
+ul li {
+    list-style: none;
+    align-content: center !important;
+}
+
+ul {
+    align-content: center !important;
+}
+
+div ul li a:hover {
+    text-decoration: none !important;
+    color: #E2231A !important;
+}
+
+#caption {
+    color: #fff;
+    font-size: 14px;
+}
