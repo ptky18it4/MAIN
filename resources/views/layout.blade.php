@@ -35,13 +35,6 @@
     <link type="text/css" rel="stylesheet" href="{{asset('public/frontend/css/backtop.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('public/frontend/css/sale.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('public/frontend/css/animate.css')}}" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- remove this if you use Modernizr -->
     <script>
@@ -58,8 +51,6 @@
     <!--
         SDK Login with facebook
     -->
-    {{-- <div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="500"></div> --}}
-
     <script src="https://sp.zalo.me/plugins/sdk.js"></script>
 <!-- Subiz -->
 <script>
@@ -74,27 +65,17 @@
       zz.parentNode.insertBefore(z,zz);
     })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
     subiz('setAccount', 'acqixpdbaxpwjiqdlvxi');
-    </script>
+</script>
     <!-- End Subiz -->
-<!-- Your customer chat code -->
-<div class="fb-customerchat"
-    attribution=setup_tool
-    page_id="1348138221996126"
-    theme_color="#D10024"
-    logged_in_greeting="Xin chào! Qúy khách cần hỗ trợ vấn đề gì ?"
-    logged_out_greeting="Xin chào! Qúy khách cần hỗ trợ vấn đề gì ?">
-</div>
-<!-- Your customer chat code -->
-
     <?php
-    $fp = "./resources/views/accessWebsite.txt";
-    $fo = fopen($fp,'r');
-    $fr = fread($fo, filesize($fp));
-    $fr++;
-    $fc = fclose($fo);
-    $fo = fopen($fp,'w');
-    $fw = fwrite($fo, $fr);
-    $fc = fclose($fo);
+        $fp = "./resources/views/accessWebsite.txt";
+        $fo = fopen($fp,'r');
+        $fr = fread($fo, filesize($fp));
+        $fr++;
+        $fc = fclose($fo);
+        $fo = fopen($fp,'w');
+        $fw = fwrite($fo, $fr);
+        $fc = fclose($fo);
     ?>
     <!-- HEADER -->
     <header>
@@ -109,9 +90,6 @@
                 <ul class="header-links pull-right">
                     <li><a href="/en"><img src="{{asset('public/frontend/img/usa-flag-language-icon.png')}}"  id="language" alt="">USA</a></li>
                     <li><a href="/vi"><img src="{{asset('public/frontend/img/vn-flag-language-icon.png')}}" id="language" alt="">VN</a></li>
-                    <!-- Selected language -->
-
-                    <!-- End Selected language  -->
                 <li><a href="#"><i class="fa fa-dollar"></i>{{__('layout.USD')}}</a></li>
                     <!-- Xử lý một số tác vụ khi truy cập website -->
 
@@ -129,7 +107,6 @@
                                     }
                                     ?>
                                 </a></li>
-
                         @else
 
                         <script>
@@ -229,7 +206,7 @@
                                     <input type="text" class="form-control" value="{{$infor->phone}} " name="user_phone" required="">
                                 </div>
                                 <div class="right-w3l">
-                                    <input type="submit" class="form-control btn btn-danger" value="Update">
+                                    <input type="submit" class="form-control btn btn-danger" value="Cập nhật">
                                 </div>
                                 <hr>
                             <a href="{{URL::to('logout')}}" name="delInfor" class="form-group" style="text-align: center;"><i class="fa fa-sign-out"></i>{{__('layout.Log out')}}</a>
@@ -334,19 +311,6 @@
                             <div class="right-w3l">
                                 <input type="submit" class="form-control" value="{{__('layout.Log in')}}">
                             </div>
-                            {{-- CUSTOMIZE LOGIN --}}
-                            {{-- <div class="customize-login">
-                                <a href="{{URL::to('login/facebook')}}" class="fb btn">
-                                  <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                                </a>
-                                <a href="#" class="twitter btn">
-                                  <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                                </a>
-                                <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-                                  </i> Login with Google+
-                                </a>
-                            </div> --}}
-                            {{-- END CUSTOMIZE LOGIN --}}
                             <div class="sub-w3l">
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="customControlAutosizing" name="saveInfor">
@@ -436,12 +400,11 @@
                                     @endforeach
                                 </select>
                                 <input class="input" placeholder="{{__('Search')}}" name="keywords" type="text">
-                            <button type="submit" class="search-btn">{{__('layout.Search')}}</button>
+                                <button type="submit" class="search-btn">{{__('layout.Search')}}</button>
                             </form>
                         </div>
                     </div>
                     <!-- /SEARCH BAR -->
-
                     <!-- ACCOUNT -->
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">

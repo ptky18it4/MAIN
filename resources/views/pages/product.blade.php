@@ -282,13 +282,8 @@
                     </ul>
 
                     <ul class="product-links">
-                        {{-- <li>{{__('product.Share')}}:</li> --}}
-                        {{-- <li><a href="https://www.facebook.com/groups/ibmthinkpad/"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://twitter.com/hashtag/thinkpad?lang=vi"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li> --}}
                         <div class="zalo-share-button" data-href="" data-oaid="579745863508352884" data-layout="1" data-color="blue" data-customize=false></div>
                         <div class="zalo-follow-only-button" style="position: relative; top: 18px !important;" data-oaid="579745863508352884"></div>
-                        {{-- <li><a href="mailto:phamtrungly19032000@gmail.xom"><i class="fa fa-envelope"></i></a></li> --}}
                     </ul>
 
                 </div>

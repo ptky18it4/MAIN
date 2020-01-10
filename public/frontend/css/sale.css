@@ -67,12 +67,6 @@ select {
 }
 
 
-/*
-body {
-    align-content: center !important;
-} */
-
-
 /* End Reset CSS */
 
 
@@ -475,25 +469,25 @@ user agent stylesheet a:-webkit-any-link {
 /* Start Animation */
 
 .zoomInLeft {
-    animation-duration: 1.5s;
+    animation-duration: 2s;
     animation-fill-mode: both;
     animation-name: zoomInLeft;
 }
 
 .zoomInRight {
-    animation-duration: 2.5s;
+    animation-duration: 3s;
     animation-fill-mode: both;
     animation-name: zoomInRight;
 }
 
 .zoomInLeft_0 {
-    animation-duration: 3.5s;
+    animation-duration: 4s;
     animation-fill-mode: both;
     animation-name: zoomInLeft;
 }
 
 .slideInDown {
-    animation-duration: 2s;
+    animation-duration: 5s;
     animation-fill-mode: both;
     animation-name: slideInDown;
 }
@@ -515,7 +509,7 @@ ul {
 
 div ul li a:hover {
     text-decoration: none !important;
-    color: #E2231A !important;
+    color: #d10024 !important;
 }
 
 #caption {

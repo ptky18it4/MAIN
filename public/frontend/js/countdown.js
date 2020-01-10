@@ -1,5 +1,5 @@
 var p = document.querySelector("#timeout");
-var tet = new Date("Jan 11,2020 24:00:00").getTime();
+var tet = new Date("Jan 15,2020 24:00:00").getTime();
 //Tổng số giây
 var countDown = setInterval(run, 1000);
 

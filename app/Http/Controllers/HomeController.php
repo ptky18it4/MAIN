@@ -187,7 +187,10 @@ class HomeController extends Controller
                 ->orderby('id', 'desc')
                 ->limit(11)
                 ->get();
-            $tagCategory = DB::table('tbl_category')->inRandomOrder()->paginate(4);
+            $tagCategory = DB::table('tbl_product')
+                        ->join("tbl_category",'tbl_category.category_id','=','tbl_product.cate_id')
+                        ->inRandomOrder()
+                        ->paginate(4);
             $tagPrice = DB::table('tbl_product')->inRandomOrder()->paginate(4);
             $tagParent = DB::table('tbl_parent_id')->inRandomOrder()->paginate(9);
             return view('pages.home')

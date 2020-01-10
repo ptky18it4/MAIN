@@ -168,6 +168,7 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <div class="section-nav">
+                        <h6>THỂ LOẠI:</h6>
                         <ul class="section-tab-nav">
                             @foreach($tagParent as $key => $item)
                             <li class="tag-between"><a data-toggle="tab" href="#tab2">{{$item->parent_name}}</a></li>
@@ -192,11 +193,11 @@
             <div class="row">
                 <div class="col-md-4 col-xs-6">
                         <div id="myCanvasContainer">
-                            <canvas width="390" height="390" style="border: 2px solid while; padding: 10px; border-radius: 9999px; background-color:  #FFFFFF;" id="myCanvas">
+                            <canvas width="460" height="460" style="border: 5px solid while;  margin: 10px; padding: 10px; border-radius: 9999px; background-color:  #FFFFFF;" id="myCanvas">
                                 @foreach($top_selling as $key => $item)
                                 <div id="tags">
                                     <ul style="color: #393B3B;">
-                                        <li><a href="{{asset("/product-$item->id")}}" ><img width="60px;" height="60px;" src="{{asset('public/uploads/product/more_image/'.$item->image)}}"></a></li>
+                                        <li><a href="{{asset("/product-$item->id")}}" ><img width="50" height="50"src="{{asset('public/uploads/product/more_image/'.$item->image)}}"></a></li>
                                     </ul>
                                 </div>
                                 @endforeach
@@ -219,11 +220,11 @@
                           <li class="zoomInLeft">
                             <div class="direction-r">
                               <div class="flag-wrapper">
-                                <span class="flag">DANH MỤC.</span>
+                                <span class="flag">SẢN PHẨM.</span>
                                 <span class="time-wrapper"><span class="time">nổi bậc</span></span>
                               </div>
                               @foreach($tagCategory as $key => $item)
-                                <div class="desc">{{$item->category_name}}</div>
+                                <div class="desc"><a style="color: #FFFFFF;" href="{{asset("/product-$item->id")}}">{{$item->name}}</a></div>
                               @endforeach
                             </div>
                           </li>
@@ -232,11 +233,11 @@
                           <li class="zoomInRight">
                             <div class="direction-l">
                               <div class="flag-wrapper">
-                                <span class="flag">GIÁ.</span>
-                                <span class="time-wrapper"><span class="time">giá ưu đãi</span></span>
+                                <span class="flag">DANH MỤC.</span>
+                                <span class="time-wrapper"><span class="time">bán chạy</span></span>
                               </div>
-                              @foreach($tagPrice as $key => $item)
-                              <div class="desc">{{$item->price}}</div>
+                              @foreach($tagCategory as $key => $item)
+                              <div class="desc">{{$item->category_name}}</div>
                               @endforeach
                             </div>
                           </li>
@@ -252,7 +253,6 @@
                             </div>
                             </div>
                           </li>
-
                         </ul>
 
                       </div>
