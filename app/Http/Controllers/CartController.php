@@ -37,6 +37,18 @@ class CartController extends Controller
             $user_order['zip-code'] = $request->zip_code;
             $user_order['tel'] = $request->tel;
 
+            if($request->checkbox) {
+                $user_order = array();
+                $user_order['user_id'] = NULL;
+                $user_order['first_name'] = $request->first_name_diff;
+                $user_order['last_name'] = $request->last_name_diff;
+                $user_order['email'] = $request->email_diff;
+                $user_order['address'] = $request->address_diff;
+                $user_order['city'] = $request->city_diff;
+                $user_order['country'] = $request->country_diff;
+                $user_order['zip-code'] = $request->zip_code_diff;
+                $user_order['tel'] = $request->tel_diff;
+            }
             //===========================================GET INFORMATION FROM DATABASE==========================================
 
             $all_menu = DB::table('tbl_menu')->get();

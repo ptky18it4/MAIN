@@ -54,7 +54,7 @@
             <!-- <th>DESCRIPTION</th> -->
             <th>{{trans('all_product.STATUS')}}</th>
             <th>{{trans('all_product.SHOW ON HOME')}}</th>
-            <th>{{trans('all_product.VIEW COUNT')}}</th>
+            {{-- <th>NGÀY TẠO    </th> --}}
             <th>{{trans('all_product.OPTION')}}</th>
             <!-- <th>Ngày thêm</th> -->
             <th style="width:30px;"></th>
@@ -96,7 +96,7 @@
                 ?>
               </span>
             </td>
-            <td>{{ $pro->view_count}}</td>
+            {{-- <td>{{ $pro->created_at }}</td> --}}
 
             <!-- <td><span class="text-ellipsis">Ngày thêm</span></td> -->
             <td>

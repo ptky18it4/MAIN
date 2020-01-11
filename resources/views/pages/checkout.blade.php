@@ -10,10 +10,10 @@
 				<!-- row -->
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="breadcrumb-header">{{trans('checkout.Checkout')}}</h3>
+						<h3 class="breadcrumb-header">{{__('checkout.Checkout')}}</h3>
 						<ul class="breadcrumb-tree">
-							<li><a href="#">{{trans('checkout.Home')}}</a></li>
-							<li class="active">{{trans('checkout.Checkout')}}</li>
+							<li><a href="#">{{__('checkout.Home')}}</a></li>
+							<li class="active">{{__('checkout.Checkout')}}</li>
 						</ul>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 						<!-- Billing Details -->
 						<div class="billing-details">
 							<div class="section-title">
-								<h3 class="title">{{trans('checkout.Billing address')}}</h3>
+								<h3 class="title">{{__('checkout.Billing address')}}</h3>
 							</div>
 							@foreach($infor_user as $key => $infor)
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -69,7 +69,7 @@
 									<input type="checkbox" id="create-account">
 									<label for="create-account">
 										<span></span>
-										{{trans('checkout.Create Account?')}}
+										{{__('checkout.Create Account?')}}
 									</label>
 									<div class="caption">
 										<p>Tính năng đang được nâng cấp. Vui lòng quay lại sau.</p>
@@ -83,13 +83,13 @@
 						<!-- Shiping Details -->
 						<div class="shiping-details">
 							<div class="section-title">
-								<h3 class="title">{{trans('checkout.Shiping address')}}</h3>
+								<h3 class="title">{{__('checkout.Shiping address')}}</h3>
 							</div>
 							<div class="input-checkbox">
-								<input type="checkbox" id="shiping-address">
+								<input type="checkbox" name="checkbox" id="shiping-address">
 								<label for="shiping-address">
 									<span></span>
-									{{trans('checkout.Ship to a diffrent address?')}}
+									{{__('checkout.Ship to a diffrent address?')}}
 								</label>
 								<div class="caption">
 									<div class="form-group">
@@ -102,7 +102,7 @@
 										<input class="input" type="email" name="email_diff" placeholder="Email">
 									</div>
 									<div class="form-group">
-										<input class="input" type="text" name="address-_diff" placeholder="Address">
+										<input class="input" type="text" name="address_diff" placeholder="Address">
 									</div>
 									<div class="form-group">
 										<input class="input" type="text" name="city_diff" placeholder="City">
@@ -123,7 +123,7 @@
 
 						<!-- Order notes -->
 						<div class="order-notes">
-							<textarea class="input" style="resize: none;" placeholder="Order Notes"></textarea>
+							<textarea class="input" name="note" style="resize: none;" placeholder="Order Notes"></textarea>
 						</div>
 						<!-- /Order notes -->
 					</div>
@@ -135,23 +135,23 @@
 
 						<div class="col-md-5 order-details">
 							<div class="section-title text-center">
-								<h3 class="title">{{trans('checkout.Your Order')}}</h3>
+								<h3 class="title">{{__('checkout.Your Order')}}</h3>
 							</div>
 							<div class="order-summary">
 									<div class="order-col">
-										<div><strong>{{trans('checkout.PRODUCT')}}</strong></div>
-										<div><strong>{{trans('checkout.TOTAL')}}</strong></div>
+										<div><strong>{{__('checkout.PRODUCT')}}</strong></div>
+										<div><strong>{{__('checkout.TOTAL')}}</strong></div>
 									</div>
 									<div class="order-products show-cart">
 											{{-- content code of javascript --}}
 										</div>
 
 										<div class="order-col">
-											<div>{{trans('checkout.Shipping')}}</div>
-											<div><strong>{{trans('checkout.FREE')}}</strong></div>
+											<div>{{__('checkout.Shipping')}}</div>
+											<div><strong>{{__('checkout.FREE')}}</strong></div>
 										</div>
 										<div class="order-col ">
-											<div ><strong>{{trans('checkout.TOTAL')}}</strong></div>
+											<div ><strong>{{__('checkout.TOTAL')}}</strong></div>
 											<div><strong style="color:#D10024; font-size: 24px !important;"></strong><strong class="order-total total-cart"></strong><strong style="color: #D10024; font-size: 24px;">&nbsp;VND</strong></div>
 										</div>
 									</div>
@@ -160,7 +160,7 @@
 										<input type="radio" name="payment" id="payment-1" required>
 										<label for="payment-1">
 											<span></span>
-											{{trans('checkout.Direct Bank Transfer')}}
+											{{__('checkout.Direct Bank Transfer')}}
 										</label>
 										<div class="caption">
 											<p>Tính nang đang được nâng cấp.</p>
@@ -170,7 +170,7 @@
 										<input type="radio" name="payment" id="payment-2" required>
 										<label for="payment-2">
 											<span></span>
-											{{trans('checkout.Cheque Payment')}}
+											{{__('checkout.Cheque Payment')}}
 										</label>
 										<div class="caption">
                                             <p>Tính nang đang được nâng cấp.</p>
@@ -181,7 +181,7 @@
 										<input type="radio" name="payment" id="payment-3" required>
 										<label for="payment-3">
 											<span></span>
-											{{trans('checkout.Paypal System')}}
+											{{__('checkout.Paypal System')}}
 										</label>
 										<div class="caption">
                                             <p>Tính nang đang được nâng cấp.</p>
@@ -193,10 +193,10 @@
 									<input type="checkbox" id="terms" required>
 									<label for="terms">
 										<span></span>
-									{{trans("checkout.I've read and accept the")}} <a href="#">{{trans('checkout.terms & conditions')}}</a>
+									{{__("checkout.I've read and accept the")}} <a href="#">{{__('checkout.terms & conditions')}}</a>
 									</label>
 								</div>
-								<button type="submit" class="primary-btn order-submit" onclick="submitFormCheckout();" >{{trans('checkout.Place order')}}</button>
+								<button type="submit" class="primary-btn order-submit" onclick="submitFormCheckout();" >{{__('checkout.Place order')}}</button>
 
 							</div>
 							<!-- /Order Details -->
